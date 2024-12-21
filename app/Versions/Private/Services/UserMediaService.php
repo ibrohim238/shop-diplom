@@ -10,7 +10,7 @@ use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-final class UserMediaService
+final readonly class UserMediaService
 {
     public function __construct(
         private readonly Media $media

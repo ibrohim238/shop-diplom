@@ -5,7 +5,7 @@ namespace App\Versions\Private\Dtos;
 use App\Versions\Private\Http\Requests\UserMediaRequest;
 use Illuminate\Http\UploadedFile;
 
-class UserMediaDto
+final readonly class UserMediaDto
 {
     /**
      * @param array<UploadedFile> $media

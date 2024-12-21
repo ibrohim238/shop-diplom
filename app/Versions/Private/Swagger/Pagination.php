@@ -11,54 +11,54 @@ use OpenApi\Attributes as OA;
         name: 'Pagination',
     ),
 )]
-final class Pagination
+final readonly class Pagination
 {
     #[OA\Property(
         title: 'current_page',
         description: 'current_page',
         type: 'integer',
     )]
-    private readonly int $current_page;
+    private int $current_page;
 
     #[OA\Property(
         title: 'from',
         description: 'from',
         type: 'integer',
     )]
-    private readonly int $from;
+    private int $from;
 
     #[OA\Property(
         title: 'last_page',
         description: 'last_page',
         type: 'integer',
     )]
-    private readonly int $last_page;
+    private int $last_page;
 
     #[OA\Property(
         title: 'path',
         description: 'path',
         type: 'string',
     )]
-    private readonly string $path;
+    private string $path;
 
     #[OA\Property(
         title: 'per_page',
         description: 'per_page',
         type: 'integer',
     )]
-    private readonly int $per_page;
+    private int $per_page;
 
     #[OA\Property(
         title: 'to',
         description: 'to',
         type: 'integer',
     )]
-    private readonly int $to;
+    private int $to;
 
     #[OA\Property(
         title: 'total',
         description: 'total',
         type: 'integer',
     )]
-    private readonly int $total;
+    private int $total;
 }

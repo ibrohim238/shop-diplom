@@ -9,7 +9,7 @@ use App\Versions\Private\Services\UserMediaService;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class UserMediaController
+final readonly class UserMediaController
 {
     public function index(Request $request)
     {
