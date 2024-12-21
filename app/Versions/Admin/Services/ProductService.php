@@ -3,7 +3,7 @@
 namespace App\Versions\Admin\Services;
 
 use App\Models\Product;
-use app\Versions\Admin\Dto\ProductDto;
+use App\Versions\Admin\Dtos\ProductDto;
 
 final readonly class ProductService
 {

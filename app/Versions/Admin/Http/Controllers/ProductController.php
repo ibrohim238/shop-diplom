@@ -3,7 +3,7 @@
 namespace App\Versions\Admin\Http\Controllers;
 
 use App\Models\Product;
-use App\Versions\Admin\Dto\ProductDto;
+use App\Versions\Admin\Dtos\ProductDto;
 use App\Versions\Admin\Http\Requests\ProductRequest;
 use App\Versions\Admin\Http\Resources\ProductResource;
 use App\Versions\Admin\Reporters\ProductIndexReporter;
