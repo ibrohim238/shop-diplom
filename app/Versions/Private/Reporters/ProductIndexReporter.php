@@ -12,7 +12,7 @@ final readonly class ProductIndexReporter
     public function execute(?Request $request = null): QueryBuilder
     {
         return QueryBuilder::for(Product::class)
-            ->with('categories')
+            ->with('media')
             ->allowedFilters([
                 AllowedFilter::exact('category_slug', 'categories.slug'),
             ]);

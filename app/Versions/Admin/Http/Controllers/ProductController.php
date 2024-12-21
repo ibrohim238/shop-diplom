@@ -16,7 +16,6 @@ final readonly class ProductController
     {
         $products = $reporter
             ->execute()
-            ->with(['media'])
             ->paginate($request->get('limit', 15));
 
         return ProductResource::collection($products);
