@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Versions\Admin\Dto;
+namespace App\Versions\Admin\Dtos;
 
 use App\Versions\Admin\Http\Requests\ProductRequest;
 
