@@ -1,0 +1,25 @@
+2024-12-21 08:54:08,845 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-21 08:54:08,845 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-21 08:54:08,846 INFO supervisord started with pid 1
+2024-12-21 08:54:09,857 INFO spawned: 'kafka-consume' with pid 7
+2024-12-21 08:54:09,879 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-21 08:54:10,881 INFO spawned: 'kafka-consume' with pid 8
+2024-12-21 08:54:10,891 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-21 08:54:12,896 INFO spawned: 'kafka-consume' with pid 9
+2024-12-21 08:54:12,915 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-21 08:54:15,918 INFO spawned: 'kafka-consume' with pid 18
+2024-12-21 08:54:15,929 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-21 08:54:16,930 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-21 08:54:19,933 WARN received SIGQUIT indicating exit request
+2024-12-21 08:54:23,404 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-21 08:54:23,404 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-21 08:54:23,405 INFO supervisord started with pid 1
+2024-12-21 08:54:24,408 INFO spawned: 'kafka-consume' with pid 15
+2024-12-21 08:54:24,421 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-21 08:54:25,424 INFO spawned: 'kafka-consume' with pid 16
+2024-12-21 08:54:25,437 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-21 08:54:27,442 INFO spawned: 'kafka-consume' with pid 17
+2024-12-21 08:54:27,454 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-21 08:54:30,459 INFO spawned: 'kafka-consume' with pid 18
+2024-12-21 08:54:30,469 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-21 08:54:31,471 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
