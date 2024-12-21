@@ -14,12 +14,12 @@ final class UnprocessableEntityResponse extends OA\Response
             response: Response::HTTP_UNPROCESSABLE_ENTITY,
             description: 'Unprocessable entity.',
             content: $content ?? new OA\JsonContent(
-                properties: [
-                    new OA\Property('message', type: 'string'),
-                    new OA\Property('errors', type: 'array', items: new OA\Items()),
-                ],
-                type: 'object',
-            ),
+            properties: [
+                new OA\Property('message', type: 'string'),
+                new OA\Property('errors', type: 'array', items: new OA\Items()),
+            ],
+            type: 'object',
+        ),
         );
     }
 }

@@ -2,24 +2,26 @@
 
 namespace App\Versions\Admin\Dtos;
 
-use App\Versions\Admin\Http\Requests\ProductRequest;
+use app\Versions\Admin\Http\Requests\CategoryRequest;
 
-final readonly class ProductDto
+final readonly class CategoryDto
 {
     public function __construct(
         private string $name,
         private string $description,
+        private int    $parentId,
     )
     {
     }
 
-    public static function fromRequest(ProductRequest $request): ProductDto
+    public static function fromRequest(CategoryRequest $request): CategoryDto
     {
         $validated = $request->validated();
 
         return new self(
             name: $validated['name'],
             description: $validated['description'] ?? null,
+            parentId: $validated['parent_id'] ?? null,
         );
     }
 
@@ -28,6 +30,7 @@ final readonly class ProductDto
         return [
             'name' => $this->name,
             'description' => $this->description,
+            'parent_id' => $this->parentId,
         ];
     }
 }
