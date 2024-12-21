@@ -18,6 +18,262 @@
         }
     ],
     "paths": {
+        "/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Список категорий",
+                "description": "Список категорий",
+                "operationId": "ddc7563bf337d4edf46d3980131c0fcd",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CategoryResource"
+                                            }
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/Pagination"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Страница категория",
+                "description": "Страница категория",
+                "operationId": "0d49731955b7df29d03f29f3d91a1a7e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/CategoryResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Удалить категорию",
+                "description": "Удалить категорию",
+                "operationId": "1ce8de9b70dcb3431e5db865b6452254",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
+            }
+        },
+        "/Categories": {
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Добавить категорий",
+                "description": "Добавить категорий",
+                "operationId": "fb90c8686e2ac288b2b81e799f71d149",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CategoryRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/CategoryResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
+            }
+        },
+        "/catagories/{id}": {
+            "put": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Обновить категорию",
+                "description": "Обновить категорию",
+                "operationId": "667b04975cc1842f21a99b5fb55ee184",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CategoryRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/CategoryResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
+            }
+        },
         "/products": {
             "get": {
                 "tags": [
@@ -330,6 +586,35 @@
                     "name": "Pagination"
                 }
             },
+            "CategoryRequest": {
+                "title": "Product request",
+                "description": "Product request body data",
+                "required": [
+                    "name",
+                    "parent_id"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "Имя",
+                        "type": "string",
+                        "maxLength": 255
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "Описание",
+                        "type": "string",
+                        "maxLength": 512
+                    },
+                    "parent_id": {
+                        "title": "parent_id",
+                        "description": "идентификатор родителя",
+                        "type": "string",
+                        "format": "int64"
+                    }
+                },
+                "type": "object"
+            },
             "ProductRequest": {
                 "title": "Product request",
                 "description": "Product request body data",
@@ -343,7 +628,7 @@
                         "type": "string",
                         "maxLength": 255
                     },
-                    "url": {
+                    "description": {
                         "title": "description",
                         "description": "Описание",
                         "type": "string",
@@ -351,6 +636,52 @@
                     }
                 },
                 "type": "object"
+            },
+            "CategoryResource": {
+                "title": "CategoryResource",
+                "description": "Category Resource",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Идентификатор",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "Название",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "title": "slug",
+                        "description": "slug",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "Описание",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "title": "сreated_at",
+                        "description": "Создана в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "description": "Обновлена в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Category Resource"
+                }
             },
             "ProductResource": {
                 "title": "ProductResource",
@@ -390,7 +721,7 @@
                 },
                 "type": "object",
                 "xml": {
-                    "name": "Platform Resource"
+                    "name": "Product Resource"
                 }
             }
         },
@@ -408,6 +739,10 @@
         {
             "name": "Products",
             "description": "Продукты"
+        },
+        {
+            "name": "Categories",
+            "description": "Categories"
         }
     ]
 }

@@ -6,13 +6,13 @@ use App\Versions\Private\Swagger\Responses\NotFoundResponse;
 use App\Versions\Private\Swagger\Responses\UnauthorizedResponse;
 use OpenApi\Attributes as OA;
 
-interface ProductController
+interface CategoryController
 {
     #[OA\Get(
-        path: '/products',
-        description: 'Список товаров',
-        summary: 'Список товаров',
-        tags: ['Products'],
+        path: '/categories',
+        description: 'Список категорий',
+        summary: 'Список категорий',
+        tags: ['Categories'],
         parameters: [
 
         ],
@@ -25,7 +25,7 @@ interface ProductController
                 new OA\Property(
                     property: 'data',
                     type: 'array',
-                    items: new OA\Items(ref: "#/components/schemas/ProductResource"),
+                    items: new OA\Items(ref: "#/components/schemas/CategoryResource"),
                 ),
                 new OA\Property(
                     property: 'meta',
@@ -37,10 +37,10 @@ interface ProductController
     public function index();
 
     #[OA\Get(
-        path: '/product/{id}',
-        description: 'Страница товара',
-        summary: 'Страница товара',
-        tags: ['Products'],
+        path: '/categories/{id}',
+        description: 'Страница категория',
+        summary: 'Страница категория',
+        tags: ['Categories'],
         parameters: [
             new OA\Parameter(
                 name: 'id',
@@ -57,7 +57,7 @@ interface ProductController
             properties: [
                 new OA\Property(
                     property: 'data',
-                    ref: "#/components/schemas/ProductResource",
+                    ref: "#/components/schemas/CategoryResource",
                 ),
             ],
         ),

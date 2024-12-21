@@ -18,6 +18,79 @@
         }
     ],
     "paths": {
+        "/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Список категорий",
+                "description": "Список категорий",
+                "operationId": "ef0e7a6cad95f8d22acf027d68298a5b",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CategoryResource"
+                                            }
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/Pagination"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Страница категория",
+                "description": "Страница категория",
+                "operationId": "ff7401c48e481c8cf138b90a3e17c503",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/CategoryResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    }
+                }
+            }
+        },
         "/products": {
             "get": {
                 "tags": [
@@ -87,9 +160,6 @@
                     },
                     "404": {
                         "description": "Not found."
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
                     }
                 }
             }
@@ -142,6 +212,52 @@
                     "name": "Pagination"
                 }
             },
+            "CategoryResource": {
+                "title": "CategoryResource",
+                "description": "Category Resource",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Идентификатор",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "Название",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "title": "slug",
+                        "description": "slug",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "Описание",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "title": "сreated_at",
+                        "description": "Создана в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "description": "Обновлена в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Category Resource"
+                }
+            },
             "ProductResource": {
                 "title": "ProductResource",
                 "description": "Product Resource",
@@ -180,7 +296,7 @@
                 },
                 "type": "object",
                 "xml": {
-                    "name": "Platform Resource"
+                    "name": "Product Resource"
                 }
             }
         },
@@ -198,6 +314,10 @@
         {
             "name": "Products",
             "description": "Продукты"
+        },
+        {
+            "name": "Categories",
+            "description": "Categories"
         }
     ]
 }

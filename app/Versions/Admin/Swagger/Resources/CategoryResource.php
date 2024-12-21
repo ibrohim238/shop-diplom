@@ -6,13 +6,13 @@ use Carbon\Carbon;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(
-    title: 'ProductResource',
-    description: 'Product Resource',
+    title: 'CategoryResource',
+    description: 'Category Resource',
     xml: new OA\Xml(
-        name: 'Product Resource',
+        name: 'Category Resource',
     ),
 )]
-final class ProductResource
+final class CategoryResource
 {
     #[OA\Property(
         title: 'id',
@@ -27,6 +27,12 @@ final class ProductResource
         description: 'Название',
     )]
     private readonly string $name;
+
+    #[OA\Property(
+        title: 'slug',
+        description: 'slug',
+    )]
+    private readonly string $slug;
 
     #[OA\Property(
         title: 'description',

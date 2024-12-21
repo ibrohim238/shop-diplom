@@ -7,10 +7,10 @@ use OpenApi\Attributes as OA;
 #[OA\Schema(
     title: 'Product request',
     description: 'Product request body data',
-    required: ['name'],
+    required: ['name', 'parent_id'],
     type: 'object',
 )]
-final class ProductRequest
+final class CategoryRequest
 {
 
     #[OA\Property(
@@ -26,4 +26,11 @@ final class ProductRequest
         maxLength: 512,
     )]
     private readonly string $description;
+
+    #[OA\Property(
+        title: 'parent_id',
+        description: 'идентификатор родителя',
+        format: 'int64',
+    )]
+    private readonly string $parent_id;
 }
