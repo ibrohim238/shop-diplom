@@ -163,6 +163,172 @@
                     }
                 }
             }
+        },
+        "/user/media": {
+            "get": {
+                "tags": [
+                    "UserMedia"
+                ],
+                "summary": "Список медиа пользователя",
+                "description": "Список медиа пользователя",
+                "operationId": "6588845938c73e89de36c0244fef4669",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/MediaResource"
+                                            }
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/Pagination"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
+            }
+        },
+        "/user/media/": {
+            "post": {
+                "tags": [
+                    "UserMedia"
+                ],
+                "summary": "Добавить медиа",
+                "description": "Добавить медиа",
+                "operationId": "ec2171fd719a04308bc3bc6c304fa1a6",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "media[]"
+                                ],
+                                "properties": {
+                                    "media[]": {
+                                        "description": "Файлы",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "binary"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/MediaResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
+            }
+        },
+        "/user/media/{id}": {
+            "delete": {
+                "tags": [
+                    "UserMedia"
+                ],
+                "summary": "Удалить медиа",
+                "description": "Удалить медиа",
+                "operationId": "c438a176f02f94564921a3a76238c14e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
+            }
         }
     },
     "components": {
@@ -212,6 +378,22 @@
                     "name": "Pagination"
                 }
             },
+            "UserMediaRequest": {
+                "title": "UserMedia request",
+                "description": "UserMedia request body data",
+                "required": [],
+                "properties": {
+                    "media": {
+                        "title": "media",
+                        "description": "media",
+                        "type": "array",
+                        "items": {
+                            "type": "file"
+                        }
+                    }
+                },
+                "type": "object"
+            },
             "CategoryResource": {
                 "title": "CategoryResource",
                 "description": "Category Resource",
@@ -232,6 +414,9 @@
                         "title": "slug",
                         "description": "slug",
                         "type": "string"
+                    },
+                    "media": {
+                        "$ref": "#/components/schemas/MediaResource"
                     },
                     "description": {
                         "title": "description",
@@ -258,6 +443,54 @@
                     "name": "Category Resource"
                 }
             },
+            "MediaResource": {
+                "title": "MediaResource",
+                "description": "Media Resource",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Идентификатор",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "Название",
+                        "type": "string",
+                        "example": "Владимир"
+                    },
+                    "collection_name": {
+                        "title": "collection_name",
+                        "description": "collection name",
+                        "type": "string",
+                        "example": "default"
+                    },
+                    "disk": {
+                        "title": "disk",
+                        "description": "disk",
+                        "type": "string",
+                        "example": "private readonly "
+                    },
+                    "url": {
+                        "title": "url",
+                        "description": "url",
+                        "type": "string",
+                        "example": "http://localhost"
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Создана в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Media Resource"
+                }
+            },
             "ProductResource": {
                 "title": "ProductResource",
                 "description": "Product Resource",
@@ -278,6 +511,22 @@
                         "title": "description",
                         "description": "Описание",
                         "type": "string"
+                    },
+                    "medias": {
+                        "title": "medias",
+                        "description": "medias",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MediaResource"
+                        }
+                    },
+                    "categories": {
+                        "title": "categories",
+                        "description": "categories",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategoryResource"
+                        }
                     },
                     "created_at": {
                         "title": "сreated_at",
@@ -317,7 +566,11 @@
         },
         {
             "name": "Categories",
-            "description": "Categories"
+            "description": "Категории"
+        },
+        {
+            "name": "UserMedia",
+            "description": "Файлы"
         }
     ]
 }

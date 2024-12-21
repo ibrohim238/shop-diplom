@@ -2,9 +2,12 @@
 
 namespace App\Versions\Admin\Http\Requests;
 
+use App\Enums\MediaCollectionNameEnum;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 final class CategoryRequest extends FormRequest
 {
@@ -13,7 +16,16 @@ final class CategoryRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:512'],
-            'parent_id' => ['required', 'integer', Rule::exists(Category::class, 'id')],
+            'media_id' => [
+                'nullable',
+                'integer',
+                Rule::exists(Media::class, 'id')
+                    ->where('collection_name', MediaCollectionNameEnum::TEMP)
+                    ->where('model_type', 'user'),
+            ],
+            'parent_id' => [
+                'required',
+                'integer', Rule::exists(Category::class, 'id')],
         ];
     }
 

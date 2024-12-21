@@ -95,7 +95,7 @@
             },
             "delete": {
                 "tags": [
-                    "Products"
+                    "Categories"
                 ],
                 "summary": "Удалить категорию",
                 "description": "Удалить категорию",
@@ -611,6 +611,11 @@
                         "description": "идентификатор родителя",
                         "type": "string",
                         "format": "int64"
+                    },
+                    "media_id": {
+                        "title": "media_id",
+                        "description": "media_id",
+                        "type": "integer"
                     }
                 },
                 "type": "object"
@@ -633,6 +638,22 @@
                         "description": "Описание",
                         "type": "string",
                         "maxLength": 512
+                    },
+                    "medias": {
+                        "title": "medias",
+                        "description": "medias",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "categories": {
+                        "title": "categories",
+                        "description": "categories",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
                     }
                 },
                 "type": "object"
@@ -742,7 +763,7 @@
         },
         {
             "name": "Categories",
-            "description": "Categories"
+            "description": "Категории"
         }
     ]
 }

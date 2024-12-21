@@ -147,7 +147,7 @@ interface CategoryController
                 'api-key' => [],
             ],
         ],
-        tags: ['Products'],
+        tags: ['Categories'],
         parameters: [
             new OA\Parameter(
                 name: 'id',

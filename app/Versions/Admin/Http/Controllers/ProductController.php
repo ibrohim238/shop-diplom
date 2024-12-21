@@ -16,6 +16,7 @@ final readonly class ProductController
     {
         $products = $reporter
             ->execute()
+            ->with(['media'])
             ->paginate($request->get('limit', 15));
 
         return ProductResource::collection($products);
@@ -23,18 +24,23 @@ final readonly class ProductController
 
     public function show(Product $product)
     {
+        $product->load(['media', 'categories']);
+
         return ProductResource::make($product);
     }
 
     public function store(ProductService $service, ProductRequest $request)
     {
         $product = $service->store(ProductDto::fromRequest($request));
+        $product->load(['media', 'categories']);
 
         return ProductResource::make($product);
     }
 
     public function update(Product $product, ProductRequest $request)
     {
+        $product->load(['media', 'categories']);
+
         app(ProductService::class, [
             'product' => $product
         ])

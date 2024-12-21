@@ -16,6 +16,7 @@ final readonly class CategoryController
     {
         $categories = $reporter
             ->execute()
+            ->with('media')
             ->paginate($request->get('limit', 15));
 
         return CategoryResource::collection($categories);

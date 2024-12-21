@@ -6,13 +6,13 @@ use Carbon\Carbon;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(
-    title: 'CategoryResource',
-    description: 'Category Resource',
+    title: 'MediaResource',
+    description: 'Media Resource',
     xml: new OA\Xml(
-        name: 'Category Resource',
+        name: 'Media Resource',
     ),
 )]
-final class CategoryResource
+final class MediaResource
 {
     #[OA\Property(
         title: 'id',
@@ -25,42 +25,37 @@ final class CategoryResource
     #[OA\Property(
         title: 'name',
         description: 'Название',
+        example: 'Владимир',
     )]
     private readonly string $name;
 
     #[OA\Property(
-        title: 'slug',
-        description: 'slug',
+        title: 'collection_name',
+        description: 'collection name',
+        example: 'default',
     )]
-    private readonly string $slug;
+    private readonly string $collection_name;
 
     #[OA\Property(
-        title: 'media',
-        description: 'media',
+        title: 'disk',
+        description: 'disk',
+        example: 'private readonly ',
     )]
-    private readonly MediaResource $media;
+    private readonly string $disk;
 
     #[OA\Property(
-        title: 'description',
-        description: 'Описание',
+        title: 'url',
+        description: 'url',
+        example: 'http://localhost',
     )]
-    private readonly string $description;
+    private readonly string $url;
 
     #[OA\Property(
-        title: "сreated_at",
+        title: "Created at",
         description: "Создана в",
         type: "string",
         format: "datetime",
         example: "2020-01-27 17:50:45",
     )]
     private readonly Carbon $created_at;
-
-    #[OA\Property(
-        title: "updated_at",
-        description: "Обновлена в",
-        type: "string",
-        format: "datetime",
-        example: "2020-01-27 17:50:45",
-    )]
-    private readonly Carbon $updated_at;
 }

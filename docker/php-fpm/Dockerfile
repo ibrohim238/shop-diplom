@@ -2,54 +2,58 @@ FROM php:8.2-fpm-bullseye
 
 ENV COMPOSER_MEMORY_LIMIT='-1'
 
-RUN apt-get update
-RUN apt-get install -y \
-        libzip-dev \
-        libz-dev \
-        libzip-dev \
-        libpq-dev \
-        libssl-dev \
-        openssh-server \
-        git \
-        cron \
-        nano \
-        libxml2-dev \
-        libreadline-dev \
-        libgmp-dev \
-        mariadb-client \
-        unzip \
-        libc-client-dev \
-        libkrb5-dev \
-        libonig-dev \
-        librdkafka-dev \
-        supervisor
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    libjpeg-dev \
+    libxpm-dev \
+    libwebp-dev \
+    libmcrypt-dev \
+    zlib1g-dev \
+    zip \
+    unzip \
+    libpq-dev \
+    libzip-dev \
+    libsodium-dev \
+    librdkafka-dev \
+    libmagickwand-dev --no-install-recommends \
+    supervisor # require for queue
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install mbstring extention
-RUN docker-php-ext-install mbstring && docker-php-ext-enable mbstring
+#####################################
+# php extensions:
+#####################################
 
-# Install the PHP pcntl extention
-RUN docker-php-ext-install pcntl
-
+# Install the imagick extention
+RUN pecl install imagick && docker-php-ext-enable imagick # require for dev
+# Install the PHPRedis extention
+RUN pecl install redis && docker-php-ext-enable redis
 # Install the PHP zip extention
 RUN docker-php-ext-install zip
-
+# Install the PHP pcntl extention
+RUN docker-php-ext-install pcntl # require for dev
+# Install the PHP mbstring extention
+RUN docker-php-ext-install mbstring
+# Install the PHP sodium extention
+RUN docker-php-ext-install sodium
+# Install the PHP exif extention
+RUN docker-php-ext-install exif
+# Install the PHP bcmath extention
+RUN docker-php-ext-install bcmath
 # Install the PHP pdo_pgsql extention
 RUN docker-php-ext-install pdo_pgsql
-
-# Install the PHP bcmath extension
-RUN docker-php-ext-install bcmath
 
 # Install the PHP intl extention
 RUN docker-php-ext-install intl
 
-# Install the PHP gmp extention
-RUN docker-php-ext-install gmp
-
-# Install the PHPRedis extention
-RUN pecl install redis && docker-php-ext-enable redis
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp --with-xpm \
+    && docker-php-ext-install gd
 
 #####################################
 # Composer:

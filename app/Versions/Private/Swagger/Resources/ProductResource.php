@@ -35,6 +35,22 @@ final class ProductResource
     private readonly string $description;
 
     #[OA\Property(
+        title: 'medias',
+        description: 'medias',
+        type: 'array',
+        items: new OA\Items(ref: '#/components/schemas/MediaResource')
+    )]
+    private readonly array $medias;
+
+    #[OA\Property(
+        title: 'categories',
+        description: 'categories',
+        type: 'array',
+        items: new OA\Items(ref: '#/components/schemas/CategoryResource')
+    )]
+    private readonly array $categories;
+
+    #[OA\Property(
         title: "сreated_at",
         description: "Создана в",
         type: "string",

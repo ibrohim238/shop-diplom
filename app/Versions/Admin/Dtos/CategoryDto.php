@@ -7,11 +7,11 @@ use app\Versions\Admin\Http\Requests\CategoryRequest;
 final readonly class CategoryDto
 {
     public function __construct(
-        private string $name,
-        private string $description,
-        private int    $parentId,
-    )
-    {
+        private string  $name,
+        private ?string $description,
+        private int     $parentId,
+        private ?int    $mediaId,
+    ) {
     }
 
     public static function fromRequest(CategoryRequest $request): CategoryDto
@@ -22,6 +22,7 @@ final readonly class CategoryDto
             name: $validated['name'],
             description: $validated['description'] ?? null,
             parentId: $validated['parent_id'] ?? null,
+            mediaId: $validated['media_id'] ?? null,
         );
     }
 
@@ -32,5 +33,10 @@ final readonly class CategoryDto
             'description' => $this->description,
             'parent_id' => $this->parentId,
         ];
+    }
+
+    public function getMediaId(): int
+    {
+        return $this->mediaId;
     }
 }

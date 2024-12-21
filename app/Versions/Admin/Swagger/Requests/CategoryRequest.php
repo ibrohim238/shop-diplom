@@ -33,4 +33,11 @@ final class CategoryRequest
         format: 'int64',
     )]
     private readonly string $parent_id;
+
+    #[OA\Property(
+        title: 'media_id',
+        description: 'media_id',
+        type: 'integer',
+    )]
+    private readonly array $media_id;
 }

@@ -26,4 +26,20 @@ final class ProductRequest
         maxLength: 512,
     )]
     private readonly string $description;
+
+    #[OA\Property(
+        title: 'medias',
+        description: 'medias',
+        type: 'array',
+        items: new OA\Items(type: 'integer'),
+    )]
+    private readonly array $medias;
+
+    #[OA\Property(
+        title: 'categories',
+        description: 'categories',
+        type: 'array',
+        items: new OA\Items(type: 'integer'),
+    )]
+    private readonly array $categories;
 }
