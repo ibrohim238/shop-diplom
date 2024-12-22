@@ -2,7 +2,7 @@
 
 namespace App\Versions\Admin\Http\Resources;
 
-use app\Http\Resources\MediaResource;
+use App\Http\Resources\MediaResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -18,7 +18,7 @@ final class ProductResource extends JsonResource
             'description' => $this->description,
             'price' => $this->price,
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
-            'medias' => MediaResource::collection($this->whenLoaded('medias')),
+            'medias' => MediaResource::collection($this->whenLoaded('media')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

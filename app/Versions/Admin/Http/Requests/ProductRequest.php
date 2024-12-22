@@ -3,8 +3,7 @@
 namespace App\Versions\Admin\Http\Requests;
 
 use App\Enums\MediaCollectionNameEnum;
-use App\Models\Product;
-use App\Models\User;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -24,8 +23,16 @@ final class ProductRequest extends FormRequest
                 'required',
                 'integer',
                 Rule::exists(Media::class, 'id')
-                    ->where('model_type', User::class)
-                    ->where('collection_name', MediaCollectionNameEnum::TEMP)
+                    ->where(function (Builder $query) {
+                        $query
+                            ->where(function (Builder $query) {
+                                $query->where('model_type', 'user')
+                                    ->where('collection_name', MediaCollectionNameEnum::TEMP);
+                            })
+                            ->orWhere(function (Builder $query) {
+                                $query->where('model_type', 'product');
+                            });
+                    })
             ],
         ];
     }

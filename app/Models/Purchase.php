@@ -16,7 +16,8 @@ class Purchase extends Model
     ];
 
     protected $casts = [
-        'status' => PurchaseStatusEnum::class
+        'status' => PurchaseStatusEnum::class,
+        'amount' => 'float',
     ];
 
     public function user(): BelongsTo

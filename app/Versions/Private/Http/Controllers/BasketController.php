@@ -17,6 +17,7 @@ final readonly class BasketController
         $products = $request
             ->user()
             ->baskets()
+            ->with('product')
             ->orderByDesc('id')
             ->paginate($request->get('limit', 15));
 
@@ -29,7 +30,7 @@ final readonly class BasketController
     ) {
         $basket = $service->store(BasketDto::fromRequest($request));
 
-        return BasketResource::make($basket);
+        return BasketResource::make($basket->load('product'));
     }
 
     public function destroy(Basket $basket) {

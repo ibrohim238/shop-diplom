@@ -2,6 +2,7 @@
 
 namespace App\Versions\Private\Http\Resources;
 
+use App\Http\Resources\MediaResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -16,6 +17,7 @@ final class CategoryResource extends JsonResource
             'name' => $this->name,
             'slug' => $this->slug,
             'description' => $this->description,
+            'media' => MediaResource::make($this->getFirstMedia()),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

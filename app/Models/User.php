@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
@@ -17,6 +18,7 @@ final class User extends Authenticatable implements MustVerifyEmail, HasMedia
     use Notifiable;
     use HasRoles;
     use InteractsWithMedia;
+    use HasApiTokens;
 
     protected $fillable = [
         'name',
@@ -39,6 +41,6 @@ final class User extends Authenticatable implements MustVerifyEmail, HasMedia
 
     public function baskets(): HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Basket::class);
     }
 }

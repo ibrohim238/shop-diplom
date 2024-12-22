@@ -2,7 +2,7 @@
 
 namespace App\Versions\Admin\Http\Resources;
 
-use app\Http\Resources\MediaResource;
+use App\Http\Resources\MediaResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;

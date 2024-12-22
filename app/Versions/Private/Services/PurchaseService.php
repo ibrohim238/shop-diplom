@@ -5,6 +5,7 @@ namespace App\Versions\Private\Services;
 use App\Enums\PurchaseStatusEnum;
 use App\Models\Basket;
 use App\Models\Purchase;
+use App\Models\PurchaseProduct;
 use App\Versions\Private\Dtos\PurchaseDto;
 use Illuminate\Support\Facades\DB;
 
@@ -31,14 +32,19 @@ final readonly class PurchaseService
                 'amount' => $amount,
             ]);
             $this->purchase->save();
-            $this->purchase
-                ->products()
-                ->create(
-                    $baskets->map(fn(Basket $basket) => [
-                        'product_id' => $basket->product_id,
-                        'quantity' => $basket->quantity,
-                    ])
+            PurchaseProduct::query()
+                ->insert(
+                    $baskets
+                        ->map(fn(Basket $basket) => [
+                            'purchase_id' => $this->purchase->id,
+                            'product_id' => $basket->product_id,
+                            'quantity' => $basket->quantity,
+                        ])
+                        ->toArray()
                 );
+            Basket::query()
+                ->whereIn('id', $dto->getBaskets())
+                ->delete();
         });
 
         return $this->purchase;

@@ -10,7 +10,7 @@ use OpenApi\Attributes as OA;
 interface PurchaseController
 {
     #[OA\Get(
-        path: '/purchases',
+        path: '/user/purchases',
         description: 'Список покупок',
         summary: 'Список покупок',
         security: [
@@ -43,7 +43,7 @@ interface PurchaseController
     public function index();
 
     #[OA\Post(
-        path: '/purchases',
+        path: '/user/purchases',
         description: 'Оплатить',
         summary: 'Оплатить',
         security: [

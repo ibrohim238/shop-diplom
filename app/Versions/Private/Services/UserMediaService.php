@@ -13,7 +13,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 final readonly class UserMediaService
 {
     public function __construct(
-        private readonly Media $media
+        private Media $media
     ) {
     }
 

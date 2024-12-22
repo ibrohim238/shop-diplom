@@ -44,6 +44,11 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+        'temporary' => [
+            'driver'     => 'local',
+            'root'       => storage_path('app/temp'),
+            'visibility' => 'private',
+        ],
 
         's3' => [
             'driver' => 's3',

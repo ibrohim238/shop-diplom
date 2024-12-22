@@ -18,14 +18,14 @@
         }
     ],
     "paths": {
-        "/baskets": {
+        "/user/baskets": {
             "get": {
                 "tags": [
                     "Baskets"
                 ],
                 "summary": "Список товаров в корзине",
                 "description": "Список товаров в корзине",
-                "operationId": "c5ba754f44ef3177692a33436d77d162",
+                "operationId": "56239a99718161106d6e84afe36c0e59",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -61,17 +61,7 @@
                 ],
                 "summary": "Закинуть в корзину",
                 "description": "Закинуть в корзину",
-                "operationId": "0ba7ace270193dd2c1169eb609b04ea2",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
+                "operationId": "9092b2108f421abca25363b5738b95a2",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -106,14 +96,14 @@
                 ]
             }
         },
-        "/baskets/{id}": {
+        "/user/baskets/{id}": {
             "delete": {
                 "tags": [
                     "Baskets"
                 ],
                 "summary": "Убрать из корзины",
                 "description": "Убрать из корзины",
-                "operationId": "00f8ac928a733c066aad80cf241540bf",
+                "operationId": "84ed065d461f2d49e60c9704b40f5301",
                 "parameters": [
                     {
                         "name": "id",
@@ -288,14 +278,14 @@
                 }
             }
         },
-        "/purchases": {
+        "/user/purchases": {
             "get": {
                 "tags": [
                     "Purchases"
                 ],
                 "summary": "Список покупок",
                 "description": "Список покупок",
-                "operationId": "5f7432f9f045f6b80b30ac13dc92db09",
+                "operationId": "6982b2ef8132db75cac26ecdf38e1ce8",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -331,7 +321,7 @@
                 ],
                 "summary": "Оплатить",
                 "description": "Оплатить",
-                "operationId": "a277034fef810b70f2362f83165164f8",
+                "operationId": "73ce189968989326fb48122c97370558",
                 "requestBody": {
                     "required": true,
                     "content": {

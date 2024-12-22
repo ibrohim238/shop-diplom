@@ -2,7 +2,7 @@
 
 namespace App\Versions\Private\Http\Controllers;
 
-use app\Http\Resources\MediaResource;
+use App\Http\Resources\MediaResource;
 use App\Versions\Private\Dtos\UserMediaDto;
 use App\Versions\Private\Http\Requests\UserMediaRequest;
 use App\Versions\Private\Services\UserMediaService;
@@ -26,7 +26,7 @@ final readonly class UserMediaController
 
         $media = UserMediaService::store($user, UserMediaDto::fromRequest($request));
 
-        return MediaResource::make($media);
+        return MediaResource::collection($media);
     }
 
     public function destroy(Media $media)

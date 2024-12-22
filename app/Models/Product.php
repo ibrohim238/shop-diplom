@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\PurchaseStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -21,6 +22,11 @@ final class Product extends Model implements HasMedia
         'description',
         'price',
     ];
+
+    protected $casts = [
+        'price' => 'float',
+    ];
+
 
     public function categories(): BelongsToMany
     {

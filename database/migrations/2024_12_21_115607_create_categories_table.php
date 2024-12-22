@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->foreignId('parent_id')->nullable()->constrained('categories');
         });
 
-        Schema::create('product_category', function (Blueprint $table) {
+        Schema::create('category_product', function (Blueprint $table) {
             $table->foreignId('category_id')->constrained();
             $table->foreignId('product_id')->constrained();
         });

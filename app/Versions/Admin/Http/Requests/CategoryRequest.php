@@ -5,6 +5,7 @@ namespace App\Versions\Admin\Http\Requests;
 use App\Enums\MediaCollectionNameEnum;
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -20,8 +21,16 @@ final class CategoryRequest extends FormRequest
                 'nullable',
                 'integer',
                 Rule::exists(Media::class, 'id')
-                    ->where('collection_name', MediaCollectionNameEnum::TEMP)
-                    ->where('model_type', 'user'),
+                    ->where(function (Builder $query) {
+                        $query
+                            ->where(function (Builder $query) {
+                                $query->where('model_type', 'user')
+                                    ->where('collection_name', MediaCollectionNameEnum::TEMP);
+                            })
+                            ->orWhere(function (Builder $query) {
+                                $query->where('model_type', 'category');
+                            });
+                    })
             ],
             'parent_id' => [
                 'required',

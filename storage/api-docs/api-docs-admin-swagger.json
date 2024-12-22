@@ -14,7 +14,7 @@
     },
     "servers": [
         {
-            "url": "/api/admin"
+            "url": "/api/private/admin"
         }
     ],
     "paths": {

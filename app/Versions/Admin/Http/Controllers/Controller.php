@@ -1,12 +1,12 @@
 <?php
 
-namespace app\Versions\Admin\Http\Controllers;
+namespace App\Versions\Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller as BaseController;
 use OpenApi\Attributes as OA;
 
 #[OA\Server(
-    url: '/api/admin',
+    url: '/api/private/admin',
 )]
 #[OA\Info(
     version: 'admin',

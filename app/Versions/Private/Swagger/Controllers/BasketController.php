@@ -11,7 +11,7 @@ use OpenApi\Attributes as OA;
 interface BasketController
 {
     #[OA\Get(
-        path: '/baskets',
+        path: '/user/baskets',
         description: 'Список товаров в корзине',
         summary: 'Список товаров в корзине',
         security: [
@@ -44,7 +44,7 @@ interface BasketController
     public function index();
 
     #[OA\Post(
-        path: '/baskets',
+        path: '/user/baskets',
         description: 'Закинуть в корзину',
         summary: 'Закинуть в корзину',
         security: [
@@ -57,14 +57,6 @@ interface BasketController
             content: new OA\JsonContent(ref: BasketRequest::class),
         ),
         tags: ['Baskets'],
-        parameters: [
-            new OA\Parameter(
-                name: 'id',
-                in: 'path',
-                required: true,
-                schema: new OA\Schema(type: 'integer'),
-            ),
-        ],
     )]
     #[OA\Response(
         response: 200,
@@ -81,7 +73,7 @@ interface BasketController
     public function store();
 
     #[OA\Delete(
-        path: '/baskets/{id}',
+        path: '/user/baskets/{id}',
         description: 'Убрать из корзины',
         summary: 'Убрать из корзины',
         security: [
