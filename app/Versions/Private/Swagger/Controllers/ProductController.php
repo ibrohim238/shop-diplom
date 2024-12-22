@@ -17,14 +17,14 @@ interface ProductController
         parameters: [
             new OA\Parameter(
                 name: 'filter[category_id]',
-                in: 'path',
-                required: true,
+                in: 'query',
+                required: false,
                 schema: new OA\Schema(type: 'integer'),
             ),
             new OA\Parameter(
                 name: 'filter[category_slug]',
-                in: 'path',
-                required: true,
+                in: 'query',
+                required: false,
                 schema: new OA\Schema(type: 'string'),
             ),
         ],
