@@ -3,7 +3,6 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /** @mixin Media */
@@ -18,7 +17,7 @@ final class MediaResource extends JsonResource
             'collection_name' => $this->collection_name,
             'url'             => $this->getUrl(),
             'disk'            => $this->disk,
-            'created_at'      => $this->created_at,
+            'created_at'      => $this->formatDateTime($this->created_at),
         ];
     }
 }

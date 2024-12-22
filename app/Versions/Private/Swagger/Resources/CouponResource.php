@@ -2,18 +2,18 @@
 
 namespace App\Versions\Private\Swagger\Resources;
 
-use App\Enums\PurchaseStatusEnum;
+use App\Enums\CouponTypeEnum;
 use Carbon\Carbon;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(
-    title: 'PurchaseResource',
-    description: 'Purchase Resource',
+    title: 'CouponResource',
+    description: 'Coupon Resource',
     xml: new OA\Xml(
-        name: 'Purchase Resource',
+        name: 'Coupon Resource',
     ),
 )]
-final readonly class PurchaseResource
+final readonly class CouponResource
 {
     #[OA\Property(
         title: 'id',
@@ -24,30 +24,29 @@ final readonly class PurchaseResource
     private int $id;
 
     #[OA\Property(
+        title: 'code',
+        description: 'Код',
+    )]
+    private string $code;
+
+    #[OA\Property(
+        title: 'description',
+        description: 'Описание',
+    )]
+    private string $description;
+
+    #[OA\Property(
+        title: 'type',
+        description: 'Тип скидки',
+    )]
+    private CouponTypeEnum $type;
+
+    #[OA\Property(
         title: 'amount',
         description: 'Сумма',
+        type: 'integer',
     )]
     private int $amount;
-
-    #[OA\Property(
-        title: 'status',
-        description: 'Статус',
-    )]
-    private PurchaseStatusEnum $status;
-
-    #[OA\Property(
-        title: 'product',
-        description: 'товар',
-        type: 'array',
-        items: new OA\Items(ref: ProductResource::class)
-    )]
-    private array $products;
-
-    #[OA\Property(
-        title: 'coupon',
-        description: 'купон',
-    )]
-    private CouponResource $coupon;
 
     #[OA\Property(
         title: "сreated_at",
@@ -57,7 +56,6 @@ final readonly class PurchaseResource
         example: "2020-01-27 17:50:45",
     )]
     private Carbon $created_at;
-
 
     #[OA\Property(
         title: "updated_at",

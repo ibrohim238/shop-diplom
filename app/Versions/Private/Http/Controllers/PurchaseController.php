@@ -25,6 +25,6 @@ class PurchaseController
     {
         $purchase = $service->store(PurchaseDto::fromRequest($request));
 
-        return PurchaseResource::make($purchase);
+        return PurchaseResource::make($purchase->load(['products', 'coupon']));
     }
 }

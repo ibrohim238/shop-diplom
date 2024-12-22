@@ -5,7 +5,7 @@ namespace App\Versions\Admin\Http\Resources;
 use App\Http\Resources\MediaResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\JsonResource;
 
 /** @mixin Product */
 final class ProductResource extends JsonResource
@@ -19,8 +19,8 @@ final class ProductResource extends JsonResource
             'price' => $this->price,
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
             'medias' => MediaResource::collection($this->whenLoaded('media')),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'created_at' => $this->formatDateTime($this->created_at),
+            'updated_at' => $this->formatDateTime($this->updated_at),
         ];
     }
 }

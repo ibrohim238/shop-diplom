@@ -5,7 +5,7 @@ namespace App\Versions\Private\Http\Resources;
 use App\Http\Resources\MediaResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\JsonResource;
 
 /** @mixin Category */
 final class CategoryResource extends JsonResource
@@ -18,8 +18,8 @@ final class CategoryResource extends JsonResource
             'slug' => $this->slug,
             'description' => $this->description,
             'media' => MediaResource::make($this->getFirstMedia()),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'created_at' => $this->formatDateTime($this->created_at),
+            'updated_at' => $this->formatDateTime($this->updated_at),
         ];
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Versions\Private\Http\Resources;
 
+use App\Http\Resources\JsonResource;
 use App\Models\Basket;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin Basket */
 final class BasketResource extends JsonResource
@@ -15,8 +15,8 @@ final class BasketResource extends JsonResource
             'id' => $this->id,
             'product' => ProductResource::make($this->whenLoaded('product')),
             'quantity' => $this->quantity,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'created_at' => $this->formatDateTime($this->created_at),
+            'updated_at' => $this->formatDateTime($this->updated_at),
         ];
     }
 }

@@ -12,7 +12,6 @@ use OpenApi\Attributes as OA;
 )]
 final readonly class PurchaseRequest
 {
-
     #[OA\Property(
         title: 'baskets',
         description: 'Товары',
@@ -20,4 +19,11 @@ final readonly class PurchaseRequest
         items: new OA\Items(type: 'integer')
     )]
     private array $baskets;
+
+    #[OA\Property(
+        title: 'coupon_code',
+        description: 'код купона',
+        type: 'string',
+    )]
+    private string $coupon_code;
 }

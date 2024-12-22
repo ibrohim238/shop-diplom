@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Versions\Private\Http\Resources;
+namespace App\Versions\Admin\Http\Resources;
 
 use App\Models\Purchase;
+use App\Versions\Private\Http\Resources\CouponResource;
+use App\Versions\Private\Http\Resources\ProductResource;
 use Illuminate\Http\Request;
 use App\Http\Resources\JsonResource;
 

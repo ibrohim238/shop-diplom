@@ -2,10 +2,13 @@
 
 namespace App\Versions\Private\Services;
 
+use App\Enums\CouponTypeEnum;
 use App\Enums\PurchaseStatusEnum;
 use App\Models\Basket;
+use App\Models\Coupon;
 use App\Models\Purchase;
 use App\Models\PurchaseProduct;
+use App\Versions\Admin\Services\CouponService;
 use App\Versions\Private\Dtos\PurchaseDto;
 use Illuminate\Support\Facades\DB;
 
@@ -13,8 +16,7 @@ final readonly class PurchaseService
 {
     public function __construct(
         private Purchase $purchase
-    )
-    {
+    ) {
     }
 
     public function store(PurchaseDto $dto): Purchase
@@ -27,6 +29,11 @@ final readonly class PurchaseService
                 ->map(fn(Basket $basket) => $basket->quantity * $basket->product->price)
                 ->sum();
             $this->purchase->user()->associate($dto->getUserId());
+            $couponCode = $dto->getCouponCode();
+            if ($couponCode !== null) {
+                $amount = CouponService::fromCode($couponCode)
+                    ->consider($this->purchase, $amount);
+            }
             $this->purchase->fill([
                 'status' => PurchaseStatusEnum::PENDING,
                 'amount' => $amount,
@@ -48,5 +55,10 @@ final readonly class PurchaseService
         });
 
         return $this->purchase;
+    }
+
+    private function getCoupon(?int $id): Coupon
+    {
+        return Coupon::find($id);
     }
 }

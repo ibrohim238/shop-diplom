@@ -9,6 +9,7 @@ final readonly class PurchaseDto
     public function __construct(
         private array $baskets,
         private int $userId,
+        private ?string $couponCode,
     ) {
     }
 
@@ -19,6 +20,7 @@ final readonly class PurchaseDto
         return new self(
             baskets: $validated['baskets'],
             userId: $request->user()->getKey(),
+            couponCode: $validated['coupon_code']
         );
     }
 
@@ -30,5 +32,10 @@ final readonly class PurchaseDto
     public function getUserId(): int
     {
         return $this->userId;
+    }
+
+    public function getCouponCode(): ?string
+    {
+        return $this->couponCode;
     }
 }

@@ -13,6 +13,7 @@ class Purchase extends Model
         'user_id',
         'amount',
         'status',
+        'coupon_id',
     ];
 
     protected $casts = [
@@ -28,5 +29,10 @@ class Purchase extends Model
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class, PurchaseProduct::class)->withPivot('quantity');
+    }
+
+    public function coupon(): BelongsTo
+    {
+        return $this->belongsTo(Coupon::class);
     }
 }

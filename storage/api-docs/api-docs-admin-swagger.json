@@ -274,6 +274,144 @@
                 ]
             }
         },
+        "/coupons": {
+            "get": {
+                "tags": [
+                    "Coupons"
+                ],
+                "summary": "Список купонов",
+                "description": "Список купонов",
+                "operationId": "eabe263e038b3f4d7266b84f2a23fa5e",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CouponResource"
+                                            }
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/Pagination"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Coupons"
+                ],
+                "summary": "Добавить купон",
+                "description": "Добавить купон",
+                "operationId": "b5571ce0f036f4fda7d996e714382253",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CouponRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/CouponResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
+            }
+        },
+        "/coupons/{id}": {
+            "get": {
+                "tags": [
+                    "Coupons"
+                ],
+                "summary": "Страница купона",
+                "description": "Страница купона",
+                "operationId": "53adcfb6c594f436b4efc6acbcf2b500",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/CouponResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
         "/products": {
             "get": {
                 "tags": [
@@ -620,6 +758,53 @@
                 },
                 "type": "object"
             },
+            "CouponRequest": {
+                "title": "Coupon request",
+                "description": "Coupon request body data",
+                "required": [
+                    "code",
+                    "description",
+                    "type",
+                    "amount"
+                ],
+                "properties": {
+                    "code": {
+                        "title": "code",
+                        "description": "Код",
+                        "type": "string",
+                        "maxLength": 255
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "Описание",
+                        "type": "string",
+                        "maxLength": 512
+                    },
+                    "type": {
+                        "title": "type",
+                        "description": "Тип скидки",
+                        "type": "integer"
+                    },
+                    "amount": {
+                        "title": "amount",
+                        "description": "Сумма",
+                        "type": "integer"
+                    },
+                    "quantity_allowed": {
+                        "title": "quantity_allowed",
+                        "description": "Количество разрешенных",
+                        "type": "integer"
+                    },
+                    "expires_date": {
+                        "title": "expires_date",
+                        "description": "Дата истечения",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2020-01-27"
+                    }
+                },
+                "type": "object"
+            },
             "ProductRequest": {
                 "title": "Product request",
                 "description": "Product request body data",
@@ -713,6 +898,73 @@
                 "type": "object",
                 "xml": {
                     "name": "Category Resource"
+                }
+            },
+            "CouponResource": {
+                "title": "CouponResource",
+                "description": "Coupon Resource",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Идентификатор",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "code": {
+                        "title": "code",
+                        "description": "Код",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "Описание",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "type",
+                        "description": "Тип скидки"
+                    },
+                    "amount": {
+                        "title": "amount",
+                        "description": "Сумма",
+                        "type": "integer"
+                    },
+                    "quantity_allowed": {
+                        "title": "quantity_allowed",
+                        "description": "Количество разрешенных",
+                        "type": "integer"
+                    },
+                    "quantity_used": {
+                        "title": "quantity_used",
+                        "description": "Количество использований",
+                        "type": "integer"
+                    },
+                    "expires_date": {
+                        "title": "expires_date",
+                        "description": "Дата истечения",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2020-01-27"
+                    },
+                    "created_at": {
+                        "title": "сreated_at",
+                        "description": "Создана в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "description": "Обновлена в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Coupon Resource"
                 }
             },
             "MediaResource": {
@@ -845,6 +1097,10 @@
         {
             "name": "Categories",
             "description": "Категории"
+        },
+        {
+            "name": "Coupons",
+            "description": "Coupons"
         }
     ]
 }

@@ -600,6 +600,11 @@
                         "items": {
                             "type": "integer"
                         }
+                    },
+                    "coupon_code": {
+                        "title": "coupon_code",
+                        "description": "код купона",
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -690,6 +695,56 @@
                 "type": "object",
                 "xml": {
                     "name": "Category Resource"
+                }
+            },
+            "CouponResource": {
+                "title": "CouponResource",
+                "description": "Coupon Resource",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Идентификатор",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "code": {
+                        "title": "code",
+                        "description": "Код",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "Описание",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "type",
+                        "description": "Тип скидки"
+                    },
+                    "amount": {
+                        "title": "amount",
+                        "description": "Сумма",
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "title": "сreated_at",
+                        "description": "Создана в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "description": "Обновлена в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Coupon Resource"
                 }
             },
             "MediaResource": {
@@ -830,6 +885,9 @@
                         "items": {
                             "$ref": "#/components/schemas/ProductResource"
                         }
+                    },
+                    "coupon": {
+                        "$ref": "#/components/schemas/CouponResource"
                     },
                     "created_at": {
                         "title": "сreated_at",
