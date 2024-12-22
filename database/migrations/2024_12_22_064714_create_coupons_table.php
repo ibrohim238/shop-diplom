@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->unique('code');
         });
 
-        Schema::table('purchases', function (Blueprint $table) {
+        Schema::table('orders', function (Blueprint $table) {
             $table->foreignId('coupon_id')->nullable()->constrained();
         });
     }
@@ -31,7 +31,7 @@ return new class extends Migration {
     {
         Schema::dropIfExists('coupons');
 
-        Schema::table('purchases', function (Blueprint $table) {
+        Schema::table('orders', function (Blueprint $table) {
             $table->dropColumn('coupon_id');
         });
     }
