@@ -9,6 +9,7 @@ final readonly class ProductDto
     public function __construct(
         private string $name,
         private string $description,
+        private float $price,
         private ?array $categories,
         private ?array $medias,
     ) {
@@ -21,6 +22,7 @@ final readonly class ProductDto
         return new self(
             name: $validated['name'],
             description: $validated['description'] ?? null,
+            price: $validated['price'],
             categories: $validated['categories'] ?? null,
             medias: $validated['medias'] ?? null,
         );
@@ -31,6 +33,7 @@ final readonly class ProductDto
         return [
             'name' => $this->name,
             'description' => $this->description,
+            'price' => $this->price,
         ];
     }
 

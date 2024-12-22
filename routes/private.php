@@ -3,6 +3,7 @@
 use App\Versions\Private\Http\Controllers\BasketController;
 use App\Versions\Private\Http\Controllers\CategoryController;
 use App\Versions\Private\Http\Controllers\ProductController;
+use App\Versions\Private\Http\Controllers\PurchaseController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -12,4 +13,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 Route::apiResource('baskets', BasketController::class)->only(['index', 'store', 'destroy']);
 Route::apiResource('products', ProductController::class)->only(['index', 'show']);
 Route::apiResource('categories', CategoryController::class)->only(['index', 'show']);
-
+Route::get('purchases', [PurchaseController::class, 'index'])->name('purchases.index');
+Route::post('purchases', [PurchaseController::class, 'store'])->name('purchases.store');

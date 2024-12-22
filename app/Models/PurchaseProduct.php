@@ -2,25 +2,19 @@
 
 namespace App\Models;
 
+use App\Enums\PurchaseStatusEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Basket extends Model
+class PurchaseProduct extends Pivot
 {
+    protected $table = 'purchase_product';
+
     protected $fillable = [
+        'purchase_id',
         'product_id',
-        'user_id',
         'quantity',
     ];
-
-    public function product(): BelongsTo
-    {
-        return $this->belongsTo(Product::class);
-    }
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
 }

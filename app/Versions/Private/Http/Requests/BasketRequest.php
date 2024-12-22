@@ -10,7 +10,7 @@ final class BasketRequest extends FormRequest
     {
         return [
             'product_id' => ['required', 'int', 'exists:products,id'],
-            'amount' => ['required', 'int', 'min:1', 'max:100'],
+            'quantity' => ['required', 'int', 'min:1', 'max:100'],
         ];
     }
 }

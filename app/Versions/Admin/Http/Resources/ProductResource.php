@@ -16,6 +16,7 @@ final class ProductResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
+            'price' => $this->price,
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
             'medias' => MediaResource::collection($this->whenLoaded('medias')),
             'created_at' => $this->created_at,

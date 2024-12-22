@@ -2,21 +2,20 @@
 
 namespace App\Versions\Private\Http\Resources;
 
-use App\Models\Product;
+use App\Models\Purchase;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin Product */
-final class ProductResource extends JsonResource
+/** @mixin Purchase */
+final class PurchaseResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'description' => $this->description,
-            'price' => $this->price,
-            'categories' => CategoryResource::collection($this->whenLoaded('categories')),
+            'amount' => $this->amount,
+            'status' => $this->status,
+            'products' => ProductResource::collection($this->whenLoaded('products')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

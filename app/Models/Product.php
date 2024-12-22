@@ -19,6 +19,7 @@ final class Product extends Model implements HasMedia
     protected $fillable = [
         'name',
         'description',
+        'price',
     ];
 
     public function categories(): BelongsToMany
@@ -29,5 +30,9 @@ final class Product extends Model implements HasMedia
     public function baskets(): HasMany
     {
         return $this->hasMany(Basket::class);
+    }
+    public function purchases(): BelongsToMany
+    {
+        return $this->belongsToMany(Purchase::class, PurchaseProduct::class);
     }
 }

@@ -9,7 +9,7 @@ final readonly class BasketDto
     public function __construct(
         private int $userId,
         private int $productId,
-        private int $amount,
+        private int $quantity,
     ) {
     }
 
@@ -20,7 +20,7 @@ final readonly class BasketDto
         return new self(
             userId: $request->user()->getKey(),
             productId: $validated['product_id'],
-            amount: $validated['amount'],
+            quantity: $validated['quantity'],
         );
     }
 
@@ -29,7 +29,7 @@ final readonly class BasketDto
         return [
             'user_id' => $this->userId,
             'product_id' => $this->productId,
-            'amount' => $this->amount,
+            'quantity' => $this->quantity,
         ];
     }
 }
