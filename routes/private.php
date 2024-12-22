@@ -10,7 +10,7 @@ use App\Versions\Private\Http\Controllers\UserMediaController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController;
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'role:admin'], function () {
     require('admin.php');
 });
 

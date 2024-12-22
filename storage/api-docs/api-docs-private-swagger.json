@@ -336,16 +336,16 @@
                 "parameters": [
                     {
                         "name": "filter[category_id]",
-                        "in": "path",
-                        "required": true,
+                        "in": "query",
+                        "required": false,
                         "schema": {
                             "type": "integer"
                         }
                     },
                     {
                         "name": "filter[category_slug]",
-                        "in": "path",
-                        "required": true,
+                        "in": "query",
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
