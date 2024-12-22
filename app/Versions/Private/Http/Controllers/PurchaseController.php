@@ -2,6 +2,7 @@
 
 namespace App\Versions\Private\Http\Controllers;
 
+use App\Models\Purchase;
 use App\Versions\Private\Dtos\PurchaseDto;
 use App\Versions\Private\Http\Requests\PurchaseRequest;
 use App\Versions\Private\Http\Resources\PurchaseResource;
@@ -19,6 +20,11 @@ class PurchaseController
             ->paginate($request->get('limit', 15));
 
         return PurchaseResource::collection($purchases);
+    }
+
+    public function show(Purchase $purchase)
+    {
+        return PurchaseResource::make($purchase->load(['products', 'coupon']));
     }
 
     public function store(PurchaseRequest $request, PurchaseService $service)

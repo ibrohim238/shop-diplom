@@ -17,9 +17,11 @@ final readonly class CategoryService
     public function store(CategoryDto $dto): Category
     {
         $this->save($dto);
-        $this
-            ->getMedia($dto->getMediaId())
-            ->move($this->category);
+        if ($mediaId = $dto->getMediaId()) {
+            $this
+                ->getMedia($mediaId)
+                ->move($this->category);
+        }
 
         return $this->category;
     }
@@ -28,9 +30,11 @@ final readonly class CategoryService
     {
         $this->save($dto);
         $this->category->clearMediaCollection();
-        $this
-            ->getMedia($dto->getMediaId())
-            ->move($this->category);
+        if ($mediaId = $dto->getMediaId()) {
+            $this
+                ->getMedia($mediaId)
+                ->move($this->category);
+        }
 
         return $this->category;
     }
@@ -49,7 +53,7 @@ final readonly class CategoryService
             ->save();
     }
 
-    private function getMedia($mediaId): Media
+    private function getMedia(int $mediaId): Media
     {
         return Media::find($mediaId);
     }

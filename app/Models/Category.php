@@ -32,6 +32,11 @@ final class Category extends Model implements HasMedia
         return $this->hasMany(Category::class, 'parent_id');
     }
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()

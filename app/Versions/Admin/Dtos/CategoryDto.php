@@ -9,7 +9,7 @@ final readonly class CategoryDto
     public function __construct(
         private string  $name,
         private ?string $description,
-        private int     $parentId,
+        private ?int     $parentId,
         private ?int    $mediaId,
     ) {
     }
@@ -35,7 +35,7 @@ final readonly class CategoryDto
         ];
     }
 
-    public function getMediaId(): int
+    public function getMediaId(): ?int
     {
         return $this->mediaId;
     }

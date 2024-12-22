@@ -160,7 +160,9 @@ return [
     'url' => 'The :attribute field must be a valid URL.',
     'ulid' => 'The :attribute field must be a valid ULID.',
     'uuid' => 'The :attribute field must be a valid UUID.',
-
+    'expired' => 'The given :attribute is expired.',
+    'used' => 'The given :attribute is already used.',
+    'min_price' => 'The :attribute must be at least :min_price.',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

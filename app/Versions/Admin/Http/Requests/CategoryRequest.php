@@ -4,7 +4,6 @@ namespace App\Versions\Admin\Http\Requests;
 
 use App\Enums\MediaCollectionNameEnum;
 use App\Models\Category;
-use App\Models\User;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -32,9 +31,7 @@ final class CategoryRequest extends FormRequest
                             });
                     })
             ],
-            'parent_id' => [
-                'required',
-                'integer', Rule::exists(Category::class, 'id')],
+            'parent_id' => ['nullable', 'integer', Rule::exists(Category::class, 'id')],
         ];
     }
 

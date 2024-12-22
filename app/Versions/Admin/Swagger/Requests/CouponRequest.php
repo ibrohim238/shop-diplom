@@ -43,6 +43,13 @@ final readonly class CouponRequest
     private int $amount;
 
     #[OA\Property(
+        title: 'min_price',
+        description: 'Минимальная цена',
+        type: 'integer',
+    )]
+    private int $min_price;
+
+    #[OA\Property(
         title: 'quantity_allowed',
         description: 'Количество разрешенных',
         type: 'integer',

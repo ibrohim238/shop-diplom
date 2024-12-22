@@ -10,6 +10,7 @@ return new class extends Migration {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('amount');
+            $table->unsignedBigInteger('min_price');
             $table->unsignedTinyInteger('type');
             $table->unsignedBigInteger('quantity_allowed')->nullable();
             $table->unsignedBigInteger('quantity_used');

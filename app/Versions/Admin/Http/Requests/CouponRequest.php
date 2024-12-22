@@ -20,6 +20,7 @@ class CouponRequest extends FormRequest
             ],
             'description' => ['nullable', 'string', 'max:512'],
             'amount' => ['required', 'integer', new CouponAmountTypeRule()],
+            'min_price' => ['nullable', 'integer', 'min:0'],
             'type' => ['required', 'integer', Rule::enum(CouponTypeEnum::class)],
             'quantity_allowed' => ['nullable', 'integer', 'min:1'],
             'expires_date' => ['nullable', 'date', 'after:today'],

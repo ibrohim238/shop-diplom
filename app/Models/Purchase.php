@@ -28,7 +28,9 @@ class Purchase extends Model
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class, PurchaseProduct::class)->withPivot('quantity');
+        return $this->belongsToMany(Product::class, PurchaseProduct::class)
+            ->using(PurchaseProduct::class)
+            ->withPivot('quantity');
     }
 
     public function coupon(): BelongsTo

@@ -15,6 +15,7 @@ final readonly class ProductIndexReporter
             ->with('media')
             ->allowedFilters([
                 AllowedFilter::exact('category_slug', 'categories.slug'),
+                AllowedFilter::exact('category_id', 'categories.id'),
             ]);
     }
 }

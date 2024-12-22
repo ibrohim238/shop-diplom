@@ -4,7 +4,7 @@ namespace App\Versions\Admin\Http\Controllers;
 
 use App\Models\Category;
 use App\Versions\Admin\Dtos\CategoryDto;
-use app\Versions\Admin\Http\Requests\CategoryRequest;
+use App\Versions\Admin\Http\Requests\CategoryRequest;
 use App\Versions\Admin\Http\Resources\CategoryResource;
 use App\Versions\Admin\Reporters\CategoryIndexReporter;
 use App\Versions\Admin\Services\CategoryService;

@@ -71,7 +71,7 @@ interface CategoryController
     public function show();
 
     #[OA\Post(
-        path: '/Categories',
+        path: '/categories',
         description: 'Добавить категорий',
         summary: 'Добавить категорий',
         security: [

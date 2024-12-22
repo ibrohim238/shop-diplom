@@ -49,6 +49,68 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Добавить категорий",
+                "description": "Добавить категорий",
+                "operationId": "dbf7e434c3b25b232c41e238d15faeef",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CategoryRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/CategoryResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
             }
         },
         "/categories/{slug}": {
@@ -121,70 +183,6 @@
                     },
                     "404": {
                         "description": "Not found."
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    }
-                },
-                "security": [
-                    {
-                        "api-key": []
-                    }
-                ]
-            }
-        },
-        "/Categories": {
-            "post": {
-                "tags": [
-                    "Categories"
-                ],
-                "summary": "Добавить категорий",
-                "description": "Добавить категорий",
-                "operationId": "fb90c8686e2ac288b2b81e799f71d149",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/CategoryRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/components/schemas/CategoryResource"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Unprocessable entity.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string"
-                                        },
-                                        "errors": {
-                                            "type": "array",
-                                            "items": {}
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
                     },
                     "401": {
                         "description": "Unauthenticated"
@@ -420,6 +418,24 @@
                 "summary": "Список товаров",
                 "description": "Список товаров",
                 "operationId": "84156d607053503bbc8cc055c46032fa",
+                "parameters": [
+                    {
+                        "name": "filter[category_id]",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "filter[category_slug]",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -788,6 +804,11 @@
                     "amount": {
                         "title": "amount",
                         "description": "Сумма",
+                        "type": "integer"
+                    },
+                    "min_price": {
+                        "title": "min_price",
+                        "description": "Минимальная цена",
                         "type": "integer"
                     },
                     "quantity_allowed": {

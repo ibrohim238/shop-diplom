@@ -23,7 +23,18 @@ interface ProductController
         ],
         tags: ['Products'],
         parameters: [
-
+            new OA\Parameter(
+                name: 'filter[category_id]',
+                in: 'path',
+                required: true,
+                schema: new OA\Schema(type: 'integer'),
+            ),
+            new OA\Parameter(
+                name: 'filter[category_slug]',
+                in: 'path',
+                required: true,
+                schema: new OA\Schema(type: 'string'),
+            ),
         ],
     )]
     #[OA\Response(

@@ -20,7 +20,7 @@ final readonly class PurchaseDto
         return new self(
             baskets: $validated['baskets'],
             userId: $request->user()->getKey(),
-            couponCode: $validated['coupon_code']
+            couponCode: $validated['coupon_code'] ?? null
         );
     }
 

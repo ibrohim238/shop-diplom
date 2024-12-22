@@ -42,6 +42,39 @@ interface PurchaseController
     )]
     public function index();
 
+    #[OA\Get(
+        path: '/user/purchases/{id}',
+        description: 'Покупка',
+        summary: 'Покупка',
+        security: [
+            [
+                'api-key' => [],
+            ],
+        ],
+        tags: ['Purchases'],
+        parameters: [
+            new OA\Parameter(
+                name: 'id',
+                in: 'path',
+                required: true,
+                schema: new OA\Schema(type: 'integer'),
+            ),
+        ],
+    )]
+    #[OA\Response(
+        response: 200,
+        description: 'OK',
+        content: new OA\JsonContent(
+            properties: [
+                new OA\Property(
+                    property: 'data',
+                    ref: PurchaseResource::class,
+                ),
+            ],
+        ),
+    )]
+    public function show();
+
     #[OA\Post(
         path: '/user/purchases',
         description: 'Оплатить',

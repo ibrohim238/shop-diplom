@@ -10,7 +10,7 @@ use App\Versions\Private\Http\Controllers\UserMediaController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Passport\Http\Controllers\AuthorizedAccessTokenController;
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'role:admin'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     require('admin.php');
 });
 
@@ -21,20 +21,12 @@ Route::post('/oauth/token/', [AuthorizedAccessTokenController::class, 'forUser']
 
 Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth:api', 'role:user']], function () {
     Route::get('', ProfileController::class)->name('profile');
-    Route::group(['prefix' => 'media', 'as' => 'media.'], function () {
-        Route::get('', [UserMediaController::class, 'index'])->name('index');
-        Route::post('', [UserMediaController::class, 'store'])->name('store');
-        Route::delete('', [UserMediaController::class, 'destroy'])->name('destroy');
-    });
-    Route::apiResource('baskets', BasketController::class)
-        ->middleware('auth:api')
+    Route::apiResource('media', UserMediaController::class)
         ->only(['index', 'store', 'destroy']);
-    Route::group(['prefix' => 'purchases', 'as' => 'purchases.'], function () {
-        Route::get('', [PurchaseController::class, 'index'])
-            ->name('index');
-        Route::post('', [PurchaseController::class, 'store'])
-            ->name('store');
-    });
+    Route::apiResource('baskets', BasketController::class)
+        ->only(['index', 'store', 'destroy']);
+    Route::apiResource('purchases', PurchaseController::class)
+        ->only('index', 'show', 'store');
 });
 
 Route::apiResource('products', ProductController::class)->only(['index', 'show']);
