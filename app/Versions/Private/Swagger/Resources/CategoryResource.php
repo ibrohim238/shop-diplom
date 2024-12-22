@@ -12,7 +12,7 @@ use OpenApi\Attributes as OA;
         name: 'Category Resource',
     ),
 )]
-final class CategoryResource
+final readonly class CategoryResource
 {
     #[OA\Property(
         title: 'id',
@@ -20,31 +20,31 @@ final class CategoryResource
         format: 'int64',
         example: 1,
     )]
-    private readonly int $id;
+    private int $id;
 
     #[OA\Property(
         title: 'name',
         description: 'Название',
     )]
-    private readonly string $name;
+    private string $name;
 
     #[OA\Property(
         title: 'slug',
         description: 'slug',
     )]
-    private readonly string $slug;
+    private string $slug;
 
     #[OA\Property(
         title: 'media',
         description: 'media',
     )]
-    private readonly MediaResource $media;
+    private MediaResource $media;
 
     #[OA\Property(
         title: 'description',
         description: 'Описание',
     )]
-    private readonly string $description;
+    private string $description;
 
     #[OA\Property(
         title: "сreated_at",
@@ -53,7 +53,7 @@ final class CategoryResource
         format: "datetime",
         example: "2020-01-27 17:50:45",
     )]
-    private readonly Carbon $created_at;
+    private Carbon $created_at;
 
     #[OA\Property(
         title: "updated_at",
@@ -62,5 +62,5 @@ final class CategoryResource
         format: "datetime",
         example: "2020-01-27 17:50:45",
     )]
-    private readonly Carbon $updated_at;
+    private Carbon $updated_at;
 }

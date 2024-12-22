@@ -2,6 +2,8 @@
 
 namespace App\Versions\Private\Swagger\Controllers;
 
+use App\Versions\Private\Swagger\Pagination;
+use App\Versions\Private\Swagger\Resources\MediaResource;
 use App\Versions\Private\Swagger\Responses\NotFoundResponse;
 use App\Versions\Private\Swagger\Responses\UnauthorizedResponse;
 use OpenApi\Attributes as OA;
@@ -41,11 +43,11 @@ interface UserMediaController
                 new OA\Property(
                     property: 'data',
                     type: 'array',
-                    items: new OA\Items(ref: "#/components/schemas/MediaResource"),
+                    items: new OA\Items(ref: MediaResource::class),
                 ),
                 new OA\Property(
                     property: 'meta',
-                    ref: "#/components/schemas/Pagination",
+                    ref: Pagination::class,
                 ),
             ],
         ),
@@ -93,7 +95,7 @@ interface UserMediaController
                 new OA\Property(
                     property: 'data',
                     type: 'array',
-                    items: new OA\Items(ref: "#/components/schemas/MediaResource"),
+                    items: new OA\Items(ref: MediaResource::class),
                 ),
             ],
         ),
@@ -123,8 +125,7 @@ interface UserMediaController
     )]
     #[OA\Response(
         response: 204,
-        description: 'OK',
-        content: new OA\JsonContent(),
+        description: 'No content',
     )]
     #[NotFoundResponse]
     #[UnauthorizedResponse]

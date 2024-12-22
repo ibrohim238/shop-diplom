@@ -2,6 +2,9 @@
 
 namespace App\Versions\Admin\Swagger\Controllers;
 
+use App\Versions\Admin\Swagger\Pagination;
+use App\Versions\Admin\Swagger\Requests\CategoryRequest;
+use App\Versions\Admin\Swagger\Resources\CategoryResource;
 use App\Versions\Admin\Swagger\Responses\NotFoundResponse;
 use App\Versions\Admin\Swagger\Responses\UnauthorizedResponse;
 use App\Versions\Admin\Swagger\Responses\UnprocessableEntityResponse;
@@ -26,11 +29,11 @@ interface CategoryController
                 new OA\Property(
                     property: 'data',
                     type: 'array',
-                    items: new OA\Items(ref: "#/components/schemas/CategoryResource"),
+                    items: new OA\Items(ref: CategoryResource::class),
                 ),
                 new OA\Property(
                     property: 'meta',
-                    ref: "#/components/schemas/Pagination",
+                    ref: Pagination::class,
                 ),
             ],
         ),
@@ -38,16 +41,16 @@ interface CategoryController
     public function index();
 
     #[OA\Get(
-        path: '/categories/{id}',
+        path: '/categories/{slug}',
         description: 'Страница категория',
         summary: 'Страница категория',
         tags: ['Categories'],
         parameters: [
             new OA\Parameter(
-                name: 'id',
+                name: 'slug',
                 in: 'path',
                 required: true,
-                schema: new OA\Schema(type: 'integer'),
+                schema: new OA\Schema(type: 'string'),
             ),
         ],
     )]
@@ -58,7 +61,7 @@ interface CategoryController
             properties: [
                 new OA\Property(
                     property: 'data',
-                    ref: "#/components/schemas/CategoryResource",
+                    ref: CategoryResource::class,
                 ),
             ],
         ),
@@ -78,7 +81,7 @@ interface CategoryController
         ],
         requestBody: new OA\RequestBody(
             required: true,
-            content: new OA\JsonContent(ref: '#/components/schemas/CategoryRequest'),
+            content: new OA\JsonContent(ref: CategoryRequest::class),
         ),
         tags: ['Categories'],
     )]
@@ -89,7 +92,7 @@ interface CategoryController
             properties: [
                 new OA\Property(
                     property: 'data',
-                    ref: "#/components/schemas/CategoryResource",
+                    ref: CategoryResource::class,
                 ),
             ],
         ),
@@ -99,7 +102,7 @@ interface CategoryController
     public function store();
 
     #[OA\Put(
-        path: '/catagories/{id}',
+        path: '/catagories/{slug}',
         description: 'Обновить категорию',
         summary: 'Обновить категорию',
         security: [
@@ -109,15 +112,15 @@ interface CategoryController
         ],
         requestBody: new OA\RequestBody(
             required: true,
-            content: new OA\JsonContent(ref: '#/components/schemas/CategoryRequest'),
+            content: new OA\JsonContent(ref: CategoryRequest::class),
         ),
         tags: ['Categories'],
         parameters: [
             new OA\Parameter(
-                name: 'id',
+                name: 'slug',
                 in: 'path',
                 required: true,
-                schema: new OA\Schema(type: 'integer'),
+                schema: new OA\Schema(type: 'string'),
             ),
         ],
     )]
@@ -128,7 +131,7 @@ interface CategoryController
             properties: [
                 new OA\Property(
                     property: 'data',
-                    ref: "#/components/schemas/CategoryResource",
+                    ref: CategoryResource::class,
                 ),
             ],
         ),
@@ -139,7 +142,7 @@ interface CategoryController
     public function update();
 
     #[OA\Delete(
-        '/categories/{id}',
+        '/categories/{slug}',
         description: 'Удалить категорию',
         summary: 'Удалить категорию',
         security: [
@@ -150,10 +153,10 @@ interface CategoryController
         tags: ['Categories'],
         parameters: [
             new OA\Parameter(
-                name: 'id',
+                name: 'slug',
                 in: 'path',
                 required: true,
-                schema: new OA\Schema(type: 'integer'),
+                schema: new OA\Schema(type: 'string'),
             ),
         ],
     )]

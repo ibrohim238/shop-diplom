@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Versions\Admin\Swagger\Resources;
+namespace App\Versions\Private\Swagger\Resources;
 
+use App\Enums\PurchaseStatusEnum;
 use Carbon\Carbon;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(
-    title: 'CategoryResource',
-    description: 'Category Resource',
+    title: 'PurchaseResource',
+    description: 'Purchase Resource',
     xml: new OA\Xml(
-        name: 'Category Resource',
+        name: 'Purchase Resource',
     ),
 )]
-final readonly class CategoryResource
+final readonly class PurchaseResource
 {
     #[OA\Property(
         title: 'id',
@@ -23,28 +24,24 @@ final readonly class CategoryResource
     private int $id;
 
     #[OA\Property(
-        title: 'name',
-        description: 'Название',
+        title: 'amount',
+        description: 'Сумма',
     )]
-    private string $name;
+    private int $amount;
 
     #[OA\Property(
-        title: 'slug',
-        description: 'slug',
+        title: 'status',
+        description: 'Статус',
     )]
-    private string $slug;
+    private PurchaseStatusEnum $status;
 
     #[OA\Property(
-        title: 'media',
-        description: 'media',
+        title: 'product',
+        description: 'товар',
+        type: 'array',
+        items: new OA\Items(ref: ProductResource::class)
     )]
-    private MediaResource $media;
-
-    #[OA\Property(
-        title: 'description',
-        description: 'Описание',
-    )]
-    private string $description;
+    private array $products;
 
     #[OA\Property(
         title: "сreated_at",
@@ -54,6 +51,7 @@ final readonly class CategoryResource
         example: "2020-01-27 17:50:45",
     )]
     private Carbon $created_at;
+
 
     #[OA\Property(
         title: "updated_at",

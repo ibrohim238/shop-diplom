@@ -2,6 +2,8 @@
 
 namespace App\Versions\Private\Swagger\Controllers;
 
+use App\Versions\Private\Swagger\Pagination;
+use App\Versions\Private\Swagger\Resources\CategoryResource;
 use App\Versions\Private\Swagger\Responses\NotFoundResponse;
 use App\Versions\Private\Swagger\Responses\UnauthorizedResponse;
 use OpenApi\Attributes as OA;
@@ -25,11 +27,11 @@ interface CategoryController
                 new OA\Property(
                     property: 'data',
                     type: 'array',
-                    items: new OA\Items(ref: "#/components/schemas/CategoryResource"),
+                    items: new OA\Items(ref: CategoryResource::class),
                 ),
                 new OA\Property(
                     property: 'meta',
-                    ref: "#/components/schemas/Pagination",
+                    ref: Pagination::class,
                 ),
             ],
         ),
@@ -37,16 +39,16 @@ interface CategoryController
     public function index();
 
     #[OA\Get(
-        path: '/categories/{id}',
+        path: '/categories/{slug}',
         description: 'Страница категория',
         summary: 'Страница категория',
         tags: ['Categories'],
         parameters: [
             new OA\Parameter(
-                name: 'id',
+                name: 'slug',
                 in: 'path',
                 required: true,
-                schema: new OA\Schema(type: 'integer'),
+                schema: new OA\Schema(type: 'string'),
             ),
         ],
     )]
@@ -57,11 +59,12 @@ interface CategoryController
             properties: [
                 new OA\Property(
                     property: 'data',
-                    ref: "#/components/schemas/CategoryResource",
+                    ref: CategoryResource::class,
                 ),
             ],
         ),
     )]
     #[NotFoundResponse]
+    #[UnauthorizedResponse]
     public function show();
 }

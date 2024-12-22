@@ -2,8 +2,9 @@
 
 namespace App\Versions\Private\Swagger\Controllers;
 
+use App\Versions\Private\Swagger\Pagination;
+use App\Versions\Private\Swagger\Resources\ProductResource;
 use App\Versions\Private\Swagger\Responses\NotFoundResponse;
-use App\Versions\Private\Swagger\Responses\UnauthorizedResponse;
 use OpenApi\Attributes as OA;
 
 interface ProductController
@@ -25,11 +26,11 @@ interface ProductController
                 new OA\Property(
                     property: 'data',
                     type: 'array',
-                    items: new OA\Items(ref: "#/components/schemas/ProductResource"),
+                    items: new OA\Items(ref: ProductResource::class),
                 ),
                 new OA\Property(
                     property: 'meta',
-                    ref: "#/components/schemas/Pagination",
+                    ref: Pagination::class,
                 ),
             ],
         ),
@@ -57,7 +58,7 @@ interface ProductController
             properties: [
                 new OA\Property(
                     property: 'data',
-                    ref: "#/components/schemas/ProductResource",
+                    ref: ProductResource::class,
                 ),
             ],
         ),

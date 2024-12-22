@@ -7,10 +7,10 @@ use OpenApi\Attributes as OA;
 #[OA\Schema(
     title: 'Product request',
     description: 'Product request body data',
-    required: ['name'],
+    required: ['name', 'price', 'medias'],
     type: 'object',
 )]
-final class ProductRequest
+final readonly class ProductRequest
 {
 
     #[OA\Property(
@@ -18,14 +18,21 @@ final class ProductRequest
         description: 'Имя',
         maxLength: 255,
     )]
-    private readonly string $name;
+    private string $name;
 
     #[OA\Property(
         title: 'description',
         description: 'Описание',
         maxLength: 512,
     )]
-    private readonly string $description;
+    private string $description;
+
+    #[OA\Property(
+        title: 'price',
+        description: 'Цена',
+        type: 'float'
+    )]
+    private string $price;
 
     #[OA\Property(
         title: 'medias',
@@ -33,7 +40,7 @@ final class ProductRequest
         type: 'array',
         items: new OA\Items(type: 'integer'),
     )]
-    private readonly array $medias;
+    private array $medias;
 
     #[OA\Property(
         title: 'categories',
@@ -41,5 +48,5 @@ final class ProductRequest
         type: 'array',
         items: new OA\Items(type: 'integer'),
     )]
-    private readonly array $categories;
+    private array $categories;
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Versions\Private\Swagger\Resources;
+namespace App\Versions\Admin\Swagger\Resources;
 
 use Carbon\Carbon;
 use OpenApi\Attributes as OA;
@@ -12,7 +12,7 @@ use OpenApi\Attributes as OA;
         name: 'Platform Resource',
     ),
 )]
-final class ProductResource
+final readonly class ProductResource
 {
     #[OA\Property(
         title: 'id',
@@ -20,19 +20,42 @@ final class ProductResource
         format: 'int64',
         example: 1,
     )]
-    private readonly int $id;
+    private int $id;
 
     #[OA\Property(
         title: 'name',
         description: 'Название',
     )]
-    private readonly string $name;
+    private string $name;
 
     #[OA\Property(
         title: 'description',
         description: 'Описание',
     )]
-    private readonly string $description;
+    private string $description;
+
+    #[OA\Property(
+        title: 'price',
+        description: 'Цена',
+        type: 'float'
+    )]
+    private string $price;
+
+    #[OA\Property(
+        title: 'medias',
+        description: 'medias',
+        type: 'array',
+        items: new OA\Items(ref: MediaResource::class)
+    )]
+    private array $medias;
+
+    #[OA\Property(
+        title: 'categories',
+        description: 'categories',
+        type: 'array',
+        items: new OA\Items(ref: CategoryResource::class)
+    )]
+    private array $categories;
 
     #[OA\Property(
         title: "сreated_at",
@@ -41,7 +64,7 @@ final class ProductResource
         format: "datetime",
         example: "2020-01-27 17:50:45",
     )]
-    private readonly Carbon $created_at;
+    private Carbon $created_at;
 
 
     #[OA\Property(
@@ -51,5 +74,5 @@ final class ProductResource
         format: "datetime",
         example: "2020-01-27 17:50:45",
     )]
-    private readonly Carbon $updated_at;
+    private Carbon $updated_at;
 }

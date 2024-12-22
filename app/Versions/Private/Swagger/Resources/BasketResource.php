@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Versions\Admin\Swagger\Resources;
+namespace App\Versions\Private\Swagger\Resources;
 
 use Carbon\Carbon;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(
-    title: 'CategoryResource',
-    description: 'Category Resource',
+    title: 'BasketResource',
+    description: 'Basket Resource',
     xml: new OA\Xml(
-        name: 'Category Resource',
+        name: 'Basket Resource',
     ),
 )]
-final readonly class CategoryResource
+final readonly class BasketResource
 {
     #[OA\Property(
         title: 'id',
@@ -23,28 +23,16 @@ final readonly class CategoryResource
     private int $id;
 
     #[OA\Property(
-        title: 'name',
-        description: 'Название',
+        title: 'product',
+        description: 'товар',
     )]
-    private string $name;
+    private ProductResource $product;
 
     #[OA\Property(
-        title: 'slug',
-        description: 'slug',
+        title: 'quantity',
+        description: 'Количество',
     )]
-    private string $slug;
-
-    #[OA\Property(
-        title: 'media',
-        description: 'media',
-    )]
-    private MediaResource $media;
-
-    #[OA\Property(
-        title: 'description',
-        description: 'Описание',
-    )]
-    private string $description;
+    private int $quantity;
 
     #[OA\Property(
         title: "сreated_at",
@@ -54,6 +42,7 @@ final readonly class CategoryResource
         example: "2020-01-27 17:50:45",
     )]
     private Carbon $created_at;
+
 
     #[OA\Property(
         title: "updated_at",

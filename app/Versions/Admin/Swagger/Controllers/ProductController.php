@@ -2,6 +2,9 @@
 
 namespace App\Versions\Admin\Swagger\Controllers;
 
+use App\Versions\Admin\Swagger\Pagination;
+use App\Versions\Admin\Swagger\Requests\ProductRequest;
+use App\Versions\Admin\Swagger\Resources\ProductResource;
 use App\Versions\Admin\Swagger\Responses\NotFoundResponse;
 use App\Versions\Admin\Swagger\Responses\UnauthorizedResponse;
 use App\Versions\Admin\Swagger\Responses\UnprocessableEntityResponse;
@@ -31,11 +34,11 @@ interface ProductController
                 new OA\Property(
                     property: 'data',
                     type: 'array',
-                    items: new OA\Items(ref: "#/components/schemas/ProductResource"),
+                    items: new OA\Items(ref: ProductResource::class),
                 ),
                 new OA\Property(
                     property: 'meta',
-                    ref: "#/components/schemas/Pagination",
+                    ref: Pagination::class,
                 ),
             ],
         ),
@@ -68,7 +71,7 @@ interface ProductController
             properties: [
                 new OA\Property(
                     property: 'data',
-                    ref: "#/components/schemas/ProductResource",
+                    ref: ProductResource::class,
                 ),
             ],
         ),
@@ -88,7 +91,7 @@ interface ProductController
         ],
         requestBody: new OA\RequestBody(
             required: true,
-            content: new OA\JsonContent(ref: '#/components/schemas/ProductRequest'),
+            content: new OA\JsonContent(ref:ProductRequest::class),
         ),
         tags: ['Products'],
     )]
@@ -99,7 +102,7 @@ interface ProductController
             properties: [
                 new OA\Property(
                     property: 'data',
-                    ref: "#/components/schemas/ProductResource",
+                    ref: ProductResource::class,
                 ),
             ],
         ),
@@ -119,7 +122,7 @@ interface ProductController
         ],
         requestBody: new OA\RequestBody(
             required: true,
-            content: new OA\JsonContent(ref: '#/components/schemas/ProductRequest'),
+            content: new OA\JsonContent(ref: ProductRequest::class),
         ),
         tags: ['Products'],
         parameters: [
@@ -138,7 +141,7 @@ interface ProductController
             properties: [
                 new OA\Property(
                     property: 'data',
-                    ref: "#/components/schemas/ProductResource",
+                    ref: ProductResource::class,
                 ),
             ],
         ),

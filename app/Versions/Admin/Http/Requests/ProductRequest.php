@@ -19,7 +19,7 @@ final class ProductRequest extends FormRequest
             'price' => ['required', 'numeric'],
             'categories' => ['nullable', 'array', 'min:1'],
             'categories.*' => ['required', 'integer', 'exists:categories,id'],
-            'medias' => ['nullable', 'array', 'min:1', 'max:10'],
+            'medias' => ['required', 'array', 'min:1', 'max:10'],
             'medias.*' => [
                 'required',
                 'integer',

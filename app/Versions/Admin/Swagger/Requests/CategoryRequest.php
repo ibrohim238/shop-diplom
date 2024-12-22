@@ -10,7 +10,7 @@ use OpenApi\Attributes as OA;
     required: ['name', 'parent_id'],
     type: 'object',
 )]
-final class CategoryRequest
+final readonly class CategoryRequest
 {
 
     #[OA\Property(
@@ -18,26 +18,26 @@ final class CategoryRequest
         description: 'Имя',
         maxLength: 255,
     )]
-    private readonly string $name;
+    private string $name;
 
     #[OA\Property(
         title: 'description',
         description: 'Описание',
         maxLength: 512,
     )]
-    private readonly string $description;
+    private string $description;
 
     #[OA\Property(
         title: 'parent_id',
         description: 'идентификатор родителя',
         format: 'int64',
     )]
-    private readonly string $parent_id;
+    private string $parent_id;
 
     #[OA\Property(
         title: 'media_id',
         description: 'media_id',
         type: 'integer',
     )]
-    private readonly array $media_id;
+    private array $media_id;
 }

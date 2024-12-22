@@ -18,6 +18,127 @@
         }
     ],
     "paths": {
+        "/baskets": {
+            "get": {
+                "tags": [
+                    "Baskets"
+                ],
+                "summary": "Список товаров в корзине",
+                "description": "Список товаров в корзине",
+                "operationId": "c5ba754f44ef3177692a33436d77d162",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/BasketResource"
+                                            }
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/Pagination"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Baskets"
+                ],
+                "summary": "Закинуть в корзину",
+                "description": "Закинуть в корзину",
+                "operationId": "0ba7ace270193dd2c1169eb609b04ea2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BasketRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/BasketResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
+            }
+        },
+        "/baskets/{id}": {
+            "delete": {
+                "tags": [
+                    "Baskets"
+                ],
+                "summary": "Убрать из корзины",
+                "description": "Убрать из корзины",
+                "operationId": "00f8ac928a733c066aad80cf241540bf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    },
+                    "404": {
+                        "description": "Not found."
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
+            }
+        },
         "/categories": {
             "get": {
                 "tags": [
@@ -51,21 +172,21 @@
                 }
             }
         },
-        "/categories/{id}": {
+        "/categories/{slug}": {
             "get": {
                 "tags": [
                     "Categories"
                 ],
                 "summary": "Страница категория",
                 "description": "Страница категория",
-                "operationId": "ff7401c48e481c8cf138b90a3e17c503",
+                "operationId": "6e4037bd200fc1478fefdfd8336ab496",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "slug",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     }
                 ],
@@ -87,6 +208,9 @@
                     },
                     "404": {
                         "description": "Not found."
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
                     }
                 }
             }
@@ -162,6 +286,84 @@
                         "description": "Not found."
                     }
                 }
+            }
+        },
+        "/purchases": {
+            "get": {
+                "tags": [
+                    "Purchases"
+                ],
+                "summary": "Список покупок",
+                "description": "Список покупок",
+                "operationId": "5f7432f9f045f6b80b30ac13dc92db09",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/PurchaseResource"
+                                            }
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/Pagination"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Purchases"
+                ],
+                "summary": "Оплатить",
+                "description": "Оплатить",
+                "operationId": "a277034fef810b70f2362f83165164f8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PurchaseRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/PurchaseResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
             }
         },
         "/user/media": {
@@ -309,12 +511,7 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
+                        "description": "No content"
                     },
                     "404": {
                         "description": "Not found."
@@ -378,21 +575,83 @@
                     "name": "Pagination"
                 }
             },
-            "UserMediaRequest": {
-                "title": "UserMedia request",
-                "description": "UserMedia request body data",
-                "required": [],
+            "BasketRequest": {
+                "title": "Basket request",
+                "description": "Basket request body data",
+                "required": [
+                    "product_id",
+                    "quantity"
+                ],
                 "properties": {
-                    "media": {
-                        "title": "media",
-                        "description": "media",
+                    "product_id": {
+                        "title": "product_id",
+                        "description": "Id продукта",
+                        "type": "integer"
+                    },
+                    "quantity": {
+                        "title": "quantity",
+                        "description": "Количество",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "PurchaseRequest": {
+                "title": "Purchase request",
+                "description": "Purchase request body data",
+                "required": [
+                    "baskets"
+                ],
+                "properties": {
+                    "baskets": {
+                        "title": "baskets",
+                        "description": "Товары",
                         "type": "array",
                         "items": {
-                            "type": "file"
+                            "type": "integer"
                         }
                     }
                 },
                 "type": "object"
+            },
+            "BasketResource": {
+                "title": "BasketResource",
+                "description": "Basket Resource",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Идентификатор",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "product": {
+                        "$ref": "#/components/schemas/ProductResource"
+                    },
+                    "quantity": {
+                        "title": "quantity",
+                        "description": "Количество",
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "title": "сreated_at",
+                        "description": "Создана в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "description": "Обновлена в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Basket Resource"
+                }
             },
             "CategoryResource": {
                 "title": "CategoryResource",
@@ -470,7 +729,7 @@
                         "title": "disk",
                         "description": "disk",
                         "type": "string",
-                        "example": "private readonly "
+                        "example": "private "
                     },
                     "url": {
                         "title": "url",
@@ -512,6 +771,12 @@
                         "description": "Описание",
                         "type": "string"
                     },
+                    "price": {
+                        "title": "price",
+                        "description": "Цена",
+                        "type": "number",
+                        "format": "float"
+                    },
                     "medias": {
                         "title": "medias",
                         "description": "medias",
@@ -545,7 +810,55 @@
                 },
                 "type": "object",
                 "xml": {
-                    "name": "Product Resource"
+                    "name": "Platform Resource"
+                }
+            },
+            "PurchaseResource": {
+                "title": "PurchaseResource",
+                "description": "Purchase Resource",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Идентификатор",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "amount": {
+                        "title": "amount",
+                        "description": "Сумма",
+                        "type": "integer"
+                    },
+                    "status": {
+                        "title": "status",
+                        "description": "Статус"
+                    },
+                    "products": {
+                        "title": "product",
+                        "description": "товар",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ProductResource"
+                        }
+                    },
+                    "created_at": {
+                        "title": "сreated_at",
+                        "description": "Создана в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "description": "Обновлена в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Purchase Resource"
                 }
             }
         },
@@ -571,6 +884,14 @@
         {
             "name": "UserMedia",
             "description": "Файлы"
+        },
+        {
+            "name": "Baskets",
+            "description": "Корзина"
+        },
+        {
+            "name": "Purchases",
+            "description": "Оплата"
         }
     ]
 }

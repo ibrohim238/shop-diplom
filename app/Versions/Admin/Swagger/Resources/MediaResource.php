@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Versions\Private\Swagger\Resources;
+namespace App\Versions\Admin\Swagger\Resources;
 
 use Carbon\Carbon;
 use OpenApi\Attributes as OA;

@@ -26,6 +26,8 @@ use OpenApi\Attributes as OA;
 #[OA\Tag(name: 'Products', description: 'Продукты')]
 #[OA\Tag(name: 'Categories', description: 'Категории')]
 #[OA\Tag(name: 'UserMedia', description: 'Файлы')]
+#[OA\Tag(name: 'Baskets', description: 'Корзина')]
+#[OA\Tag(name: 'Purchases', description: 'Оплата')]
 abstract readonly class Controller extends BaseController
 {
     //

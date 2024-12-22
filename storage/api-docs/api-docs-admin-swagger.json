@@ -51,21 +51,21 @@
                 }
             }
         },
-        "/categories/{id}": {
+        "/categories/{slug}": {
             "get": {
                 "tags": [
                     "Categories"
                 ],
                 "summary": "Страница категория",
                 "description": "Страница категория",
-                "operationId": "0d49731955b7df29d03f29f3d91a1a7e",
+                "operationId": "9cd14e038d136aeac63bd6c2975fdf71",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "slug",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     }
                 ],
@@ -99,14 +99,14 @@
                 ],
                 "summary": "Удалить категорию",
                 "description": "Удалить категорию",
-                "operationId": "1ce8de9b70dcb3431e5db865b6452254",
+                "operationId": "6d8f5dd2d356ad8fac757c1fa2b076d9",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "slug",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     }
                 ],
@@ -197,21 +197,21 @@
                 ]
             }
         },
-        "/catagories/{id}": {
+        "/catagories/{slug}": {
             "put": {
                 "tags": [
                     "Categories"
                 ],
                 "summary": "Обновить категорию",
                 "description": "Обновить категорию",
-                "operationId": "667b04975cc1842f21a99b5fb55ee184",
+                "operationId": "cfb5a72005ff62494dba9e64b30dc722",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "slug",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     }
                 ],
@@ -624,7 +624,9 @@
                 "title": "Product request",
                 "description": "Product request body data",
                 "required": [
-                    "name"
+                    "name",
+                    "price",
+                    "medias"
                 ],
                 "properties": {
                     "name": {
@@ -638,6 +640,12 @@
                         "description": "Описание",
                         "type": "string",
                         "maxLength": 512
+                    },
+                    "price": {
+                        "title": "price",
+                        "description": "Цена",
+                        "type": "number",
+                        "format": "float"
                     },
                     "medias": {
                         "title": "medias",
@@ -679,6 +687,9 @@
                         "description": "slug",
                         "type": "string"
                     },
+                    "media": {
+                        "$ref": "#/components/schemas/MediaResource"
+                    },
                     "description": {
                         "title": "description",
                         "description": "Описание",
@@ -704,6 +715,54 @@
                     "name": "Category Resource"
                 }
             },
+            "MediaResource": {
+                "title": "MediaResource",
+                "description": "Media Resource",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Идентификатор",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "Название",
+                        "type": "string",
+                        "example": "Владимир"
+                    },
+                    "collection_name": {
+                        "title": "collection_name",
+                        "description": "collection name",
+                        "type": "string",
+                        "example": "default"
+                    },
+                    "disk": {
+                        "title": "disk",
+                        "description": "disk",
+                        "type": "string",
+                        "example": "private "
+                    },
+                    "url": {
+                        "title": "url",
+                        "description": "url",
+                        "type": "string",
+                        "example": "http://localhost"
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Создана в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Media Resource"
+                }
+            },
             "ProductResource": {
                 "title": "ProductResource",
                 "description": "Product Resource",
@@ -725,6 +784,28 @@
                         "description": "Описание",
                         "type": "string"
                     },
+                    "price": {
+                        "title": "price",
+                        "description": "Цена",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "medias": {
+                        "title": "medias",
+                        "description": "medias",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MediaResource"
+                        }
+                    },
+                    "categories": {
+                        "title": "categories",
+                        "description": "categories",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategoryResource"
+                        }
+                    },
                     "created_at": {
                         "title": "сreated_at",
                         "description": "Создана в",
@@ -742,7 +823,7 @@
                 },
                 "type": "object",
                 "xml": {
-                    "name": "Product Resource"
+                    "name": "Platform Resource"
                 }
             }
         },
