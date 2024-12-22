@@ -278,6 +278,41 @@
                 }
             }
         },
+        "/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Профиль",
+                "description": "Профиль",
+                "operationId": "72fbe1ed9dd4bcf26cfb74026be293c9",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/UserResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
+            }
+        },
         "/user/purchases": {
             "get": {
                 "tags": [
@@ -354,6 +389,79 @@
                         "api-key": []
                     }
                 ]
+            }
+        },
+        "/register": {
+            "get": {
+                "tags": [
+                    "OAuth"
+                ],
+                "summary": "Регистрация",
+                "description": "Регистрация",
+                "operationId": "a8aa4caed665becee331ed5b0a330051",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegisterRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/UserResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    }
+                }
+            }
+        },
+        "/oauth/token": {
+            "get": {
+                "tags": [
+                    "OAuth"
+                ],
+                "summary": "Получить токен",
+                "description": "Получить токен",
+                "operationId": "5fab1d00d05163bea2ca2268e2561967",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TokenRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    }
+                }
             }
         },
         "/user/media": {
@@ -604,6 +712,121 @@
                     "coupon_code": {
                         "title": "coupon_code",
                         "description": "код купона",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "RefreshTokenRequest": {
+                "title": "Purchase request",
+                "description": "Purchase request body data",
+                "required": [
+                    "first_name",
+                    "last_name",
+                    "email"
+                ],
+                "properties": {
+                    "first_name": {
+                        "title": "grant_type",
+                        "description": "тип доступа",
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "title": "last_name",
+                        "description": "Фамилия",
+                        "type": "string"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "Почта",
+                        "type": "string"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "Пароль",
+                        "type": "string"
+                    },
+                    "password_confirmation": {
+                        "title": "password_confirmation",
+                        "description": "Подтверждение пароля",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "RegisterRequest": {
+                "title": "Purchase request",
+                "description": "Purchase request body data",
+                "required": [
+                    "first_name",
+                    "last_name",
+                    "email"
+                ],
+                "properties": {
+                    "first_name": {
+                        "title": "first_name",
+                        "description": "Имя",
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "title": "last_name",
+                        "description": "Фамилия",
+                        "type": "string"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "Почта",
+                        "type": "string"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "Пароль",
+                        "type": "string"
+                    },
+                    "password_confirmation": {
+                        "title": "password_confirmation",
+                        "description": "Подтверждение пароля",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "TokenRequest": {
+                "title": "Purchase request",
+                "description": "Purchase request body data",
+                "required": [
+                    "first_name",
+                    "last_name",
+                    "email"
+                ],
+                "properties": {
+                    "grant_type": {
+                        "title": "grant_type",
+                        "description": "Способ получения токена",
+                        "type": "string",
+                        "enum": [
+                            "refresh_token",
+                            "password"
+                        ]
+                    },
+                    "client_id": {
+                        "title": "client_id",
+                        "description": "Идентификатор приложения",
+                        "type": "integer"
+                    },
+                    "client_secret": {
+                        "title": "client_secret",
+                        "description": "Секретный ключ приложения",
+                        "type": "string"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "Пароль",
+                        "type": "string"
+                    },
+                    "refresh_token": {
+                        "title": "refresh_token",
+                        "description": "refresh_token",
                         "type": "string"
                     }
                 },
@@ -908,6 +1131,75 @@
                 "xml": {
                     "name": "Purchase Resource"
                 }
+            },
+            "RoleResource": {
+                "title": "ProductResource",
+                "description": "Product Resource",
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "Название",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Platform Resource"
+                }
+            },
+            "UserResource": {
+                "title": "ProductResource",
+                "description": "Product Resource",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Идентификатор",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "first_name": {
+                        "title": "first_name",
+                        "description": "Имя",
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "title": "last_name",
+                        "description": "Фамилия",
+                        "type": "string"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "Почта",
+                        "type": "string"
+                    },
+                    "roles": {
+                        "title": "roles",
+                        "description": "Роли",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/RoleResource"
+                        }
+                    },
+                    "created_at": {
+                        "title": "сreated_at",
+                        "description": "Создана в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "description": "Обновлена в",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Platform Resource"
+                }
             }
         },
         "securitySchemes": {
@@ -940,6 +1232,14 @@
         {
             "name": "Purchases",
             "description": "Оплата"
+        },
+        {
+            "name": "User",
+            "description": "User"
+        },
+        {
+            "name": "OAuth",
+            "description": "OAuth"
         }
     ]
 }
