@@ -6,10 +6,10 @@ use Carbon\Carbon;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(
-    title: 'ProductResource',
-    description: 'Product Resource',
+    title: 'RoleResource',
+    description: 'Role Resource',
     xml: new OA\Xml(
-        name: 'Platform Resource',
+        name: 'Role Resource',
     ),
 )]
 final readonly class RoleResource

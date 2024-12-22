@@ -1156,8 +1156,8 @@
                 }
             },
             "RoleResource": {
-                "title": "ProductResource",
-                "description": "Product Resource",
+                "title": "RoleResource",
+                "description": "Role Resource",
                 "properties": {
                     "name": {
                         "title": "name",
@@ -1167,7 +1167,7 @@
                 },
                 "type": "object",
                 "xml": {
-                    "name": "Platform Resource"
+                    "name": "Role Resource"
                 }
             },
             "UserResource": {
