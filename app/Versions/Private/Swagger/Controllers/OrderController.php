@@ -11,8 +11,8 @@ interface OrderController
 {
     #[OA\Get(
         path: '/user/orders',
-        description: 'Список покупок',
-        summary: 'Список покупок',
+        description: 'Список заказов',
+        summary: 'Список заказов',
         security: [
             [
                 'api-key' => [],
@@ -44,8 +44,8 @@ interface OrderController
 
     #[OA\Get(
         path: '/user/orders/{id}',
-        description: 'Покупка',
-        summary: 'Покупка',
+        description: 'Заказ',
+        summary: 'Заказ',
         security: [
             [
                 'api-key' => [],
@@ -77,8 +77,8 @@ interface OrderController
 
     #[OA\Post(
         path: '/user/orders',
-        description: 'Оплатить',
-        summary: 'Оплатить',
+        description: 'Сделать заказ',
+        summary: 'Сделать заказ',
         security: [
             [
                 'api-key' => [],
