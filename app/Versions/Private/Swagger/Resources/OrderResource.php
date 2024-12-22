@@ -2,17 +2,18 @@
 
 namespace App\Versions\Private\Swagger\Resources;
 
+use App\Enums\OrderStatusEnum;
 use Carbon\Carbon;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(
-    title: 'BasketResource',
-    description: 'Basket Resource',
+    title: 'OrderResource',
+    description: 'Order Resource',
     xml: new OA\Xml(
-        name: 'Basket Resource',
+        name: 'Order Resource',
     ),
 )]
-final readonly class BasketResource
+final readonly class OrderResource
 {
     #[OA\Property(
         title: 'id',
@@ -23,16 +24,30 @@ final readonly class BasketResource
     private int $id;
 
     #[OA\Property(
-        title: 'product',
-        description: 'товар',
+        title: 'amount',
+        description: 'Сумма',
     )]
-    private ProductResource $product;
+    private int $amount;
 
     #[OA\Property(
-        title: 'quantity',
-        description: 'Количество',
+        title: 'status',
+        description: 'Статус',
     )]
-    private int $quantity;
+    private OrderStatusEnum $status;
+
+    #[OA\Property(
+        title: 'product',
+        description: 'товар',
+        type: 'array',
+        items: new OA\Items(ref: ProductResource::class)
+    )]
+    private array $products;
+
+    #[OA\Property(
+        title: 'coupon',
+        description: 'купон',
+    )]
+    private CouponResource $coupon;
 
     #[OA\Property(
         title: "сreated_at",

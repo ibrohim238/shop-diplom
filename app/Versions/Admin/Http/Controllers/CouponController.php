@@ -23,7 +23,7 @@ class CouponController
 
     public function show(Coupon $coupon)
     {
-        return new CouponResource($coupon->load('purchases'));
+        return new CouponResource($coupon->load('orders'));
     }
 
     public function store(CouponRequest $request, CouponService $service)

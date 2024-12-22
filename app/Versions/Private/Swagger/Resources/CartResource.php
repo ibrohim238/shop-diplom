@@ -2,18 +2,17 @@
 
 namespace App\Versions\Private\Swagger\Resources;
 
-use App\Enums\PurchaseStatusEnum;
 use Carbon\Carbon;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(
-    title: 'PurchaseResource',
-    description: 'Purchase Resource',
+    title: 'CartResource',
+    description: 'Cart Resource',
     xml: new OA\Xml(
-        name: 'Purchase Resource',
+        name: 'Cart Resource',
     ),
 )]
-final readonly class PurchaseResource
+final readonly class CartResource
 {
     #[OA\Property(
         title: 'id',
@@ -24,30 +23,16 @@ final readonly class PurchaseResource
     private int $id;
 
     #[OA\Property(
-        title: 'amount',
-        description: 'Сумма',
-    )]
-    private int $amount;
-
-    #[OA\Property(
-        title: 'status',
-        description: 'Статус',
-    )]
-    private PurchaseStatusEnum $status;
-
-    #[OA\Property(
         title: 'product',
         description: 'товар',
-        type: 'array',
-        items: new OA\Items(ref: ProductResource::class)
     )]
-    private array $products;
+    private ProductResource $product;
 
     #[OA\Property(
-        title: 'coupon',
-        description: 'купон',
+        title: 'quantity',
+        description: 'Количество',
     )]
-    private CouponResource $coupon;
+    private int $quantity;
 
     #[OA\Property(
         title: "сreated_at",

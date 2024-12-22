@@ -4,7 +4,7 @@ namespace App\Versions\Admin\Services;
 
 use App\Enums\CouponTypeEnum;
 use App\Models\Coupon;
-use App\Models\Purchase;
+use App\Models\Order;
 use App\Versions\Admin\Dtos\CouponDto;
 use Illuminate\Validation\ValidationException;
 
@@ -29,7 +29,7 @@ final readonly class CouponService
             ->save();
     }
 
-    public function consider(Purchase $purchase, int $amount): int
+    public function consider(Order $order, int $amount): int
     {
         if ($this->coupon->min_price > $amount) {
             throw ValidationException::withMessages([
@@ -43,7 +43,7 @@ final readonly class CouponService
             ]);
         }
 
-        $purchase->coupon()->associate($this->coupon);
+        $order->coupon()->associate($this->coupon);
         $this->coupon->quantity_used ++;
         $this->coupon->save();
         return match ($this->coupon->type) {

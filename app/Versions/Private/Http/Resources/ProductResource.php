@@ -4,7 +4,7 @@ namespace App\Versions\Private\Http\Resources;
 
 use App\Http\Resources\MediaResource;
 use App\Models\Product;
-use App\Models\PurchaseProduct;
+use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 use App\Http\Resources\JsonResource;
 
@@ -20,7 +20,7 @@ final class ProductResource extends JsonResource
             'price' => $this->price,
             'medias' => MediaResource::collection($this->whenLoaded('media')),
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
-            'quantity' => $this->whenPivotLoaded(PurchaseProduct::class, fn() => $this->pivot->quantity),
+            'quantity' => $this->whenPivotLoaded(OrderProduct::class, fn() => $this->pivot->quantity),
             'created_at' => $this->formatDateTime($this->created_at),
             'updated_at' => $this->formatDateTime($this->updated_at),
         ];

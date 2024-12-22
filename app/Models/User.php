@@ -40,8 +40,8 @@ final class User extends Authenticatable implements MustVerifyEmail, HasMedia
         ];
     }
 
-    public function baskets(): HasMany
+    public function carts(): HasMany
     {
-        return $this->hasMany(Basket::class);
+        return $this->hasMany(Cart::class);
     }
 }

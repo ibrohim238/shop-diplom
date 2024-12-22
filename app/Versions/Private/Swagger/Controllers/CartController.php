@@ -3,15 +3,15 @@
 namespace App\Versions\Private\Swagger\Controllers;
 
 use App\Versions\Private\Swagger\Pagination;
-use App\Versions\Private\Swagger\Requests\BasketRequest;
-use App\Versions\Private\Swagger\Resources\BasketResource;
+use App\Versions\Private\Swagger\Requests\CartRequest;
+use App\Versions\Private\Swagger\Resources\CartResource;
 use App\Versions\Private\Swagger\Responses\NotFoundResponse;
 use OpenApi\Attributes as OA;
 
-interface BasketController
+interface CartController
 {
     #[OA\Get(
-        path: '/user/baskets',
+        path: '/user/carts',
         description: 'Список товаров в корзине',
         summary: 'Список товаров в корзине',
         security: [
@@ -19,7 +19,7 @@ interface BasketController
                 'api-key' => [],
             ],
         ],
-        tags: ['Baskets'],
+        tags: ['Carts'],
         parameters: [
 
         ],
@@ -32,7 +32,7 @@ interface BasketController
                 new OA\Property(
                     property: 'data',
                     type: 'array',
-                    items: new OA\Items(ref: BasketResource::class),
+                    items: new OA\Items(ref: CartResource::class),
                 ),
                 new OA\Property(
                     property: 'meta',
@@ -44,7 +44,7 @@ interface BasketController
     public function index();
 
     #[OA\Post(
-        path: '/user/baskets',
+        path: '/user/carts',
         description: 'Закинуть в корзину',
         summary: 'Закинуть в корзину',
         security: [
@@ -54,9 +54,9 @@ interface BasketController
         ],
         requestBody: new OA\RequestBody(
             required: true,
-            content: new OA\JsonContent(ref: BasketRequest::class),
+            content: new OA\JsonContent(ref: CartRequest::class),
         ),
-        tags: ['Baskets'],
+        tags: ['Carts'],
     )]
     #[OA\Response(
         response: 200,
@@ -65,7 +65,7 @@ interface BasketController
             properties: [
                 new OA\Property(
                     property: 'data',
-                    ref: BasketResource::class,
+                    ref: CartResource::class,
                 ),
             ],
         ),
@@ -73,7 +73,7 @@ interface BasketController
     public function store();
 
     #[OA\Delete(
-        path: '/user/baskets/{id}',
+        path: '/user/carts/{id}',
         description: 'Убрать из корзины',
         summary: 'Убрать из корзины',
         security: [
@@ -81,7 +81,7 @@ interface BasketController
                 'api-key' => [],
             ],
         ],
-        tags: ['Baskets'],
+        tags: ['Carts'],
         parameters: [
             new OA\Parameter(
                 name: 'id',

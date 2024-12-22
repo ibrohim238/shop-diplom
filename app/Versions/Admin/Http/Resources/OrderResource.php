@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Versions\Private\Http\Resources;
+namespace App\Versions\Admin\Http\Resources;
 
-use App\Models\Purchase;
+use App\Models\Order;
+use App\Versions\Private\Http\Resources\CouponResource;
+use App\Versions\Private\Http\Resources\ProductResource;
 use Illuminate\Http\Request;
 use App\Http\Resources\JsonResource;
 
-/** @mixin Purchase */
-final class PurchaseResource extends JsonResource
+/** @mixin Order */
+final class OrderResource extends JsonResource
 {
     public function toArray(Request $request): array
     {

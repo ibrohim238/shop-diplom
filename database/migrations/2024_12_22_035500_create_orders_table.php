@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('purchases', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->float('amount');
@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('purchase_product', function (Blueprint $table) {
+        Schema::create('order_product', function (Blueprint $table) {
             $table->foreignId('purchase_id')->constrained();
             $table->foreignId('product_id')->constrained();
             $table->unsignedInteger('quantity');
@@ -24,7 +24,7 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('purchases');
-        Schema::dropIfExists('purchase_product');
+        Schema::dropIfExists('orders');
+        Schema::dropIfExists('order_product');
     }
 };

@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Enums\PurchaseStatusEnum;
+use App\Enums\OrderStatusEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Purchase extends Model
+class Order extends Model
 {
     protected $fillable = [
         'user_id',
@@ -17,7 +17,7 @@ class Purchase extends Model
     ];
 
     protected $casts = [
-        'status' => PurchaseStatusEnum::class,
+        'status' => OrderStatusEnum::class,
         'amount' => 'float',
     ];
 
@@ -28,8 +28,8 @@ class Purchase extends Model
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class, PurchaseProduct::class)
-            ->using(PurchaseProduct::class)
+        return $this->belongsToMany(Product::class, OrderProduct::class)
+            ->using(OrderProduct::class)
             ->withPivot('quantity');
     }
 

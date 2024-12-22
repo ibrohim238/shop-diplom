@@ -2,9 +2,9 @@
 
 namespace App\Versions\Private\Dtos;
 
-use App\Versions\Private\Http\Requests\BasketRequest;
+use App\Versions\Private\Http\Requests\CartRequest;
 
-final readonly class BasketDto
+final readonly class CartDto
 {
     public function __construct(
         private int $userId,
@@ -13,7 +13,7 @@ final readonly class BasketDto
     ) {
     }
 
-    public static function fromRequest(BasketRequest $request): BasketDto
+    public static function fromRequest(CartRequest $request): CartDto
     {
         $validated = $request->validated();
 

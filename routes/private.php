@@ -1,9 +1,9 @@
 <?php
 
-use App\Versions\Private\Http\Controllers\BasketController;
+use App\Versions\Private\Http\Controllers\CartController;
 use App\Versions\Private\Http\Controllers\CategoryController;
 use App\Versions\Private\Http\Controllers\ProductController;
-use App\Versions\Private\Http\Controllers\PurchaseController;
+use App\Versions\Private\Http\Controllers\OrderController;
 use App\Versions\Private\Http\Controllers\RegisterController;
 use App\Versions\Private\Http\Controllers\ProfileController;
 use App\Versions\Private\Http\Controllers\UserMediaController;
@@ -23,9 +23,9 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth:api', 
     Route::get('', ProfileController::class)->name('profile');
     Route::apiResource('media', UserMediaController::class)
         ->only(['index', 'store', 'destroy']);
-    Route::apiResource('baskets', BasketController::class)
+    Route::apiResource('carts', CartController::class)
         ->only(['index', 'store', 'destroy']);
-    Route::apiResource('purchases', PurchaseController::class)
+    Route::apiResource('orders', OrderController::class)
         ->only('index', 'show', 'store');
 });
 

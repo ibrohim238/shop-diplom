@@ -4,7 +4,7 @@ namespace App\Versions\Private\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-final class BasketRequest extends FormRequest
+final class CartRequest extends FormRequest
 {
     public function rules(): array
     {

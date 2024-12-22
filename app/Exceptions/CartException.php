@@ -5,7 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Http\JsonResponse;
 
-class BasketException extends Exception
+class CartException extends Exception
 {
     protected $code = 400;
 

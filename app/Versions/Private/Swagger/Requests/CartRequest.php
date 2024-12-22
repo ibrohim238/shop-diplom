@@ -5,12 +5,12 @@ namespace App\Versions\Private\Swagger\Requests;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(
-    title: 'Basket request',
-    description: 'Basket request body data',
+    title: 'Cart request',
+    description: 'Cart request body data',
     required: ['product_id', 'quantity'],
     type: 'object',
 )]
-final readonly class BasketRequest
+final readonly class CartRequest
 {
 
     #[OA\Property(

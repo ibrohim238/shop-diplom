@@ -3,14 +3,14 @@
 namespace App\Versions\Private\Swagger\Controllers;
 
 use App\Versions\Private\Swagger\Pagination;
-use App\Versions\Private\Swagger\Requests\PurchaseRequest;
-use App\Versions\Private\Swagger\Resources\PurchaseResource;
+use App\Versions\Private\Swagger\Requests\OrderRequest;
+use App\Versions\Private\Swagger\Resources\OrderResource;
 use OpenApi\Attributes as OA;
 
-interface PurchaseController
+interface OrderController
 {
     #[OA\Get(
-        path: '/user/purchases',
+        path: '/user/orders',
         description: 'Список покупок',
         summary: 'Список покупок',
         security: [
@@ -18,7 +18,7 @@ interface PurchaseController
                 'api-key' => [],
             ],
         ],
-        tags: ['Purchases'],
+        tags: ['Orders'],
         parameters: [
 
         ],
@@ -31,7 +31,7 @@ interface PurchaseController
                 new OA\Property(
                     property: 'data',
                     type: 'array',
-                    items: new OA\Items(ref: PurchaseResource::class),
+                    items: new OA\Items(ref: OrderResource::class),
                 ),
                 new OA\Property(
                     property: 'meta',
@@ -43,7 +43,7 @@ interface PurchaseController
     public function index();
 
     #[OA\Get(
-        path: '/user/purchases/{id}',
+        path: '/user/orders/{id}',
         description: 'Покупка',
         summary: 'Покупка',
         security: [
@@ -51,7 +51,7 @@ interface PurchaseController
                 'api-key' => [],
             ],
         ],
-        tags: ['Purchases'],
+        tags: ['Orders'],
         parameters: [
             new OA\Parameter(
                 name: 'id',
@@ -68,7 +68,7 @@ interface PurchaseController
             properties: [
                 new OA\Property(
                     property: 'data',
-                    ref: PurchaseResource::class,
+                    ref: OrderResource::class,
                 ),
             ],
         ),
@@ -76,7 +76,7 @@ interface PurchaseController
     public function show();
 
     #[OA\Post(
-        path: '/user/purchases',
+        path: '/user/orders',
         description: 'Оплатить',
         summary: 'Оплатить',
         security: [
@@ -86,9 +86,9 @@ interface PurchaseController
         ],
         requestBody: new OA\RequestBody(
             required: true,
-            content: new OA\JsonContent(ref: PurchaseRequest::class),
+            content: new OA\JsonContent(ref: OrderRequest::class),
         ),
-        tags: ['Purchases'],
+        tags: ['Orders'],
     )]
     #[OA\Response(
         response: 200,
@@ -97,7 +97,7 @@ interface PurchaseController
             properties: [
                 new OA\Property(
                     property: 'data',
-                    ref: PurchaseResource::class,
+                    ref: OrderResource::class,
                 ),
             ],
         ),

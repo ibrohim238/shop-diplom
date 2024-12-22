@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\PurchaseStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -33,12 +32,12 @@ final class Product extends Model implements HasMedia
         return $this->belongsToMany(Category::class);
     }
 
-    public function baskets(): HasMany
+    public function carts(): HasMany
     {
-        return $this->hasMany(Basket::class);
+        return $this->hasMany(Cart::class);
     }
-    public function purchases(): BelongsToMany
+    public function orders(): BelongsToMany
     {
-        return $this->belongsToMany(Purchase::class, PurchaseProduct::class);
+        return $this->belongsToMany(Order::class, OrderProduct::class);
     }
 }

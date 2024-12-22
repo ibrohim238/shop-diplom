@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum PurchaseStatusEnum: int
+enum OrderStatusEnum: int
 {
     case PENDING = 0;
 }

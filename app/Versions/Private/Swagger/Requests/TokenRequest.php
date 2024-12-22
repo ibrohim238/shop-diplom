@@ -5,8 +5,8 @@ namespace App\Versions\Private\Swagger\Requests;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(
-    title: 'Purchase request',
-    description: 'Purchase request body data',
+    title: 'order request',
+    description: 'order request body data',
     required: ['first_name', 'last_name', 'email'],
     type: 'object',
 )]

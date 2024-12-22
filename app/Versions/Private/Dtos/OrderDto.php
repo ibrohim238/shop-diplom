@@ -2,31 +2,31 @@
 
 namespace App\Versions\Private\Dtos;
 
-use App\Versions\Private\Http\Requests\PurchaseRequest;
+use App\Versions\Private\Http\Requests\OrderRequest;
 
-final readonly class PurchaseDto
+final readonly class OrderDto
 {
     public function __construct(
-        private array $baskets,
-        private int $userId,
+        private array   $carts,
+        private int     $userId,
         private ?string $couponCode,
     ) {
     }
 
-    public static function fromRequest(PurchaseRequest $request): PurchaseDto
+    public static function fromRequest(OrderRequest $request): OrderDto
     {
         $validated = $request->validated();
 
         return new self(
-            baskets: $validated['baskets'],
+            carts: $validated['carts'],
             userId: $request->user()->getKey(),
             couponCode: $validated['coupon_code'] ?? null
         );
     }
 
-    public function getBaskets(): array
+    public function getCarts(): array
     {
-        return $this->baskets;
+        return $this->carts;
     }
 
     public function getUserId(): int

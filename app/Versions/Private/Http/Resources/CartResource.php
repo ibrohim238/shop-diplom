@@ -3,11 +3,11 @@
 namespace App\Versions\Private\Http\Resources;
 
 use App\Http\Resources\JsonResource;
-use App\Models\Basket;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 
-/** @mixin Basket */
-final class BasketResource extends JsonResource
+/** @mixin Cart */
+final class CartResource extends JsonResource
 {
     public function toArray(Request $request): array
     {

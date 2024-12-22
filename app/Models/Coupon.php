@@ -31,8 +31,8 @@ class Coupon extends Model
         'quantity_used' => 0,
     ];
 
-    public function purchases(): HasMany
+    public function orders(): HasMany
     {
-        return $this->hasMany(Purchase::class);
+        return $this->hasMany(Order::class);
     }
 }
