@@ -2,6 +2,9 @@ FROM php:8.2-fpm-bullseye
 
 ENV COMPOSER_MEMORY_LIMIT='-1'
 
+WORKDIR /var/www
+COPY . /var/www
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
@@ -67,8 +70,14 @@ RUN curl -s http://getcomposer.org/installer | php && \
     # Source the bash
 RUN . ~/.bashrc
 
-RUN usermod -u 1000 www-data
+# Создаем группу "developer" с GID 1000 и пользователя "developer" с UID 1000
+RUN groupadd -g 1000 developer && \
+    useradd -m -u 1000 -g developer -s /bin/bash developer
 
-WORKDIR /var/www/html
+# Изменяем владельца рабочей директории на пользователя "developer"
+RUN chown -R developer:developer /var/www
 
 EXPOSE 9000
+
+# Переключаемся на непривилегированного пользователя
+USER developer
