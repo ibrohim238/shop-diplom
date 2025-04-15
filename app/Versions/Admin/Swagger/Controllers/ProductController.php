@@ -57,7 +57,7 @@ interface ProductController
     public function index();
 
     #[OA\Get(
-        path: '/product/{id}',
+        path: '/products/{id}',
         description: 'Страница товара',
         summary: 'Страница товара',
         security: [
@@ -102,7 +102,7 @@ interface ProductController
         ],
         requestBody: new OA\RequestBody(
             required: true,
-            content: new OA\JsonContent(ref:ProductRequest::class),
+            content: new OA\JsonContent(ref: ProductRequest::class),
         ),
         tags: ['Products'],
     )]

@@ -12,9 +12,9 @@ final class CartResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'product' => ProductResource::make($this->whenLoaded('product')),
-            'quantity' => $this->quantity,
+            'id'         => $this->id,
+            'product'    => ProductResource::make($this->whenLoaded('product')),
+            'quantity'   => $this->quantity,
             'created_at' => $this->formatDateTime($this->created_at),
             'updated_at' => $this->formatDateTime($this->updated_at),
         ];

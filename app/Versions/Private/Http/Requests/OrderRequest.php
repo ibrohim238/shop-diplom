@@ -10,8 +10,8 @@ class OrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'carts' => ['required', 'array', 'min:1'],
-            'carts.*' => ['required', 'int', 'exists:carts,id'],
+            'carts'       => ['required', 'array', 'min:1'],
+            'carts.*'     => ['required', 'int', 'exists:carts,id'],
             'coupon_code' => ['nullable', 'string', new CouponCodeCheck()],
         ];
     }

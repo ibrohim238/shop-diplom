@@ -13,13 +13,14 @@ final class ProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string', 'max:512'],
-            'price' => ['required', 'numeric'],
-            'categories' => ['nullable', 'array', 'min:1'],
+            'name'         => ['required', 'string', 'max:255'],
+            'description'  => ['nullable', 'string', 'max:512'],
+            'price'        => ['required', 'numeric'],
+            'quantity'     => ['nullable', 'integer', 'min:1'],
+            'categories'   => ['nullable', 'array', 'min:1'],
             'categories.*' => ['required', 'integer', 'exists:categories,id'],
-            'medias' => ['required', 'array', 'min:1', 'max:10'],
-            'medias.*' => [
+            'medias'       => ['required', 'array', 'min:1', 'max:10'],
+            'medias.*'     => [
                 'required',
                 'integer',
                 Rule::exists(Media::class, 'id')
@@ -32,7 +33,7 @@ final class ProductRequest extends FormRequest
                             ->orWhere(function (Builder $query) {
                                 $query->where('model_type', 'product');
                             });
-                    })
+                    }),
             ],
         ];
     }

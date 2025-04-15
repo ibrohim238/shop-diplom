@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 class OrderController
 {
     public function index(
-        Request $request,
-        OrderIndexReporter $reporter
+        Request            $request,
+        OrderIndexReporter $reporter,
     ) {
         $orders = $reporter->execute()
             ->paginate($request->get('limit', 15));
@@ -24,13 +24,13 @@ class OrderController
 
     public function show(Order $order)
     {
-        return OrderResource::make($order->load(['products', 'coupon']));
+        return OrderResource::make($order->load(['items.product', 'coupon']));
     }
 
     public function store(OrderRequest $request, OrderService $service)
     {
         $order = $service->store(OrderDto::fromRequest($request));
 
-        return OrderResource::make($order->load(['products', 'coupon']));
+        return OrderResource::make($order->load(['items.product', 'coupon']));
     }
 }

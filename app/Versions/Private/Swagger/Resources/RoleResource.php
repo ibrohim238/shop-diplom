@@ -2,7 +2,6 @@
 
 namespace App\Versions\Private\Swagger\Resources;
 
-use Carbon\Carbon;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(

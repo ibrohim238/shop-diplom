@@ -56,7 +56,6 @@ final readonly class CouponRequest
     )]
     private ?string $quantity_allowed;
 
-
     #[OA\Property(
         title: "expires_date",
         description: "Дата истечения",

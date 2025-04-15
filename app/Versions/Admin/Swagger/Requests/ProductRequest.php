@@ -12,7 +12,6 @@ use OpenApi\Attributes as OA;
 )]
 final readonly class ProductRequest
 {
-
     #[OA\Property(
         title: 'name',
         description: 'Имя',
@@ -30,7 +29,7 @@ final readonly class ProductRequest
     #[OA\Property(
         title: 'price',
         description: 'Цена',
-        type: 'float'
+        type: 'float',
     )]
     private string $price;
 

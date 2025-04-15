@@ -85,3 +85,355 @@
 2024-12-22 15:56:46,961 INFO spawned: 'kafka-consume' with pid 10
 2024-12-22 15:56:46,973 INFO exited: kafka-consume (exit status 1; not expected)
 2024-12-22 15:56:47,974 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-24 08:50:49,556 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-24 08:50:49,556 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-24 08:50:49,559 INFO supervisord started with pid 1
+2024-12-24 08:50:50,565 INFO spawned: 'kafka-consume' with pid 7
+2024-12-24 08:50:50,623 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-24 08:50:51,624 INFO spawned: 'kafka-consume' with pid 8
+2024-12-24 08:50:51,638 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-24 08:50:53,641 INFO spawned: 'kafka-consume' with pid 9
+2024-12-24 08:50:53,653 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-24 08:50:56,659 INFO spawned: 'kafka-consume' with pid 10
+2024-12-24 08:50:56,673 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-24 08:50:57,675 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-26 06:32:00,244 WARN received SIGQUIT indicating exit request
+2024-12-27 07:39:06,069 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-27 07:39:06,069 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-27 07:39:06,077 INFO supervisord started with pid 1
+2024-12-27 07:39:07,080 INFO spawned: 'kafka-consume' with pid 7
+2024-12-27 07:39:07,139 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 07:39:08,141 INFO spawned: 'kafka-consume' with pid 8
+2024-12-27 07:39:08,159 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 07:39:10,162 INFO spawned: 'kafka-consume' with pid 9
+2024-12-27 07:39:10,175 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 07:39:13,179 INFO spawned: 'kafka-consume' with pid 10
+2024-12-27 07:39:13,192 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 07:39:14,193 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-27 14:43:14,443 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-27 14:43:14,444 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-27 14:43:14,445 INFO supervisord started with pid 1
+2024-12-27 14:43:15,446 INFO spawned: 'kafka-consume' with pid 7
+2024-12-27 14:43:15,484 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 14:43:16,486 INFO spawned: 'kafka-consume' with pid 8
+2024-12-27 14:43:16,498 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 14:43:18,501 INFO spawned: 'kafka-consume' with pid 9
+2024-12-27 14:43:18,513 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 14:43:21,517 INFO spawned: 'kafka-consume' with pid 10
+2024-12-27 14:43:21,529 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 14:43:22,530 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-27 15:32:09,732 WARN received SIGQUIT indicating exit request
+2024-12-27 15:32:14,834 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-27 15:32:14,834 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-27 15:32:14,836 INFO supervisord started with pid 1
+2024-12-27 15:32:15,838 INFO spawned: 'kafka-consume' with pid 6
+2024-12-27 15:32:15,871 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:32:16,872 INFO spawned: 'kafka-consume' with pid 7
+2024-12-27 15:32:16,883 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:32:18,887 INFO spawned: 'kafka-consume' with pid 8
+2024-12-27 15:32:18,899 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:32:21,903 INFO spawned: 'kafka-consume' with pid 9
+2024-12-27 15:32:21,915 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:32:22,916 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-27 15:33:44,006 WARN received SIGQUIT indicating exit request
+2024-12-27 15:33:47,344 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-27 15:33:47,344 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-27 15:33:47,346 INFO supervisord started with pid 1
+2024-12-27 15:33:48,348 INFO spawned: 'kafka-consume' with pid 7
+2024-12-27 15:33:48,372 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:33:49,374 INFO spawned: 'kafka-consume' with pid 8
+2024-12-27 15:33:49,386 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:33:51,389 INFO spawned: 'kafka-consume' with pid 9
+2024-12-27 15:33:51,402 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:33:54,407 INFO spawned: 'kafka-consume' with pid 10
+2024-12-27 15:33:54,423 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:33:55,424 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-27 15:34:22,457 WARN received SIGQUIT indicating exit request
+2024-12-27 15:34:25,635 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-27 15:34:25,635 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-27 15:34:25,635 INFO supervisord started with pid 1
+2024-12-27 15:34:26,638 INFO spawned: 'kafka-consume' with pid 7
+2024-12-27 15:34:26,651 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:34:27,653 INFO spawned: 'kafka-consume' with pid 8
+2024-12-27 15:34:27,666 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:34:29,670 INFO spawned: 'kafka-consume' with pid 9
+2024-12-27 15:34:29,681 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:34:32,686 INFO spawned: 'kafka-consume' with pid 10
+2024-12-27 15:34:32,702 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:34:33,703 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-27 15:36:47,858 WARN received SIGQUIT indicating exit request
+2024-12-27 15:36:53,663 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-27 15:36:53,663 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-27 15:36:53,664 INFO supervisord started with pid 1
+2024-12-27 15:36:54,666 INFO spawned: 'kafka-consume' with pid 7
+2024-12-27 15:36:54,681 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:36:55,683 INFO spawned: 'kafka-consume' with pid 8
+2024-12-27 15:36:55,694 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:36:57,699 INFO spawned: 'kafka-consume' with pid 9
+2024-12-27 15:36:57,715 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:37:00,721 INFO spawned: 'kafka-consume' with pid 10
+2024-12-27 15:37:00,737 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:37:01,739 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-27 15:39:04,870 WARN received SIGQUIT indicating exit request
+2024-12-27 15:39:08,910 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-27 15:39:08,910 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-27 15:39:08,911 INFO supervisord started with pid 1
+2024-12-27 15:39:09,913 INFO spawned: 'kafka-consume' with pid 7
+2024-12-27 15:39:09,932 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:39:10,934 INFO spawned: 'kafka-consume' with pid 8
+2024-12-27 15:39:10,946 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:39:12,948 INFO spawned: 'kafka-consume' with pid 9
+2024-12-27 15:39:12,960 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:39:15,965 INFO spawned: 'kafka-consume' with pid 10
+2024-12-27 15:39:15,977 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-27 15:39:16,978 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-28 09:48:51,732 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-28 09:48:51,732 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-28 09:48:51,733 INFO supervisord started with pid 1
+2024-12-28 09:48:52,735 INFO spawned: 'kafka-consume' with pid 7
+2024-12-28 09:48:52,771 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-28 09:48:53,774 INFO spawned: 'kafka-consume' with pid 8
+2024-12-28 09:48:53,794 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-28 09:48:55,797 INFO spawned: 'kafka-consume' with pid 9
+2024-12-28 09:48:55,810 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-28 09:48:58,814 INFO spawned: 'kafka-consume' with pid 10
+2024-12-28 09:48:58,826 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-28 09:48:59,827 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-30 15:12:26,550 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-30 15:12:26,550 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-30 15:12:26,551 INFO supervisord started with pid 1
+2024-12-30 15:12:27,553 INFO spawned: 'kafka-consume' with pid 7
+2024-12-30 15:12:27,583 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 15:12:28,585 INFO spawned: 'kafka-consume' with pid 8
+2024-12-30 15:12:29,603 INFO success: kafka-consume entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2024-12-30 15:12:29,604 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 15:12:30,605 INFO spawned: 'kafka-consume' with pid 9
+2024-12-30 15:12:30,619 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 15:12:31,620 INFO spawned: 'kafka-consume' with pid 10
+2024-12-30 15:12:31,632 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 15:12:33,635 INFO spawned: 'kafka-consume' with pid 11
+2024-12-30 15:12:33,647 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 15:12:36,651 INFO spawned: 'kafka-consume' with pid 12
+2024-12-30 15:12:36,663 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 15:12:37,663 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-30 15:53:42,483 WARN received SIGQUIT indicating exit request
+2024-12-30 15:53:47,047 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-30 15:53:47,047 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-30 15:53:47,048 INFO supervisord started with pid 1
+2024-12-30 15:53:48,050 INFO spawned: 'kafka-consume' with pid 7
+2024-12-30 15:53:48,061 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 15:53:49,063 INFO spawned: 'kafka-consume' with pid 8
+2024-12-30 15:53:49,075 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 15:53:51,078 INFO spawned: 'kafka-consume' with pid 9
+2024-12-30 15:53:51,089 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 15:53:54,093 INFO spawned: 'kafka-consume' with pid 10
+2024-12-30 15:53:54,103 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 15:53:55,105 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-30 17:29:13,522 WARN received SIGQUIT indicating exit request
+2024-12-30 17:29:22,813 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-30 17:29:22,813 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-30 17:29:22,814 INFO supervisord started with pid 1
+2024-12-30 17:29:23,816 INFO spawned: 'kafka-consume' with pid 7
+2024-12-30 17:29:23,830 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:29:24,832 INFO spawned: 'kafka-consume' with pid 8
+2024-12-30 17:29:24,843 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:29:26,847 INFO spawned: 'kafka-consume' with pid 9
+2024-12-30 17:29:26,858 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:29:29,863 INFO spawned: 'kafka-consume' with pid 10
+2024-12-30 17:29:29,874 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:29:30,875 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-30 17:30:34,945 WARN received SIGQUIT indicating exit request
+2024-12-30 17:30:57,768 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-30 17:30:57,768 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-30 17:30:57,769 INFO supervisord started with pid 1
+2024-12-30 17:30:58,771 INFO spawned: 'kafka-consume' with pid 7
+2024-12-30 17:30:58,783 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:30:59,786 INFO spawned: 'kafka-consume' with pid 8
+2024-12-30 17:30:59,797 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:31:01,800 INFO spawned: 'kafka-consume' with pid 9
+2024-12-30 17:31:01,813 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:31:04,819 INFO spawned: 'kafka-consume' with pid 10
+2024-12-30 17:31:04,835 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:31:05,836 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-30 17:31:37,874 WARN received SIGQUIT indicating exit request
+2024-12-30 17:31:41,932 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-30 17:31:41,932 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-30 17:31:41,933 INFO supervisord started with pid 1
+2024-12-30 17:31:42,934 INFO spawned: 'kafka-consume' with pid 7
+2024-12-30 17:31:42,947 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:31:43,949 INFO spawned: 'kafka-consume' with pid 8
+2024-12-30 17:31:43,960 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:31:45,964 INFO spawned: 'kafka-consume' with pid 9
+2024-12-30 17:31:45,975 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:31:48,979 INFO spawned: 'kafka-consume' with pid 10
+2024-12-30 17:31:48,990 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:31:49,992 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-30 17:32:07,011 WARN received SIGQUIT indicating exit request
+2024-12-30 17:32:21,296 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-30 17:32:21,296 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-30 17:32:21,297 INFO supervisord started with pid 1
+2024-12-30 17:32:22,299 INFO spawned: 'kafka-consume' with pid 7
+2024-12-30 17:32:22,312 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:32:23,316 INFO spawned: 'kafka-consume' with pid 8
+2024-12-30 17:32:23,332 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:32:25,335 INFO spawned: 'kafka-consume' with pid 9
+2024-12-30 17:32:25,351 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:32:28,356 INFO spawned: 'kafka-consume' with pid 10
+2024-12-30 17:32:28,368 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:32:29,369 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-30 17:32:39,383 WARN received SIGQUIT indicating exit request
+2024-12-30 17:33:35,570 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-30 17:33:35,570 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-30 17:33:35,571 INFO supervisord started with pid 1
+2024-12-30 17:33:36,572 INFO spawned: 'kafka-consume' with pid 7
+2024-12-30 17:33:36,585 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:33:37,587 INFO spawned: 'kafka-consume' with pid 8
+2024-12-30 17:33:37,599 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:33:39,602 INFO spawned: 'kafka-consume' with pid 9
+2024-12-30 17:33:39,614 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:33:42,618 INFO spawned: 'kafka-consume' with pid 10
+2024-12-30 17:33:42,630 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:33:43,631 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-30 17:34:02,654 WARN received SIGQUIT indicating exit request
+2024-12-30 17:34:11,829 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-30 17:34:11,829 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-30 17:34:11,830 INFO supervisord started with pid 1
+2024-12-30 17:34:12,832 INFO spawned: 'kafka-consume' with pid 7
+2024-12-30 17:34:12,845 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:34:13,848 INFO spawned: 'kafka-consume' with pid 8
+2024-12-30 17:34:13,861 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:34:15,865 INFO spawned: 'kafka-consume' with pid 9
+2024-12-30 17:34:15,878 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:34:18,883 INFO spawned: 'kafka-consume' with pid 10
+2024-12-30 17:34:18,894 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:34:19,896 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-30 17:34:31,909 WARN received SIGQUIT indicating exit request
+2024-12-30 17:34:37,208 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-30 17:34:37,208 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-30 17:34:37,209 INFO supervisord started with pid 1
+2024-12-30 17:34:38,211 INFO spawned: 'kafka-consume' with pid 7
+2024-12-30 17:34:38,225 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:34:39,228 INFO spawned: 'kafka-consume' with pid 8
+2024-12-30 17:34:39,239 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:34:41,242 INFO spawned: 'kafka-consume' with pid 9
+2024-12-30 17:34:41,253 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:34:44,258 INFO spawned: 'kafka-consume' with pid 10
+2024-12-30 17:34:44,270 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:34:45,271 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2024-12-30 17:46:07,073 WARN received SIGQUIT indicating exit request
+2024-12-30 17:46:22,656 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-12-30 17:46:22,656 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2024-12-30 17:46:22,656 INFO supervisord started with pid 1
+2024-12-30 17:46:23,658 INFO spawned: 'kafka-consume' with pid 7
+2024-12-30 17:46:23,670 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:46:24,672 INFO spawned: 'kafka-consume' with pid 8
+2024-12-30 17:46:24,683 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:46:26,686 INFO spawned: 'kafka-consume' with pid 9
+2024-12-30 17:46:26,698 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:46:29,701 INFO spawned: 'kafka-consume' with pid 10
+2024-12-30 17:46:29,712 INFO exited: kafka-consume (exit status 1; not expected)
+2024-12-30 17:46:30,714 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2025-01-09 13:58:24,418 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-01-09 13:58:24,418 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2025-01-09 13:58:24,420 INFO supervisord started with pid 1
+2025-01-09 13:58:25,426 INFO spawned: 'kafka-consume' with pid 7
+2025-01-09 13:58:25,489 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-09 13:58:26,491 INFO spawned: 'kafka-consume' with pid 8
+2025-01-09 13:58:26,504 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-09 13:58:28,507 INFO spawned: 'kafka-consume' with pid 9
+2025-01-09 13:58:28,519 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-09 13:58:31,524 INFO spawned: 'kafka-consume' with pid 10
+2025-01-09 13:58:31,534 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-09 13:58:32,535 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2025-01-13 08:55:09,366 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-01-13 08:55:09,366 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2025-01-13 08:55:09,368 INFO supervisord started with pid 1
+2025-01-13 08:55:10,369 INFO spawned: 'kafka-consume' with pid 7
+2025-01-13 08:55:10,416 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-13 08:55:11,418 INFO spawned: 'kafka-consume' with pid 8
+2025-01-13 08:55:11,447 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-13 08:55:13,449 INFO spawned: 'kafka-consume' with pid 9
+2025-01-13 08:55:13,462 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-13 08:55:16,466 INFO spawned: 'kafka-consume' with pid 10
+2025-01-13 08:55:16,479 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-13 08:55:17,480 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2025-01-14 20:27:43,419 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-01-14 20:27:43,419 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2025-01-14 20:27:43,421 INFO supervisord started with pid 1
+2025-01-14 20:27:44,424 INFO spawned: 'kafka-consume' with pid 7
+2025-01-14 20:27:44,641 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-14 20:27:45,643 INFO spawned: 'kafka-consume' with pid 8
+2025-01-14 20:27:45,656 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-14 20:27:47,661 INFO spawned: 'kafka-consume' with pid 9
+2025-01-14 20:27:47,676 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-14 20:27:50,681 INFO spawned: 'kafka-consume' with pid 10
+2025-01-14 20:27:50,692 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-14 20:27:51,693 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2025-01-20 13:35:14,673 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-01-20 13:35:14,673 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2025-01-20 13:35:14,676 INFO supervisord started with pid 1
+2025-01-20 13:35:15,678 INFO spawned: 'kafka-consume' with pid 7
+2025-01-20 13:35:15,728 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-20 13:35:16,730 INFO spawned: 'kafka-consume' with pid 8
+2025-01-20 13:35:16,750 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-20 13:35:18,753 INFO spawned: 'kafka-consume' with pid 9
+2025-01-20 13:35:18,772 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-20 13:35:21,775 INFO spawned: 'kafka-consume' with pid 10
+2025-01-20 13:35:21,786 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-20 13:35:22,788 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2025-01-21 00:58:35,131 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-01-21 00:58:35,131 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2025-01-21 00:58:35,133 INFO supervisord started with pid 1
+2025-01-21 00:58:36,135 INFO spawned: 'kafka-consume' with pid 7
+2025-01-21 00:58:36,177 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-21 00:58:37,178 INFO spawned: 'kafka-consume' with pid 8
+2025-01-21 00:58:37,190 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-21 00:58:39,192 INFO spawned: 'kafka-consume' with pid 9
+2025-01-21 00:58:39,204 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-21 00:58:42,208 INFO spawned: 'kafka-consume' with pid 10
+2025-01-21 00:58:42,221 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-21 00:58:43,222 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2025-01-23 07:46:31,688 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-01-23 07:46:31,688 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2025-01-23 07:46:31,690 INFO supervisord started with pid 1
+2025-01-23 07:46:32,692 INFO spawned: 'kafka-consume' with pid 7
+2025-01-23 07:46:33,767 INFO success: kafka-consume entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-01-23 07:46:33,767 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-23 07:46:34,769 INFO spawned: 'kafka-consume' with pid 8
+2025-01-23 07:46:34,788 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-23 07:46:35,790 INFO spawned: 'kafka-consume' with pid 9
+2025-01-23 07:46:35,802 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-23 07:46:37,805 INFO spawned: 'kafka-consume' with pid 10
+2025-01-23 07:46:37,819 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-23 07:46:40,823 INFO spawned: 'kafka-consume' with pid 11
+2025-01-23 07:46:40,837 INFO exited: kafka-consume (exit status 1; not expected)
+2025-01-23 07:46:41,838 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2025-01-23 07:48:48,979 WARN received SIGQUIT indicating exit request
+2025-04-15 10:23:59,750 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-04-15 10:23:59,751 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2025-04-15 10:23:59,753 INFO supervisord started with pid 1
+2025-04-15 10:24:00,755 INFO spawned: 'kafka-consume' with pid 7
+2025-04-15 10:24:01,769 INFO success: kafka-consume entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-04-15 10:24:01,769 INFO exited: kafka-consume (exit status 1; not expected)
+2025-04-15 10:24:02,771 INFO spawned: 'kafka-consume' with pid 8
+2025-04-15 10:24:02,784 INFO exited: kafka-consume (exit status 1; not expected)
+2025-04-15 10:24:03,786 INFO spawned: 'kafka-consume' with pid 9
+2025-04-15 10:24:03,800 INFO exited: kafka-consume (exit status 1; not expected)
+2025-04-15 10:24:05,803 INFO spawned: 'kafka-consume' with pid 10
+2025-04-15 10:24:05,815 INFO exited: kafka-consume (exit status 1; not expected)
+2025-04-15 10:24:08,819 INFO spawned: 'kafka-consume' with pid 11
+2025-04-15 10:24:08,831 INFO exited: kafka-consume (exit status 1; not expected)
+2025-04-15 10:24:09,832 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly
+2025-04-15 10:25:30,921 WARN received SIGQUIT indicating exit request
+2025-04-15 10:25:34,431 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-04-15 10:25:34,431 WARN For [program:kafka-consume], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2025-04-15 10:25:34,432 INFO supervisord started with pid 1
+2025-04-15 10:25:35,434 INFO spawned: 'kafka-consume' with pid 7
+2025-04-15 10:25:35,454 INFO exited: kafka-consume (exit status 1; not expected)
+2025-04-15 10:25:36,456 INFO spawned: 'kafka-consume' with pid 8
+2025-04-15 10:25:36,467 INFO exited: kafka-consume (exit status 1; not expected)
+2025-04-15 10:25:38,479 INFO spawned: 'kafka-consume' with pid 9
+2025-04-15 10:25:38,493 INFO exited: kafka-consume (exit status 1; not expected)
+2025-04-15 10:25:41,497 INFO spawned: 'kafka-consume' with pid 10
+2025-04-15 10:25:41,509 INFO exited: kafka-consume (exit status 1; not expected)
+2025-04-15 10:25:42,510 INFO gave up: kafka-consume entered FATAL state, too many start retries too quickly

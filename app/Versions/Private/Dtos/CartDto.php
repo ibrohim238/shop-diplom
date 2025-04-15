@@ -27,9 +27,9 @@ final readonly class CartDto
     public function toArray(): array
     {
         return [
-            'user_id' => $this->userId,
+            'user_id'    => $this->userId,
             'product_id' => $this->productId,
-            'quantity' => $this->quantity,
+            'quantity'   => $this->quantity,
         ];
     }
 }

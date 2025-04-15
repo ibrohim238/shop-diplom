@@ -11,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 final readonly class CouponService
 {
     public function __construct(
-        private Coupon $coupon
+        private Coupon $coupon,
     ) {
     }
 
@@ -38,17 +38,17 @@ final readonly class CouponService
                     [
                         'attribute' => 'coupon_code',
                         'min_price' => $this->coupon->min_price,
-                    ]
-                )
+                    ],
+                ),
             ]);
         }
 
         $order->coupon()->associate($this->coupon);
-        $this->coupon->quantity_used ++;
+        $this->coupon->quantity_used++;
         $this->coupon->save();
         return match ($this->coupon->type) {
-            CouponTypeEnum::PERCENT_DISCOUNT => $amount * (100 - $this->coupon->amount) /100,
-            CouponTypeEnum::FIXED_DISCOUNT => $amount - $this->coupon->amount,
+            CouponTypeEnum::PERCENT_DISCOUNT => $amount * (100 - $this->coupon->amount) / 100,
+            CouponTypeEnum::FIXED_DISCOUNT   => $amount - $this->coupon->amount,
         };
     }
 
@@ -57,7 +57,7 @@ final readonly class CouponService
         return new self(
             Coupon::query()
                 ->where('code', $code)
-                ->first()
+                ->first(),
         );
     }
 }

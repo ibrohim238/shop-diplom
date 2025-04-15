@@ -21,17 +21,17 @@ final readonly class CategoryDto
         return new self(
             name: $validated['name'],
             description: $validated['description'] ?? null,
-            parentId: $validated['parent_id'] ?? null,
-            mediaId: $validated['media_id'] ?? null,
+            parentId: $validated['parent_id']      ?? null,
+            mediaId: $validated['media_id']        ?? null,
         );
     }
 
     public function toArray(): array
     {
         return [
-            'name' => $this->name,
+            'name'        => $this->name,
             'description' => $this->description,
-            'parent_id' => $this->parentId,
+            'parent_id'   => $this->parentId,
         ];
     }
 

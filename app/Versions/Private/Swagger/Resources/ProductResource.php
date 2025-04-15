@@ -37,15 +37,22 @@ final readonly class ProductResource
     #[OA\Property(
         title: 'price',
         description: 'Цена',
-        type: 'float'
+        type: 'float',
     )]
     private string $price;
+
+    #[OA\Property(
+        title: 'quantity',
+        description: 'Количество',
+        type: 'integer',
+    )]
+    private string $quantity;
 
     #[OA\Property(
         title: 'medias',
         description: 'medias',
         type: 'array',
-        items: new OA\Items(ref: MediaResource::class)
+        items: new OA\Items(ref: MediaResource::class),
     )]
     private array $medias;
 
@@ -53,7 +60,7 @@ final readonly class ProductResource
         title: 'categories',
         description: 'categories',
         type: 'array',
-        items: new OA\Items(ref: CategoryResource::class)
+        items: new OA\Items(ref: CategoryResource::class),
     )]
     private array $categories;
 
@@ -65,7 +72,6 @@ final readonly class ProductResource
         example: "2020-01-27 17:50:45",
     )]
     private Carbon $created_at;
-
 
     #[OA\Property(
         title: "updated_at",

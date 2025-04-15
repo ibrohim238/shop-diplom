@@ -2,7 +2,6 @@
 
 namespace App\Rules;
 
-use App\Enums\CouponTypeEnum;
 use App\Models\Coupon;
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;

@@ -14,9 +14,9 @@ final class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
+            'name'        => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:512'],
-            'media_id' => [
+            'media_id'    => [
                 'nullable',
                 'integer',
                 Rule::exists(Media::class, 'id')
@@ -29,7 +29,7 @@ final class CategoryRequest extends FormRequest
                             ->orWhere(function (Builder $query) {
                                 $query->where('model_type', 'category');
                             });
-                    })
+                    }),
             ],
             'parent_id' => ['nullable', 'integer', Rule::exists(Category::class, 'id')],
         ];

@@ -6,7 +6,6 @@ use App\Models\Cart;
 use App\Versions\Private\Dtos\CartDto;
 use App\Versions\Private\Http\Requests\CartRequest;
 use App\Versions\Private\Http\Resources\CartResource;
-use App\Versions\Private\Reporters\ProductIndexReporter;
 use App\Versions\Private\Services\CartService;
 use Illuminate\Http\Request;
 
@@ -33,9 +32,10 @@ final readonly class CartController
         return CartResource::make($cart->load('product'));
     }
 
-    public function destroy(Cart $cart) {
+    public function destroy(Cart $cart)
+    {
         app(CartService::class, [
-            'cart' => $cart
+            'cart' => $cart,
         ])->delete();
 
         return response()->noContent();

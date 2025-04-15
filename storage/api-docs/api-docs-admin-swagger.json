@@ -528,14 +528,14 @@
                 ]
             }
         },
-        "/product/{id}": {
+        "/products/{id}": {
             "get": {
                 "tags": [
                     "Products"
                 ],
                 "summary": "Страница товара",
                 "description": "Страница товара",
-                "operationId": "dbc0a32beab15ec50758da002a169a3e",
+                "operationId": "75a650aa213e3df00798d1f78c9e81cc",
                 "parameters": [
                     {
                         "name": "id",
@@ -574,9 +574,7 @@
                         "api-key": []
                     }
                 ]
-            }
-        },
-        "/products/{id}": {
+            },
             "put": {
                 "tags": [
                     "Products"
@@ -1062,6 +1060,11 @@
                         "description": "Цена",
                         "type": "number",
                         "format": "float"
+                    },
+                    "quantity": {
+                        "title": "quantity",
+                        "description": "Количество",
+                        "type": "integer"
                     },
                     "medias": {
                         "title": "medias",

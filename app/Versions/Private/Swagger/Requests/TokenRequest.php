@@ -18,7 +18,7 @@ final readonly class TokenRequest
         enum: [
             'refresh_token',
             'password',
-        ]
+        ],
     )]
     private string $grant_type;
 

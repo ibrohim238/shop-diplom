@@ -2,9 +2,7 @@
 
 namespace App\Versions\Private\Swagger\Controllers;
 
-use App\Versions\Private\Swagger\Requests\RegisterRequest;
 use App\Versions\Private\Swagger\Requests\TokenRequest;
-use App\Versions\Private\Swagger\Resources\UserResource;
 use App\Versions\Private\Swagger\Responses\NotFoundResponse;
 use OpenApi\Attributes as OA;
 

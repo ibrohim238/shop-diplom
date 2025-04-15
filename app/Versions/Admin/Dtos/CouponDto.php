@@ -37,13 +37,13 @@ class CouponDto
     public function toArray(): array
     {
         return [
-            'code' => $this->code,
-            'description' => $this->description,
-            'amount' => $this->amount,
-            'min_price' => $this->minPrice,
-            'type' => $this->type,
+            'code'             => $this->code,
+            'description'      => $this->description,
+            'amount'           => $this->amount,
+            'min_price'        => $this->minPrice,
+            'type'             => $this->type,
             'quantity_allowed' => $this->quantityAllowed,
-            'expires_date' => $this->expiresDate,
+            'expires_date'     => $this->expiresDate,
         ];
     }
 }

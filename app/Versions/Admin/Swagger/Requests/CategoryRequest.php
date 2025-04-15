@@ -12,7 +12,6 @@ use OpenApi\Attributes as OA;
 )]
 final readonly class CategoryRequest
 {
-
     #[OA\Property(
         title: 'name',
         description: 'Имя',

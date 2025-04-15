@@ -15,16 +15,18 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('order_product', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('order_id')->constrained();
             $table->foreignId('product_id')->constrained();
             $table->unsignedInteger('quantity');
+            $table->timestamps();
         });
     }
 
     public function down(): void
     {
         Schema::dropIfExists('orders');
-        Schema::dropIfExists('order_product');
+        Schema::dropIfExists('order_items');
     }
 };

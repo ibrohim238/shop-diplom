@@ -20,6 +20,8 @@ final readonly class ProductController
 
     public function show(Product $product)
     {
+        $product->load(['categories', 'media']);
+
         return ProductResource::make($product);
     }
 }

@@ -16,7 +16,7 @@ final readonly class OrderRequest
         title: 'carts',
         description: 'Товары',
         type: 'array',
-        items: new OA\Items(type: 'integer')
+        items: new OA\Items(type: 'integer'),
     )]
     private array $carts;
 

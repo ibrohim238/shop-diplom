@@ -41,7 +41,7 @@ final readonly class ProductController
         $product->load(['media', 'categories']);
 
         app(ProductService::class, [
-            'product' => $product
+            'product' => $product,
         ])
             ->update(ProductDto::fromRequest($request));
 
@@ -51,7 +51,7 @@ final readonly class ProductController
     public function destroy(Product $product)
     {
         app(ProductService::class, [
-            'product' => $product
+            'product' => $product,
         ])
             ->delete($product);
     }

@@ -12,11 +12,11 @@ final class OrderResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'amount' => $this->amount,
-            'status' => $this->status,
-            'products' => ProductResource::collection($this->whenLoaded('products')),
-            'coupon' => CouponResource::make($this->whenLoaded('coupon')),
+            'id'         => $this->id,
+            'amount'     => $this->amount,
+            'status'     => $this->status,
+            'items'      => OrderItemResource::collection($this->whenLoaded('items')),
+            'coupon'     => CouponResource::make($this->whenLoaded('coupon')),
             'created_at' => $this->formatDateTime($this->created_at),
             'updated_at' => $this->formatDateTime($this->updated_at),
         ];

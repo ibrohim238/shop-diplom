@@ -18,9 +18,9 @@ services:
             dockerfile: ./docker/php-fpm/Dockerfile
         restart: unless-stopped
         volumes:
-                - ./:/var/www
-                - ./docker/php-fpm/local.ini:/usr/local/etc/php/conf.d/local.ini
-                - ./docker/supervisord/supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
+            - ./:/var/www
+            - ./docker/php-fpm/local.ini:/usr/local/etc/php/conf.d/local.ini
+            - ./docker/supervisord/supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
         command: [ "/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
     pgsql:
         image: postgres:14.3
@@ -40,7 +40,7 @@ services:
         restart: unless-stopped
         tty: true
         ports:
-            - 8084:80
+            - 8083:80
         volumes:
             - ./:/var/www
             - ./docker/nginx/conf.d/:/etc/nginx/conf.d/:ro
@@ -48,7 +48,7 @@ services:
         image: redis:5
         restart: always
         ports:
-            - 6380:6379
+            - 6381:6379
 #Volumes
 volumes:
     dbdata:

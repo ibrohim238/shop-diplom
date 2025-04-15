@@ -6,7 +6,7 @@ use App\Enums\OrderStatusEnum;
 use App\Models\Cart;
 use App\Models\Coupon;
 use App\Models\Order;
-use App\Models\OrderProduct;
+use App\Models\OrderItem;
 use App\Versions\Admin\Services\CouponService;
 use App\Versions\Private\Dtos\OrderDto;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 final readonly class OrderService
 {
     public function __construct(
-        private Order $order
+        private Order $order,
     ) {
     }
 
@@ -38,15 +38,15 @@ final readonly class OrderService
                 'amount' => $amount,
             ]);
             $this->order->save();
-            OrderProduct::query()
+            OrderItem::query()
                 ->insert(
                     $carts
                         ->map(fn(Cart $cart) => [
-                            'order_id' => $this->order->id,
+                            'order_id'   => $this->order->id,
                             'product_id' => $cart->product_id,
-                            'quantity' => $cart->quantity,
+                            'quantity'   => $cart->quantity,
                         ])
-                        ->toArray()
+                        ->toArray(),
                 );
             Cart::query()
                 ->whereIn('id', $dto->getCarts())

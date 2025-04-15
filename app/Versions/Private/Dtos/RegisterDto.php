@@ -30,9 +30,9 @@ final readonly class RegisterDto
     {
         return [
             'first_name' => $this->firstName,
-            'last_name' => $this->lastName,
-            'email' => $this->email,
-            'password' => $this->password,
+            'last_name'  => $this->lastName,
+            'email'      => $this->email,
+            'password'   => $this->password,
         ];
     }
 }

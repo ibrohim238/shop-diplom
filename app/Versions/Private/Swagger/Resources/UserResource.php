@@ -44,7 +44,7 @@ final readonly class UserResource
         title: 'roles',
         description: 'Роли',
         type: 'array',
-        items: new OA\Items(ref: RoleResource::class)
+        items: new OA\Items(ref: RoleResource::class),
     )]
     private array $roles;
 
@@ -56,7 +56,6 @@ final readonly class UserResource
         example: "2020-01-27 17:50:45",
     )]
     private Carbon $created_at;
-
 
     #[OA\Property(
         title: "updated_at",

@@ -36,12 +36,12 @@ final readonly class OrderResource
     private OrderStatusEnum $status;
 
     #[OA\Property(
-        title: 'product',
-        description: 'товар',
+        title: 'orders',
+        description: 'заказы',
         type: 'array',
-        items: new OA\Items(ref: ProductResource::class)
+        items: new OA\Items(ref: OrderItemResource::class),
     )]
-    private array $products;
+    private array $orders;
 
     #[OA\Property(
         title: 'coupon',
@@ -57,7 +57,6 @@ final readonly class OrderResource
         example: "2020-01-27 17:50:45",
     )]
     private Carbon $created_at;
-
 
     #[OA\Property(
         title: "updated_at",

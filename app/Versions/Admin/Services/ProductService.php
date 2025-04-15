@@ -9,7 +9,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 final readonly class ProductService
 {
     public function __construct(
-        private Product $product
+        private Product $product,
     ) {
     }
 

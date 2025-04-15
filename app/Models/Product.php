@@ -20,12 +20,12 @@ final class Product extends Model implements HasMedia
         'name',
         'description',
         'price',
+        'quantity',
     ];
 
     protected $casts = [
         'price' => 'float',
     ];
-
 
     public function categories(): BelongsToMany
     {
@@ -36,8 +36,9 @@ final class Product extends Model implements HasMedia
     {
         return $this->hasMany(Cart::class);
     }
+
     public function orders(): BelongsToMany
     {
-        return $this->belongsToMany(Order::class, OrderProduct::class);
+        return $this->belongsToMany(Order::class, OrderItem::class);
     }
 }

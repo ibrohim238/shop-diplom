@@ -49,7 +49,7 @@ interface ProductController
     public function index();
 
     #[OA\Get(
-        path: '/product/{id}',
+        path: '/products/{id}',
         description: 'Страница товара',
         summary: 'Страница товара',
         tags: ['Products'],

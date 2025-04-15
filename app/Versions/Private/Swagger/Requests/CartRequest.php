@@ -12,7 +12,6 @@ use OpenApi\Attributes as OA;
 )]
 final readonly class CartRequest
 {
-
     #[OA\Property(
         title: 'product_id',
         description: 'Id продукта',

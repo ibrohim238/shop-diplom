@@ -23,7 +23,7 @@ class Coupon extends Model
     ];
 
     protected $casts = [
-        'type' => CouponTypeEnum::class,
+        'type'       => CouponTypeEnum::class,
         'expires_at' => 'date',
     ];
 

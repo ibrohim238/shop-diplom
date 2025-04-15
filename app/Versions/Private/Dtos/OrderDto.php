@@ -20,7 +20,7 @@ final readonly class OrderDto
         return new self(
             carts: $validated['carts'],
             userId: $request->user()->getKey(),
-            couponCode: $validated['coupon_code'] ?? null
+            couponCode: $validated['coupon_code'] ?? null,
         );
     }
 

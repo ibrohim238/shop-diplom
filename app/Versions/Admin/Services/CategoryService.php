@@ -3,14 +3,13 @@
 namespace App\Versions\Admin\Services;
 
 use App\Models\Category;
-use App\Models\Product;
 use App\Versions\Admin\Dtos\CategoryDto;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 final readonly class CategoryService
 {
     public function __construct(
-        private Category $category
+        private Category $category,
     ) {
     }
 

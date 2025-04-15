@@ -43,7 +43,6 @@ final readonly class CartResource
     )]
     private Carbon $created_at;
 
-
     #[OA\Property(
         title: "updated_at",
         description: "Обновлена в",
