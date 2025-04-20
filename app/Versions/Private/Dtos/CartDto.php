@@ -32,4 +32,14 @@ final readonly class CartDto
             'quantity'   => $this->quantity,
         ];
     }
+
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    public function getProductId(): int
+    {
+        return $this->productId;
+    }
 }

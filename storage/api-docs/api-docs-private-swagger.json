@@ -524,6 +524,24 @@
                 }
             }
         },
+        "/oauth/logout": {
+            "delete": {
+                "tags": [
+                    "OAuth"
+                ],
+                "summary": "Отозвать access-токен пользователя",
+                "description": "Отозвать access-токен пользователя",
+                "operationId": "798f5a815a1ab1373c6fff791c18a2ce",
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
         "/user/media": {
             "get": {
                 "tags": [

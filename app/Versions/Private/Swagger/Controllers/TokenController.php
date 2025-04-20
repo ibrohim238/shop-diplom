@@ -4,6 +4,7 @@ namespace App\Versions\Private\Swagger\Controllers;
 
 use App\Versions\Private\Swagger\Requests\TokenRequest;
 use App\Versions\Private\Swagger\Responses\NotFoundResponse;
+use App\Versions\Private\Swagger\Responses\UnauthorizedResponse;
 use OpenApi\Attributes as OA;
 
 interface TokenController
@@ -25,4 +26,17 @@ interface TokenController
     )]
     #[NotFoundResponse]
     public function token();
+
+    #[OA\Delete(
+        path: '/oauth/logout',
+        description: 'Отозвать access-токен пользователя',
+        summary: 'Отозвать access-токен пользователя',
+        tags: ['OAuth'],
+    )]
+    #[OA\Response(
+        response: 204,
+        description: 'No Content',
+    )]
+    #[UnauthorizedResponse]
+    public function revoke(int $token_id);
 }

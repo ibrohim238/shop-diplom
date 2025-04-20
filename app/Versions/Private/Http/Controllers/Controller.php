@@ -28,7 +28,7 @@ use OpenApi\Attributes as OA;
 #[OA\Tag(name: 'UserMedia', description: 'Файлы')]
 #[OA\Tag(name: 'Carts', description: 'Корзина')]
 #[OA\Tag(name: 'Orders', description: 'Оплата')]
-abstract readonly class Controller extends BaseController
+abstract class Controller extends BaseController
 {
     //
 }

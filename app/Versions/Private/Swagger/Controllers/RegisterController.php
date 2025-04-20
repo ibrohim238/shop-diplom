@@ -9,7 +9,7 @@ use OpenApi\Attributes as OA;
 
 interface RegisterController
 {
-    #[OA\Get(
+    #[OA\Post(
         path: '/register',
         description: 'Регистрация',
         summary: 'Регистрация',

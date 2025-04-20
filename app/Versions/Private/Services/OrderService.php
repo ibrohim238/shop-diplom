@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Versions\Admin\Services\CouponService;
 use App\Versions\Private\Dtos\OrderDto;
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 final readonly class OrderService
@@ -20,10 +21,22 @@ final readonly class OrderService
 
     public function store(OrderDto $dto): Order
     {
-        DB::transaction(function () use ($dto) {
-            $carts = Cart::query()
-                ->whereIn('id', $dto->getCarts())
-                ->get();
+        $carts = Cart::query()
+            ->with('product')
+            ->whereIn('id', $dto->getCarts())
+            ->get();
+
+        if (
+            $carts
+                ->filter(function (Cart $cart) {
+                    return $cart->quantity > $cart->product->quantity;
+                })
+                ->isNotEmpty()
+        ) {
+            throw new Exception('Товар нет в наличии!');
+        }
+
+        DB::transaction(function () use ($dto, $carts) {
             $amount = $carts
                 ->map(fn(Cart $cart) => $cart->quantity * $cart->product->price)
                 ->sum();

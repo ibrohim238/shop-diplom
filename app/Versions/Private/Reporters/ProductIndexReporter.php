@@ -14,7 +14,6 @@ final readonly class ProductIndexReporter
         return QueryBuilder::for(Product::class)
             ->with('media')
             ->allowedFilters([
-                AllowedFilter::exact('category_slug', 'categories.slug'),
                 AllowedFilter::exact('category_id', 'categories.id'),
             ]);
     }

@@ -15,6 +15,7 @@ final class CartResource extends JsonResource
             'id'         => $this->id,
             'product'    => ProductResource::make($this->whenLoaded('product')),
             'quantity'   => $this->quantity,
+            'product_sum_price'  => $this->whenHas('product_sum_price'),
             'created_at' => $this->formatDateTime($this->created_at),
             'updated_at' => $this->formatDateTime($this->updated_at),
         ];

@@ -14,8 +14,31 @@ final readonly class CartService
 
     public function store(CartDto $cartDto): Cart
     {
+        if (
+            Cart::query()
+                ->where('product_id', $cartDto->getProductId())
+                ->where('user_id', $cartDto->getUserId())
+                ->exists()
+        ) {
+            throw new \Exception('exists product');
+        }
+
         $this->cart->fill($cartDto->toArray());
         $this->cart->save();
+
+        return $this->cart;
+    }
+
+    public function updateQuantity(int $quantity): Cart
+    {
+        if ($this->cart->product->quantity < $quantity) {
+            throw new \Exception('quantity is out of stock');
+        }
+
+        $this->cart
+            ->update([
+                'quantity' => $quantity,
+            ]);
 
         return $this->cart;
     }

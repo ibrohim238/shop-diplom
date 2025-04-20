@@ -25,7 +25,7 @@ use OpenApi\Attributes as OA;
 )]
 #[OA\Tag(name: 'Products', description: 'Продукты')]
 #[OA\Tag(name: 'Categories', description: 'Категории')]
-abstract readonly class Controller extends BaseController
+abstract class Controller extends BaseController
 {
     //
 }
