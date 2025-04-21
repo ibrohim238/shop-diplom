@@ -10,7 +10,7 @@ final readonly class ProductDto
         private string $name,
         private string $description,
         private float  $price,
-        private ?int   $quantity,
+        private int   $quantity,
         private ?array $categories,
         private ?array $medias,
     ) {
@@ -24,7 +24,7 @@ final readonly class ProductDto
             name: $validated['name'],
             description: $validated['description'] ?? null,
             price: $validated['price'],
-            quantity: $validated['quantity']     ?? null,
+            quantity: $validated['quantity'],
             categories: $validated['categories'] ?? null,
             medias: $validated['medias']         ?? null,
         );

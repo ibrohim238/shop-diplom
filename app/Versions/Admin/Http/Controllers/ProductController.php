@@ -38,12 +38,12 @@ final readonly class ProductController
 
     public function update(Product $product, ProductRequest $request)
     {
-        $product->load(['media', 'categories']);
-
         app(ProductService::class, [
             'product' => $product,
         ])
             ->update(ProductDto::fromRequest($request));
+
+        $product->load(['media', 'categories']);
 
         return ProductResource::make($product);
     }

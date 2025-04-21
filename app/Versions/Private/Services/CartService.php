@@ -3,6 +3,7 @@
 namespace App\Versions\Private\Services;
 
 use App\Models\Cart;
+use App\Models\Product;
 use App\Versions\Private\Dtos\CartDto;
 
 final readonly class CartService
@@ -20,7 +21,7 @@ final readonly class CartService
                 ->where('user_id', $cartDto->getUserId())
                 ->exists()
         ) {
-            throw new \Exception('exists product');
+            throw new \Exception('product exists cart');
         }
 
         $this->cart->fill($cartDto->toArray());
