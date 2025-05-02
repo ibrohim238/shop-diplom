@@ -7,4 +7,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('products', ProductController::class);
 Route::apiResource('categories', CategoryController::class);
-Route::apiResource('coupons', CouponController::class)->only(['index', 'show', 'store']);
+Route::apiResource('coupons', CouponController::class)->except(['update']);

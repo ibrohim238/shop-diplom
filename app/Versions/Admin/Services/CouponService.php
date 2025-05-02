@@ -60,4 +60,9 @@ final readonly class CouponService
                 ->first(),
         );
     }
+
+    public function delete(): void
+    {
+        $this->coupon->delete();
+    }
 }

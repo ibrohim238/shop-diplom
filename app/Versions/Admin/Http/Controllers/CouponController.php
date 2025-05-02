@@ -32,4 +32,13 @@ class CouponController
 
         return CouponResource::make($coupon);
     }
+
+    public function destroy(Coupon $coupon)
+    {
+        app(CouponService::class, [
+            'coupon' => $coupon,
+        ])->delete();
+
+        return response()->noContent();
+    }
 }

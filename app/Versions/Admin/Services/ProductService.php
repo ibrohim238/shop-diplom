@@ -30,7 +30,11 @@ final readonly class ProductService
     public function update(ProductDto $dto): Product
     {
         $this->save($dto);
-        $this->product->clearMediaCollection();
+        $this->product
+            ->media()
+            ->whereNotIn('id', $dto->getMedias())
+            ->cursor()
+            ->map(fn (Media $media) => $media->delete());
         Media::query()
             ->where('id', $dto->getMedias())
             ->get()
@@ -43,7 +47,7 @@ final readonly class ProductService
         return $this->product;
     }
 
-    public function destroy(): void
+    public function delete(): void
     {
         $this->product->clearMediaCollection();
         $this->product->categories()->detach();
