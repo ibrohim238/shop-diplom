@@ -3,13 +3,11 @@
 namespace App\Versions\Private\Services;
 
 use App\Enums\OrderStatusEnum;
+use App\Exceptions\ProductException;
 use App\Models\Cart;
-use App\Models\Coupon;
 use App\Models\Order;
-use App\Models\OrderItem;
 use App\Versions\Admin\Services\CouponService;
 use App\Versions\Private\Dtos\OrderDto;
-use Exception;
 use Illuminate\Support\Facades\DB;
 
 final readonly class OrderService
@@ -33,34 +31,29 @@ final readonly class OrderService
                 })
                 ->isNotEmpty()
         ) {
-            throw new Exception('Товар нет в наличии!');
+            throw ProductException::notExists();
         }
 
         DB::transaction(function () use ($dto, $carts) {
-            $amount = $carts
-                ->map(fn(Cart $cart) => $cart->quantity * $cart->product->price)
-                ->sum();
+            $orderItems = $carts
+                ->map(fn(Cart $cart) => [
+                    'total_amount' => $cart->quantity * $cart->product->price,
+                    'order_id'     => $this->order->id,
+                    'product_id'   => $cart->product_id,
+                    'quantity'     => $cart->quantity,
+                ]);
+            $totalAmount = $orderItems->sum('amount');
             $this->order->user()->associate($dto->getUserId());
             $couponCode = $dto->getCouponCode();
             if ($couponCode !== null) {
-                $amount = CouponService::fromCode($couponCode)
-                    ->consider($this->order, $amount);
+                $totalAmount = $this->setCoupon($couponCode, $totalAmount);
             }
             $this->order->fill([
-                'status' => OrderStatusEnum::PENDING,
-                'amount' => $amount,
+                'status'       => OrderStatusEnum::PENDING,
+                'total_amount' => $totalAmount,
             ]);
             $this->order->save();
-            OrderItem::query()
-                ->insert(
-                    $carts
-                        ->map(fn(Cart $cart) => [
-                            'order_id'   => $this->order->id,
-                            'product_id' => $cart->product_id,
-                            'quantity'   => $cart->quantity,
-                        ])
-                        ->toArray(),
-                );
+            $this->order->items()->createMany($orderItems);
             Cart::query()
                 ->whereIn('id', $dto->getCarts())
                 ->delete();
@@ -69,8 +62,12 @@ final readonly class OrderService
         return $this->order;
     }
 
-    private function getCoupon(?int $id): Coupon
+    private function setCoupon(?string $couponCode, mixed $amount): mixed
     {
-        return Coupon::find($id);
+        $service = CouponService::fromCode($couponCode);
+        $amount  = $service->consider($amount);
+        $this->order->coupon()->associate($service->getCoupon());
+
+        return $amount;
     }
 }

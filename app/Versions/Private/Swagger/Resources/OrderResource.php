@@ -24,10 +24,10 @@ final readonly class OrderResource
     private int $id;
 
     #[OA\Property(
-        title: 'amount',
-        description: 'Сумма',
+        title: 'total_amount',
+        description: 'Общая Сумма',
     )]
-    private int $amount;
+    private int $total_amount;
 
     #[OA\Property(
         title: 'status',

@@ -11,6 +11,11 @@ class OrderItem extends Model
         'order_id',
         'product_id',
         'quantity',
+        'total_amount',
+    ];
+
+    protected $casts = [
+        'total_amount' => 'decimal:2',
     ];
 
     public function product(): BelongsTo

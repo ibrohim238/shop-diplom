@@ -13,7 +13,7 @@ final class OrderResource extends JsonResource
     {
         return [
             'id'         => $this->id,
-            'amount'     => $this->amount,
+            'total_amount'     => $this->total_amount,
             'status'     => $this->status,
             'items'      => OrderItemResource::collection($this->whenLoaded('items')),
             'coupon'     => CouponResource::make($this->whenLoaded('coupon')),

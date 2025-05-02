@@ -9,6 +9,7 @@ use App\Versions\Private\Http\Resources\OrderResource;
 use App\Versions\Private\Reporters\OrderIndexReporter;
 use App\Versions\Private\Services\OrderService;
 use Exception;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
 
 class OrderController
@@ -18,7 +19,11 @@ class OrderController
         OrderIndexReporter $reporter,
     ) {
         $orders = $reporter->execute()
-            ->with(['items.product.media'])
+            ->with([
+                'items',
+                'items.product' => fn(BelongsTo $query) => $query->withTrashed(),
+                'items.product.media',
+            ])
             ->paginate($request->get('limit', 15));
 
         return OrderResource::collection($orders);
@@ -31,16 +36,8 @@ class OrderController
 
     public function store(OrderRequest $request, OrderService $service)
     {
-        try {
-            $order = $service->store(OrderDto::fromRequest($request));
+        $order = $service->store(OrderDto::fromRequest($request));
 
-            return OrderResource::make($order->load(['items.product.media', 'coupon']));
-        } catch (Exception $e) {
-            return response()
-                ->json([
-                    'error' => $e->getMessage(),
-                ], 422);
-        }
-
+        return OrderResource::make($order->load(['items.product.media', 'coupon']));
     }
 }

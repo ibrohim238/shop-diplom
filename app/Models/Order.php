@@ -11,14 +11,14 @@ class Order extends Model
 {
     protected $fillable = [
         'user_id',
-        'amount',
+        'total_amount',
         'status',
         'coupon_id',
     ];
 
     protected $casts = [
         'status' => OrderStatusEnum::class,
-        'amount' => 'float',
+        'total_amount' => 'decimal:2',
     ];
 
     public function user(): BelongsTo

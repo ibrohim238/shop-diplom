@@ -3,6 +3,7 @@
 use App\Versions\Private\Http\Controllers\CartController;
 use App\Versions\Private\Http\Controllers\CategoryController;
 use App\Versions\Private\Http\Controllers\LogoutController;
+use App\Versions\Private\Http\Controllers\PreviewOrderController;
 use App\Versions\Private\Http\Controllers\ProductController;
 use App\Versions\Private\Http\Controllers\OrderController;
 use App\Versions\Private\Http\Controllers\RegisterController;
@@ -30,6 +31,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth:api', 
     Route::patch('carts/{cart}/', [CartController::class, 'updateQuantity'])->name('cart.quantity-update');
     Route::apiResource('orders', OrderController::class)
         ->only('index', 'show', 'store');
+    Route::post('orders/preview', PreviewOrderController::class)->name('orders.preview');
 });
 
 Route::apiResource('products', ProductController::class)->only(['index', 'show']);

@@ -14,6 +14,7 @@ final class OrderItemResource extends JsonResource
         return [
             'product'  => ProductResource::make($this->whenLoaded('product')),
             'quantity' => $this->quantity,
+            'total_amount' => $this->total_amount,
         ];
     }
 }

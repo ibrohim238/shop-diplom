@@ -24,7 +24,7 @@ final class Product extends Model implements HasMedia
     ];
 
     protected $casts = [
-        'price' => 'float',
+        'price' => 'decimal:2',
     ];
 
     public function categories(): BelongsToMany

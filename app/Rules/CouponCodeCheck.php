@@ -14,11 +14,13 @@ class CouponCodeCheck implements ValidationRule
             ->where('code', $value)
             ->first();
 
-        if (!$coupon) {
+        if ($coupon === null) {
             $fail(__('validation.exists', ['attribute' => $attribute]));
+            return;
         }
         if ($coupon->expires_date > now()) {
             $fail(__('validation.expired', ['attribute' => $attribute]));
+            return;
         }
         if ($coupon->used === 0) {
             $fail(__('validation.used', ['attribute' => $attribute]));

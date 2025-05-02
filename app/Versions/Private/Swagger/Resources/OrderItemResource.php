@@ -24,4 +24,10 @@ final readonly class OrderItemResource
         description: 'количество',
     )]
     private int $quantity;
+
+    #[OA\Property(
+        title: 'total_amount',
+        description: 'Общая Сумма',
+    )]
+    private int $total_amount;
 }
