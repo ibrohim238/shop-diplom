@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('description');
             $table->date('expires_date')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->unique('code');
         });

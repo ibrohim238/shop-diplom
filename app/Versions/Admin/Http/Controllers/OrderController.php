@@ -1,14 +1,10 @@
 <?php
 
-namespace App\Versions\Private\Http\Controllers;
+namespace App\Versions\Admin\Http\Controllers;
 
 use App\Models\Order;
-use App\Versions\Private\Dtos\OrderDto;
-use App\Versions\Private\Http\Requests\OrderRequest;
 use App\Versions\Private\Http\Resources\OrderResource;
 use App\Versions\Private\Reporters\OrderIndexReporter;
-use App\Versions\Private\Services\OrderService;
-use Exception;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
 
@@ -19,7 +15,6 @@ class OrderController
         OrderIndexReporter $reporter,
     ) {
         $orders = $reporter->execute()
-            ->where('user_id', auth()->id())
             ->with([
                 'items',
                 'items.product' => fn(BelongsTo $query) => $query->withTrashed(),
@@ -32,17 +27,6 @@ class OrderController
 
     public function show(Order $order)
     {
-        if (!$order->user()->is(auth()->user())) {
-            abort(403, 'unauthorized');
-        }
-
-        return OrderResource::make($order->load(['items.product.media', 'coupon']));
-    }
-
-    public function store(OrderRequest $request, OrderService $service)
-    {
-        $order = $service->store(OrderDto::fromRequest($request));
-
         return OrderResource::make($order->load(['items.product.media', 'coupon']));
     }
 }

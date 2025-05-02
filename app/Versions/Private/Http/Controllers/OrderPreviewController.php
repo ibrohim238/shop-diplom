@@ -6,7 +6,7 @@ use App\Versions\Private\Dtos\OrderDto;
 use App\Versions\Private\Http\Requests\OrderRequest;
 use App\Versions\Private\Services\PreviewOrderService;
 
-class PreviewOrderController
+class OrderPreviewController
 {
     public function __invoke(
         OrderRequest $request,

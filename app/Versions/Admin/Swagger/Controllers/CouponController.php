@@ -100,4 +100,32 @@ interface CouponController
     #[UnprocessableEntityResponse]
     #[UnauthorizedResponse]
     public function store();
+
+    #[OA\Delete(
+        '/coupons/{id}',
+        description: 'Удалить купон',
+        summary: 'Удалить купон',
+        security: [
+            [
+                'api-key' => [],
+            ],
+        ],
+        tags: ['Coupons'],
+        parameters: [
+            new OA\Parameter(
+                name: 'id',
+                in: 'path',
+                required: true,
+                schema: new OA\Schema(type: 'integer'),
+            ),
+        ],
+    )]
+    #[OA\Response(
+        response: 204,
+        description: 'OK',
+        content: new OA\JsonContent(),
+    )]
+    #[NotFoundResponse]
+    #[UnauthorizedResponse]
+    public function destroy();
 }
