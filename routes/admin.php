@@ -10,5 +10,5 @@ use Illuminate\Support\Facades\Route;
 Route::apiResource('products', ProductController::class);
 Route::apiResource('categories', CategoryController::class);
 Route::apiResource('coupons', CouponController::class)->except(['update']);
-Route::apiResource('orders', OrderController::class)->only(['index', 'show']);
 Route::get('/orders/charts', OrderChartsController::class)->name('orders.charts');
+Route::apiResource('orders', OrderController::class)->only(['index', 'show']);

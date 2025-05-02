@@ -5,6 +5,9 @@ ENV COMPOSER_MEMORY_LIMIT='-1'
 WORKDIR /var/www
 COPY . /var/www
 
+ARG WWWUSER
+ARG WWWGROUP
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
@@ -70,14 +73,14 @@ RUN curl -s http://getcomposer.org/installer | php && \
     # Source the bash
 RUN . ~/.bashrc
 
-# Создаем группу "developer" с GID 1000 и пользователя "developer" с UID 1000
-RUN groupadd -g 1000 developer && \
-    useradd -m -u 1000 -g developer -s /bin/bash developer
+# Копируем скрипт и даём ему право на исполнение
+COPY docker/php-fpm/adjust_ids.sh /usr/local/bin/adjust_ids.sh
+RUN chmod +x /usr/local/bin/adjust_ids.sh
 
-# Изменяем владельца рабочей директории на пользователя "developer"
-RUN chown -R developer:developer /var/www
+# Запускаем его во время билда
+RUN /usr/local/bin/adjust_ids.sh
 
 EXPOSE 9000
 
 # Переключаемся на непривилегированного пользователя
-USER developer
+USER www-data

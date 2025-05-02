@@ -5,6 +5,9 @@ services:
         build:
             context: .
             dockerfile: ./docker/php-fpm/Dockerfile
+            args:
+                WWWGROUP: "${WWWGROUP:-1000}"
+                WWWUSER: "${WWWUSER:-1000}"
         restart: unless-stopped
         tty: true
         working_dir: /var/www
@@ -13,9 +16,7 @@ services:
             - ./docker/php-fpm/local.ini:/usr/local/etc/php/conf.d/local.ini
         command: ["php-fpm"]
     queue:
-        build:
-            context: .
-            dockerfile: ./docker/php-fpm/Dockerfile
+        image: shop-app:latest
         restart: unless-stopped
         volumes:
             - ./:/var/www

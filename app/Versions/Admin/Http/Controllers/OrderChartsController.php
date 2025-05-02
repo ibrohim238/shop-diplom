@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -16,8 +17,9 @@ class OrderChartsController
     {
         $cacheKey = self::graphics($request);
         $data     = Cache::remember($cacheKey, config('statistics.ttl.graphics'), static function () use ($request) {
+
             return QueryBuilder::for(OrderItem::query())
-                ->addSelect('sum(quantity) as quantity')
+                ->addSelect(DB::raw('sum(order_items.quantity) as quantity'))
                 ->selectSub(
                     str_replace(
                         ':format',
@@ -27,7 +29,7 @@ class OrderChartsController
                             'year'  => 60 * 60 * 24 * 365,
                             default => 60 * 60 * 24,
                         },
-                        'to_timestamp(DIV(extract(epoch from created_at), :format) * :format)::DATE',
+                        'to_timestamp(DIV(extract(epoch from order_items.created_at), :format) * :format)::DATE',
                     ),
                     'date',
                 )
@@ -39,18 +41,30 @@ class OrderChartsController
                             Carbon::make($min)->startOfDay(),
                             Carbon::make($max)->endOfDay(),
                         ]);
-                    })
-                        ->default(
-                            sprintf(
-                                '%s-%s',
-                                Carbon::now()->subWeeks(3)->format('d/m/Y'),
-                                Carbon::now()->addDay()->format('d/m/Y'),
-                            ),
-                        ),
+                    }),
                     AllowedFilter::exact('product_id'),
                     AllowedFilter::exact('category_id', 'product.categories.id'),
                 ])
-                ->groupBy('date')
+                ->when(
+                    $request->get('group_by'),
+                    function (Builder $query, mixed $value) {
+                        match ($value) {
+                            'category' => $query
+                                ->addSelect('category_product.category_id')
+                                ->join('products', 'products.id', '=', 'order_items.product_id')
+                                ->join('category_product', 'category_product.product_id', '=', 'products.id')
+                                ->groupBy('category_product.category_id', 'date'),
+                            default => $query
+                                ->addSelect('order_items.product_id')
+                                ->groupBy('product_id', 'date')
+                        };
+                    },
+                    function (Builder $query) {
+                        $query
+                            ->addSelect('order_items.product_id')
+                            ->groupBy('product_id', 'date');
+                    },
+                )
                 ->orderBy('date')
                 ->toBase()
                 ->get();
