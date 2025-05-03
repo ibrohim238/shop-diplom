@@ -22,7 +22,7 @@ class CouponCodeCheck implements ValidationRule
             $fail(__('validation.expired', ['attribute' => $attribute]));
             return;
         }
-        if ($coupon->used === 0) {
+        if ($coupon->quantity_used > $coupon->quantity_allowed) {
             $fail(__('validation.used', ['attribute' => $attribute]));
         }
     }

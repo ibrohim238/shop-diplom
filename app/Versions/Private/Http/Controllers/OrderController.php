@@ -8,7 +8,7 @@ use App\Versions\Private\Http\Requests\OrderRequest;
 use App\Versions\Private\Http\Resources\OrderResource;
 use App\Versions\Private\Reporters\OrderIndexReporter;
 use App\Versions\Private\Services\OrderService;
-use Exception;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
 
@@ -36,7 +36,13 @@ class OrderController
             abort(403, 'unauthorized');
         }
 
-        return OrderResource::make($order->load(['items.product.media', 'coupon']));
+        $order->load([
+            'items',
+            'items.product' => fn(BelongsTo $query) => $query->withTrashed(),
+            'items.product.media',
+        ]);
+
+        return OrderResource::make($order);
     }
 
     public function store(OrderRequest $request, OrderService $service)

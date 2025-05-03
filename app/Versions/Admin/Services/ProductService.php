@@ -34,7 +34,7 @@ final readonly class ProductService
             ->media()
             ->whereNotIn('id', $dto->getMedias())
             ->cursor()
-            ->map(fn (Media $media) => $media->delete());
+            ->map(fn(Media $media) => $media->delete());
         Media::query()
             ->where('id', $dto->getMedias())
             ->get()
@@ -49,8 +49,6 @@ final readonly class ProductService
 
     public function delete(): void
     {
-        $this->product->clearMediaCollection();
-        $this->product->categories()->detach();
         $this->product->delete();
     }
 

@@ -27,6 +27,12 @@ class OrderController
 
     public function show(Order $order)
     {
-        return OrderResource::make($order->load(['items.product.media', 'coupon']));
+        $order->load([
+            'items',
+            'items.product' => fn(BelongsTo $query) => $query->withTrashed(),
+            'items.product.media',
+        ]);
+
+        return OrderResource::make($order);
     }
 }
