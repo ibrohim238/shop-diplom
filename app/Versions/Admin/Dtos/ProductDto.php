@@ -8,7 +8,7 @@ final readonly class ProductDto
 {
     public function __construct(
         private string $name,
-        private string $description,
+        private ?string $description,
         private float  $price,
         private int   $quantity,
         private ?array $categories,

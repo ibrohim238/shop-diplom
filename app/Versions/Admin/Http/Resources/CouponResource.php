@@ -17,7 +17,7 @@ class CouponResource extends JsonResource
             'description'     => $this->description,
             'type'            => $this->type,
             'amount'          => $this->amount,
-            'quality_allowed' => $this->quality_allowed,
+            'quality_allowed' => $this->quantity_allowed,
             'quantity_used'   => $this->quantity_used,
             'expires_date'    => $this->formatDate($this->expires_date),
             'orders'          => OrderResource::collection($this->whenLoaded('orders')),

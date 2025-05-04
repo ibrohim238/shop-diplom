@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->float('price');
             $table->unsignedBigInteger('quantity')->default(0);
             $table->string('name');
-            $table->string('description', 512);
+            $table->string('description', 512)->nullable();
             $table->timestamps();
 
             $table->softDeletes();

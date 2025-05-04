@@ -21,12 +21,12 @@ class Coupon extends Model
         'description',
         'quantity_allowed',
         'quantity_used',
-        'expires_at',
+        'expires_date',
     ];
 
     protected $casts = [
         'type'       => CouponTypeEnum::class,
-        'expires_at' => 'date',
+        'expires_date' => 'date',
     ];
 
     protected $attributes = [

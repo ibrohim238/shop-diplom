@@ -24,6 +24,8 @@ final readonly class CategoryController
 
     public function show(Category $category)
     {
+        $category->load('media');
+
         return CategoryResource::make($category);
     }
 

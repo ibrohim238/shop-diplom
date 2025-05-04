@@ -54,5 +54,7 @@ final readonly class ProductController
             'product' => $product,
         ])
             ->delete($product);
+
+        return response()->noContent();
     }
 }

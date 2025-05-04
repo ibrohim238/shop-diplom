@@ -20,11 +20,6 @@ class OrderController
     ) {
         $orders = $reporter->execute()
             ->where('user_id', auth()->id())
-            ->with([
-                'items',
-                'items.product' => fn(BelongsTo $query) => $query->withTrashed(),
-                'items.product.media',
-            ])
             ->paginate($request->get('limit', 15));
 
         return OrderResource::collection($orders);
@@ -40,6 +35,7 @@ class OrderController
             'items',
             'items.product' => fn(BelongsTo $query) => $query->withTrashed(),
             'items.product.media',
+            'coupon',
         ]);
 
         return OrderResource::make($order);

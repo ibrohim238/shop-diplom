@@ -3,8 +3,8 @@
 namespace App\Versions\Admin\Http\Controllers;
 
 use App\Models\Order;
-use App\Versions\Private\Http\Resources\OrderResource;
-use App\Versions\Private\Reporters\OrderIndexReporter;
+use App\Versions\Admin\Http\Resources\OrderResource;
+use App\Versions\Admin\Reporters\OrderIndexReporter;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
 
@@ -15,11 +15,6 @@ class OrderController
         OrderIndexReporter $reporter,
     ) {
         $orders = $reporter->execute()
-            ->with([
-                'items',
-                'items.product' => fn(BelongsTo $query) => $query->withTrashed(),
-                'items.product.media',
-            ])
             ->paginate($request->get('limit', 15));
 
         return OrderResource::collection($orders);
@@ -31,6 +26,7 @@ class OrderController
             'items',
             'items.product' => fn(BelongsTo $query) => $query->withTrashed(),
             'items.product.media',
+            'coupon',
         ]);
 
         return OrderResource::make($order);

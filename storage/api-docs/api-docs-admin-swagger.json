@@ -408,6 +408,237 @@
                         "description": "Unauthenticated"
                     }
                 }
+            },
+            "delete": {
+                "tags": [
+                    "Coupons"
+                ],
+                "summary": "Удалить купон",
+                "description": "Удалить купон",
+                "operationId": "e8d3be8118873b7b1fd4de9e03142a81",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "api-key": []
+                    }
+                ]
+            }
+        },
+        "/orders/charts": {
+            "get": {
+                "tags": [
+                    "Orders",
+                    "Charts"
+                ],
+                "summary": "График продаж по датам",
+                "description": "Возвращает данные для построения графика: суммарное количество товаров по дням/неделям/месяцам/годам",
+                "operationId": "cad583474f1a4005ebfa78d31998ab35",
+                "parameters": [
+                    {
+                        "name": "period",
+                        "in": "query",
+                        "description": "Диапазон дат в формате \"YYYY/MM/DD-YYYY/MM/DD\"",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "2023/01/01-2023/01/31"
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": "Группировка по периоду",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "day",
+                            "enum": [
+                                "day",
+                                "week",
+                                "month",
+                                "year"
+                            ],
+                            "example": "week"
+                        }
+                    },
+                    {
+                        "name": "product_id",
+                        "in": "query",
+                        "description": "Фильтрация по идентификатору товара",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 42
+                        }
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "Фильтрация по идентификатору категории",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 7
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Список точек графика",
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "date": {
+                                                        "description": "Дата (начало периода)",
+                                                        "type": "string",
+                                                        "format": "date"
+                                                    },
+                                                    "quantity": {
+                                                        "description": "Суммарное количество проданных штук",
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/orders": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Список заказов",
+                "description": "Получение списка заказов с пагинацией",
+                "operationId": "fc09962d793f707947a28c57c40d2e34",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Количество записей на страницу",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 15
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Количество записей на страницу",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/OrderResource"
+                                            }
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/Pagination"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/orders/{id}": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Просмотр заказа",
+                "description": "Получение подробной информации по конкретному заказу",
+                "operationId": "0e2e2364f57eeb6e09faadd5cd0c516a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Идентификатор заказа",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/OrderResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found."
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
             }
         },
         "/products": {
@@ -1034,6 +1265,68 @@
                     "name": "Media Resource"
                 }
             },
+            "OrderResource": {
+                "title": "OrderResource",
+                "description": "Ресурс заказа",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "Идентификатор заказа",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "total_amount": {
+                        "title": "total_amount",
+                        "description": "Итоговая сумма заказа",
+                        "type": "number",
+                        "format": "float",
+                        "example": 123.45
+                    },
+                    "status": {
+                        "title": "status",
+                        "description": "Статус заказа",
+                        "type": "string",
+                        "example": "pending"
+                    },
+                    "products": {
+                        "title": "products",
+                        "description": "Список товаров в заказе",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ProductResource"
+                        }
+                    },
+                    "coupon": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/CouponResource"
+                            }
+                        ],
+                        "nullable": true,
+                        "title": "coupon",
+                        "description": "Применённый купон (если есть)"
+                    },
+                    "created_at": {
+                        "title": "created_at",
+                        "description": "Дата и время создания заказа",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-10-01T12:34:56Z"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "description": "Дата и время последнего обновления заказа",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-10-02T09:15:30Z"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "OrderResource"
+                }
+            },
             "ProductResource": {
                 "title": "ProductResource",
                 "description": "Product Resource",
@@ -1125,6 +1418,14 @@
         {
             "name": "Coupons",
             "description": "Coupons"
+        },
+        {
+            "name": "Orders",
+            "description": "Orders"
+        },
+        {
+            "name": "Charts",
+            "description": "Charts"
         }
     ]
 }

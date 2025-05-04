@@ -452,13 +452,13 @@
             }
         },
         "/register": {
-            "get": {
+            "post": {
                 "tags": [
                     "OAuth"
                 ],
                 "summary": "Регистрация",
                 "description": "Регистрация",
-                "operationId": "a8aa4caed665becee331ed5b0a330051",
+                "operationId": "3a53c20befcb85d550b783eca6b0114a",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1070,6 +1070,11 @@
                         "title": "quantity",
                         "description": "количество",
                         "type": "integer"
+                    },
+                    "total_amount": {
+                        "title": "total_amount",
+                        "description": "Общая Сумма",
+                        "type": "integer"
                     }
                 },
                 "type": "object",
@@ -1088,9 +1093,9 @@
                         "format": "int64",
                         "example": 1
                     },
-                    "amount": {
-                        "title": "amount",
-                        "description": "Сумма",
+                    "total_amount": {
+                        "title": "total_amount",
+                        "description": "Общая Сумма",
                         "type": "integer"
                     },
                     "status": {
