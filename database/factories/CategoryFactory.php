@@ -6,6 +6,8 @@ use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
+
+/* @mixin Category */
 class CategoryFactory extends Factory
 {
     protected $model = Category::class;

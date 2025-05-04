@@ -2,24 +2,27 @@
 
 namespace Database\Factories;
 
+use App\Models\Cart;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
 
-/* @mixin Product */
-class ProductFactory extends Factory
+/* @mixin Cart */
+class CartFactory extends Factory
 {
-    protected $model = Product::class;
+    protected $model = Cart::class;
 
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
-            'description' => $this->faker->text(),
-            'price' => $this->faker->randomFloat(2, 10),
+            'quantity' => $this->faker->randomNumber(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+
+            'product_id' => Product::factory(),
+            'user_id' => User::factory(),
         ];
     }
 }

@@ -7,6 +7,8 @@ use App\Models\Coupon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
+
+/* @mixin Coupon */
 class CouponFactory extends Factory
 {
     protected $model = Coupon::class;

@@ -9,7 +9,8 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
-/** @mixin Factory<Order> */
+
+/* @mixin Order */
 class OrderFactory extends Factory
 {
     protected $model = Order::class;
