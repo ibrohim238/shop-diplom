@@ -23,7 +23,7 @@ class OrderFactory extends Factory
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'user_id' => User::factory(),
-            'coupon_id' => $this->faker->randomElement([Coupon::factory(), null]),
+            'coupon_id' => null,
         ];
     }
 }
