@@ -53,7 +53,7 @@ class OrderItemGatherStatJob implements ShouldQueue
                         );
 
                     $reporter = (new OrderItemReporter());
-                    $reporter->firstOrCreate([
+                    $reporter->updateOrCreate([
                         'date' => $this->date,
                         'model_type' => $this->type->value,
                         'model_id' => $product->id,
@@ -82,8 +82,7 @@ class OrderItemGatherStatJob implements ShouldQueue
                         );
 
                     $reporter = (new OrderItemReporter());
-                    $reporter->model()->associate($category);
-                    $reporter->firstOrCreate([
+                    $reporter->updateOrCreate([
                         'date' => $this->date,
                         'model_type' => $this->type->value,
                         'model_id' => $category->id,

@@ -13,6 +13,8 @@ final readonly class CategoryController
     {
         $categories = $reporter
             ->execute()
+            ->whereNull('parent_id')
+            ->with('children')
             ->paginate($request->get('limit', 15));
 
         return CategoryResource::collection($categories);

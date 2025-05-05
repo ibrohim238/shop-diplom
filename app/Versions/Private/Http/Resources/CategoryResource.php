@@ -18,6 +18,7 @@ final class CategoryResource extends JsonResource
             'slug'        => $this->slug,
             'description' => $this->description,
             'media'       => MediaResource::make($this->getFirstMedia()),
+            'children'    => CategoryResource::collection($this->whenLoaded('children')),
             'created_at'  => $this->formatDateTime($this->created_at),
             'updated_at'  => $this->formatDateTime($this->updated_at),
         ];
