@@ -2,7 +2,8 @@
 
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schedule;
+use App\Console\Commands\OrderItemReporterCommand;
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote')->hourly();
+Schedule::command(OrderItemReporterCommand::class)
+    ->dailyAt('01:00');
