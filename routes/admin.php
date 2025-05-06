@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::apiResource('products', ProductController::class);
 Route::apiResource('categories', CategoryController::class);
 Route::apiResource('coupons', CouponController::class)->except(['update']);
-Route::prefix('/orders')->group(function () {
+Route::prefix('/order-item-reporters')->group(function () {
     Route::get('/charts', [OrderItemReporterController::class, 'charts'])->name('orders.charts');
     Route::get('/sum', [OrderItemReporterController::class, 'sum'])->name('orders.sum');
     Route::get('/avg', [OrderItemReporterController::class, 'avg'])->name('orders.avg');

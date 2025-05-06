@@ -84,7 +84,7 @@ class OrderItemReporterController
                 AllowedFilter::exact('model_id')
             ])
             ->toBase()
-            ->get();
+            ->first();
 
         return response()->json(compact('data'));
     }
@@ -93,8 +93,8 @@ class OrderItemReporterController
     {
         $data = QueryBuilder::for(OrderItemReporter::query())
             ->select([
-                DB::raw('avg(quantity) as quantity'),
-                DB::raw('avg(total_amount) as total_amount')
+                DB::raw('avg(quantity)::numeric(12,2) as quantity'),
+                DB::raw('avg(total_amount)::numeric(12,2) as total_amount')
             ])
             ->allowedFilters([
                 AllowedFilter::callback('date', function (Builder $query, mixed $value) {
@@ -115,7 +115,7 @@ class OrderItemReporterController
                 AllowedFilter::exact('model_id')
             ])
             ->toBase()
-            ->get();
+            ->first();
 
         return response()->json(compact('data'));
     }
@@ -146,7 +146,7 @@ class OrderItemReporterController
                 AllowedFilter::exact('model_id')
             ])
             ->toBase()
-            ->get();
+            ->first();
 
         return response()->json(compact('data'));
     }
@@ -177,7 +177,7 @@ class OrderItemReporterController
                 AllowedFilter::exact('model_id')
             ])
             ->toBase()
-            ->get();
+            ->first();
 
         return response()->json(compact('data'));
     }
