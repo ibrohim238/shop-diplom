@@ -4,6 +4,7 @@ namespace App\Versions\Admin\Http\Controllers;
 
 use App\Enums\OrderItemReporterTypeEnum;
 use App\Models\OrderItemReporter;
+use App\Versions\Admin\Http\Resources\OrderItemReporterChartResource;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class OrderItemReporterController
                     },
                     'to_timestamp(DIV(extract(epoch from date), :format) * :format)::DATE',
                 ),
-                'date',
+                'truncated_date',
             )
             ->allowedFilters([
                 AllowedFilter::callback('date', function (Builder $query, mixed $value) {
@@ -51,11 +52,11 @@ class OrderItemReporterController
                 }),
                 AllowedFilter::exact('model_id')
             ])
-            ->groupBy('date')
+            ->groupBy('truncated_date')
             ->toBase()
             ->get();
 
-        return response()->json(compact('data'));
+        return OrderItemReporterChartResource::collection($data);
     }
 
     public function sum()
