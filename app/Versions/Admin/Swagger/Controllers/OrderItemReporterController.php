@@ -90,13 +90,35 @@ interface OrderItemReporterController
     public function charts(): mixed;
 
     #[OA\Get(
-        path: '/order-item-reporters/charts/sum',
+        path: '/order-item-reporters/sum',
         summary: 'Суммарные показатели за период',
         tags: ['OrderItemReporter'],
         parameters: [
-            new OA\Parameter(ref: '#/components/parameters/period'),
-            new OA\Parameter(ref: '#/components/parameters/type'),
-            new OA\Parameter(ref: '#/components/parameters/model_id'),
+            new OA\Parameter(
+                name: 'period',
+                description: 'Диапазон дат в формате "YYYY/MM/DD-YYYY/MM/DD"',
+                in: 'query',
+                required: false,
+                schema: new OA\Schema(type: 'string', example: '2023/01/01-2023/01/31')
+            ),
+            new OA\Parameter(
+                name: 'type',
+                description: 'Тип отчёта: по товару или по категории',
+                in: 'query',
+                required: false,
+                schema: new OA\Schema(
+                    type: 'string',
+                    enum: ['product', 'category'],
+                    example: 'product'
+                )
+            ),
+            new OA\Parameter(
+                name: 'model_id',
+                description: 'ID товара или категории для фильтрации',
+                in: 'query',
+                required: false,
+                schema: new OA\Schema(type: 'integer', example: 42)
+            ),
         ],
         responses: [
             new OA\Response(
@@ -114,13 +136,35 @@ interface OrderItemReporterController
     public function sum(): mixed;
 
     #[OA\Get(
-        path: '/order-item-reporters/charts/avg',
+        path: '/order-item-reporters/avg',
         summary: 'Средние показатели за период',
         tags: ['OrderItemReporter'],
         parameters: [
-            new OA\Parameter(ref: '#/components/parameters/period'),
-            new OA\Parameter(ref: '#/components/parameters/type'),
-            new OA\Parameter(ref: '#/components/parameters/model_id'),
+            new OA\Parameter(
+                name: 'period',
+                description: 'Диапазон дат в формате "YYYY/MM/DD-YYYY/MM/DD"',
+                in: 'query',
+                required: false,
+                schema: new OA\Schema(type: 'string', example: '2023/01/01-2023/01/31')
+            ),
+            new OA\Parameter(
+                name: 'type',
+                description: 'Тип отчёта: по товару или по категории',
+                in: 'query',
+                required: false,
+                schema: new OA\Schema(
+                    type: 'string',
+                    enum: ['product', 'category'],
+                    example: 'product'
+                )
+            ),
+            new OA\Parameter(
+                name: 'model_id',
+                description: 'ID товара или категории для фильтрации',
+                in: 'query',
+                required: false,
+                schema: new OA\Schema(type: 'integer', example: 42)
+            ),
         ],
         responses: [
             new OA\Response(
@@ -138,13 +182,35 @@ interface OrderItemReporterController
     public function avg(): mixed;
 
     #[OA\Get(
-        path: '/order-item-reporters/charts/max',
+        path: '/order-item-reporters/max',
         summary: 'Максимальные показатели за период',
         tags: ['OrderItemReporter'],
         parameters: [
-            new OA\Parameter(ref: '#/components/parameters/period'),
-            new OA\Parameter(ref: '#/components/parameters/type'),
-            new OA\Parameter(ref: '#/components/parameters/model_id'),
+            new OA\Parameter(
+                name: 'period',
+                description: 'Диапазон дат в формате "YYYY/MM/DD-YYYY/MM/DD"',
+                in: 'query',
+                required: false,
+                schema: new OA\Schema(type: 'string', example: '2023/01/01-2023/01/31')
+            ),
+            new OA\Parameter(
+                name: 'type',
+                description: 'Тип отчёта: по товару или по категории',
+                in: 'query',
+                required: false,
+                schema: new OA\Schema(
+                    type: 'string',
+                    enum: ['product', 'category'],
+                    example: 'product'
+                )
+            ),
+            new OA\Parameter(
+                name: 'model_id',
+                description: 'ID товара или категории для фильтрации',
+                in: 'query',
+                required: false,
+                schema: new OA\Schema(type: 'integer', example: 42)
+            ),
         ],
         responses: [
             new OA\Response(
@@ -162,13 +228,35 @@ interface OrderItemReporterController
     public function max(): mixed;
 
     #[OA\Get(
-        path: '/order-item-reporters/charts/min',
+        path: '/order-item-reporters/min',
         summary: 'Минимальные показатели за период',
         tags: ['OrderItemReporter'],
         parameters: [
-            new OA\Parameter(ref: '#/components/parameters/period'),
-            new OA\Parameter(ref: '#/components/parameters/type'),
-            new OA\Parameter(ref: '#/components/parameters/model_id'),
+            new OA\Parameter(
+                name: 'period',
+                description: 'Диапазон дат в формате "YYYY/MM/DD-YYYY/MM/DD"',
+                in: 'query',
+                required: false,
+                schema: new OA\Schema(type: 'string', example: '2023/01/01-2023/01/31')
+            ),
+            new OA\Parameter(
+                name: 'type',
+                description: 'Тип отчёта: по товару или по категории',
+                in: 'query',
+                required: false,
+                schema: new OA\Schema(
+                    type: 'string',
+                    enum: ['product', 'category'],
+                    example: 'product'
+                )
+            ),
+            new OA\Parameter(
+                name: 'model_id',
+                description: 'ID товара или категории для фильтрации',
+                in: 'query',
+                required: false,
+                schema: new OA\Schema(type: 'integer', example: 42)
+            ),
         ],
         responses: [
             new OA\Response(

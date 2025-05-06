@@ -449,98 +449,6 @@
                 ]
             }
         },
-        "/orders/charts": {
-            "get": {
-                "tags": [
-                    "Orders",
-                    "Charts"
-                ],
-                "summary": "График продаж по датам",
-                "description": "Возвращает данные для построения графика: суммарное количество товаров по дням/неделям/месяцам/годам",
-                "operationId": "cad583474f1a4005ebfa78d31998ab35",
-                "parameters": [
-                    {
-                        "name": "period",
-                        "in": "query",
-                        "description": "Диапазон дат в формате \"YYYY/MM/DD-YYYY/MM/DD\"",
-                        "required": false,
-                        "schema": {
-                            "type": "string",
-                            "example": "2023/01/01-2023/01/31"
-                        }
-                    },
-                    {
-                        "name": "format",
-                        "in": "query",
-                        "description": "Группировка по периоду",
-                        "required": false,
-                        "schema": {
-                            "type": "string",
-                            "default": "day",
-                            "enum": [
-                                "day",
-                                "week",
-                                "month",
-                                "year"
-                            ],
-                            "example": "week"
-                        }
-                    },
-                    {
-                        "name": "product_id",
-                        "in": "query",
-                        "description": "Фильтрация по идентификатору товара",
-                        "required": false,
-                        "schema": {
-                            "type": "integer",
-                            "example": 42
-                        }
-                    },
-                    {
-                        "name": "category_id",
-                        "in": "query",
-                        "description": "Фильтрация по идентификатору категории",
-                        "required": false,
-                        "schema": {
-                            "type": "integer",
-                            "example": 7
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Успешный ответ",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "description": "Список точек графика",
-                                            "type": "array",
-                                            "items": {
-                                                "properties": {
-                                                    "date": {
-                                                        "description": "Дата (начало периода)",
-                                                        "type": "string",
-                                                        "format": "date"
-                                                    },
-                                                    "quantity": {
-                                                        "description": "Суммарное количество проданных штук",
-                                                        "type": "integer"
-                                                    }
-                                                },
-                                                "type": "object"
-                                            }
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/orders": {
             "get": {
                 "tags": [
@@ -637,6 +545,371 @@
                     },
                     "401": {
                         "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/order-item-reporters/charts": {
+            "get": {
+                "tags": [
+                    "OrderItemReporter"
+                ],
+                "summary": "График продаж по датам",
+                "description": "Возвращает список точек графика: суммарное количество товаров по дням/неделям/месяцам/годам",
+                "operationId": "ac22e6c897af7036c4c797b3dc67bc45",
+                "parameters": [
+                    {
+                        "name": "period",
+                        "in": "query",
+                        "description": "Диапазон дат в формате \"YYYY/MM/DD-YYYY/MM/DD\"",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "2023/01/01-2023/01/31"
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": "Группировка по периоду",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "day",
+                            "enum": [
+                                "day",
+                                "week",
+                                "month",
+                                "year"
+                            ],
+                            "example": "week"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Тип отчёта: по товару или по категории",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "product",
+                                "category"
+                            ],
+                            "example": "product"
+                        }
+                    },
+                    {
+                        "name": "model_id",
+                        "in": "query",
+                        "description": "ID товара или категории для фильтрации",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 42
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Массив точек графика",
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "date": {
+                                                        "description": "Дата (начало периода)",
+                                                        "type": "string",
+                                                        "format": "date"
+                                                    },
+                                                    "quantity": {
+                                                        "description": "Суммарное количество штук",
+                                                        "type": "integer"
+                                                    },
+                                                    "total_amount": {
+                                                        "description": "Суммарная сумма продаж",
+                                                        "type": "number",
+                                                        "format": "float"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order-item-reporters/sum": {
+            "get": {
+                "tags": [
+                    "OrderItemReporter"
+                ],
+                "summary": "Суммарные показатели за период",
+                "operationId": "f7eced5b8f4ca853df036f4641d44476",
+                "parameters": [
+                    {
+                        "name": "period",
+                        "in": "query",
+                        "description": "Диапазон дат в формате \"YYYY/MM/DD-YYYY/MM/DD\"",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "2023/01/01-2023/01/31"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Тип отчёта: по товару или по категории",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "product",
+                                "category"
+                            ],
+                            "example": "product"
+                        }
+                    },
+                    {
+                        "name": "model_id",
+                        "in": "query",
+                        "description": "ID товара или категории для фильтрации",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 42
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Сумма quantity и total_amount",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "quantity": {
+                                            "type": "integer"
+                                        },
+                                        "total_amount": {
+                                            "type": "number",
+                                            "format": "float"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order-item-reporters/avg": {
+            "get": {
+                "tags": [
+                    "OrderItemReporter"
+                ],
+                "summary": "Средние показатели за период",
+                "operationId": "c2ba9c2d0a8cdfe72d8270ba67511fe1",
+                "parameters": [
+                    {
+                        "name": "period",
+                        "in": "query",
+                        "description": "Диапазон дат в формате \"YYYY/MM/DD-YYYY/MM/DD\"",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "2023/01/01-2023/01/31"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Тип отчёта: по товару или по категории",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "product",
+                                "category"
+                            ],
+                            "example": "product"
+                        }
+                    },
+                    {
+                        "name": "model_id",
+                        "in": "query",
+                        "description": "ID товара или категории для фильтрации",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 42
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Среднее quantity и total_amount",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "quantity": {
+                                            "type": "number",
+                                            "format": "float"
+                                        },
+                                        "total_amount": {
+                                            "type": "number",
+                                            "format": "float"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order-item-reporters/max": {
+            "get": {
+                "tags": [
+                    "OrderItemReporter"
+                ],
+                "summary": "Максимальные показатели за период",
+                "operationId": "83a0fb22a5f9b89f0efa139fb29abe54",
+                "parameters": [
+                    {
+                        "name": "period",
+                        "in": "query",
+                        "description": "Диапазон дат в формате \"YYYY/MM/DD-YYYY/MM/DD\"",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "2023/01/01-2023/01/31"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Тип отчёта: по товару или по категории",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "product",
+                                "category"
+                            ],
+                            "example": "product"
+                        }
+                    },
+                    {
+                        "name": "model_id",
+                        "in": "query",
+                        "description": "ID товара или категории для фильтрации",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 42
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Максимум quantity и total_amount",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "quantity": {
+                                            "type": "integer"
+                                        },
+                                        "total_amount": {
+                                            "type": "number",
+                                            "format": "float"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order-item-reporters/min": {
+            "get": {
+                "tags": [
+                    "OrderItemReporter"
+                ],
+                "summary": "Минимальные показатели за период",
+                "operationId": "cf68d2ce84e612c709f24b48542ee2ad",
+                "parameters": [
+                    {
+                        "name": "period",
+                        "in": "query",
+                        "description": "Диапазон дат в формате \"YYYY/MM/DD-YYYY/MM/DD\"",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "2023/01/01-2023/01/31"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Тип отчёта: по товару или по категории",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "product",
+                                "category"
+                            ],
+                            "example": "product"
+                        }
+                    },
+                    {
+                        "name": "model_id",
+                        "in": "query",
+                        "description": "ID товара или категории для фильтрации",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 42
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Минимум quantity и total_amount",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "quantity": {
+                                            "type": "integer"
+                                        },
+                                        "total_amount": {
+                                            "type": "number",
+                                            "format": "float"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -1424,8 +1697,8 @@
             "description": "Orders"
         },
         {
-            "name": "Charts",
-            "description": "Charts"
+            "name": "OrderItemReporter",
+            "description": "OrderItemReporter"
         }
     ]
 }
