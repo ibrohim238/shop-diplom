@@ -18,8 +18,6 @@ class CartFactory extends Factory
     {
         return [
             'quantity' => $this->faker->randomNumber(),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
 
             'product_id' => Product::factory(),
             'user_id' => User::factory(),

@@ -20,8 +20,7 @@ class OrderFactory extends Factory
         return [
             'total_amount' => $this->faker->randomFloat(),
             'status' => $this->faker->randomElement(OrderStatusEnum::values()),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+
             'user_id' => User::factory(),
             'coupon_id' => null,
         ];
