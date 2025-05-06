@@ -2,11 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Enums\OrderItemReporterTypeEnum;
 use App\Enums\RoleEnum;
+use App\Jobs\OrderItemGatherStatJob;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\User;
+use Carbon\CarbonPeriod;
 use Illuminate\Database\Seeder;
 
 class OrderSeeder extends Seeder {
@@ -34,5 +37,18 @@ class OrderSeeder extends Seeder {
             ])
             ->count(100)
             ->create();
+
+        $period = CarbonPeriod::create('2024-01-01', '1 day', 'now');
+
+        foreach ($period as $date) {
+            OrderItemGatherStatJob::dispatch(
+                $date,
+                OrderItemReporterTypeEnum::PRODUCT,
+            );
+            OrderItemGatherStatJob::dispatch(
+                $date,
+                OrderItemReporterTypeEnum::CATEGORY,
+            );
+        }
     }
 }
