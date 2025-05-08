@@ -6,8 +6,10 @@ use App\Enums\OrderStatusEnum;
 use App\Exceptions\ProductException;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Product;
 use App\Versions\Admin\Services\CouponService;
 use App\Versions\Private\Dtos\OrderDto;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 final readonly class OrderService
@@ -42,7 +44,7 @@ final readonly class OrderService
                     'product_id'   => $cart->product_id,
                     'quantity'     => $cart->quantity,
                 ]);
-            $totalAmount = $orderItems->sum('amount');
+            $totalAmount = $orderItems->sum('total_amount');
             $this->order->user()->associate($dto->getUserId());
             $couponCode = $dto->getCouponCode();
             if ($couponCode !== null) {
@@ -54,6 +56,7 @@ final readonly class OrderService
             ]);
             $this->order->save();
             $this->order->items()->createMany($orderItems);
+            $this->updateQuantityProducts($orderItems);
             Cart::query()
                 ->whereIn('id', $dto->getCarts())
                 ->delete();
@@ -69,5 +72,20 @@ final readonly class OrderService
         $this->order->coupon()->associate($service->getCoupon());
 
         return $amount;
+    }
+
+    private function updateQuantityProducts(Collection $orderItems): void
+    {
+        $byProductIdQuantities = $orderItems
+            ->pluck('quantity', 'product_id');
+        $productIds = $orderItems
+            ->pluck('product_id');
+        Product::query()
+            ->whereIn('id', $productIds)
+            ->get()
+            ->each(function (Product $product) use ($byProductIdQuantities) {
+                $byProductIdQuantities->get($product->id);
+                $product->decrement('quantity', $byProductIdQuantities->get($product->id));
+            });
     }
 }
