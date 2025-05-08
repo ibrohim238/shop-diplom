@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Exists;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 final class CategoryRequest extends FormRequest
@@ -31,7 +32,14 @@ final class CategoryRequest extends FormRequest
                             });
                     }),
             ],
-            'parent_id' => ['nullable', 'integer', Rule::exists(Category::class, 'id')],
+            'parent_id' => [
+                'nullable',
+                'integer',
+                Rule::exists(Category::class, 'id')
+                    ->when($this->category, function (Exists $exists, Category $category) {
+                        $exists->whereNot('id', $category->id);
+                    })
+            ],
         ];
     }
 
