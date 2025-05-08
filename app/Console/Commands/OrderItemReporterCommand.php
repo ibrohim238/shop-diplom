@@ -18,6 +18,7 @@ class OrderItemReporterCommand extends Command
         $date = Carbon::make($this->option('date')) ?? Carbon::now();
         $type = $this->option('type');
 
+
         if ($type === null) {
             OrderItemGatherStatJob::dispatch(
                 $date,
@@ -27,6 +28,8 @@ class OrderItemReporterCommand extends Command
                 $date,
                 OrderItemReporterTypeEnum::CATEGORY,
             );
+
+            return;
         }
 
         if (!OrderItemReporterTypeEnum::has($type)) {
