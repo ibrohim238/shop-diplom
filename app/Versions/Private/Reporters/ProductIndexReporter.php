@@ -11,7 +11,7 @@ final readonly class ProductIndexReporter
 {
     public function execute(?Request $request = null): QueryBuilder
     {
-        return QueryBuilder::for(Product::class)
+        return QueryBuilder::for(Product::class, $request)
             ->with('media')
             ->allowedFilters([
                 AllowedFilter::exact('category_id', 'categories.id'),

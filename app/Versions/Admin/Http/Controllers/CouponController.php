@@ -15,7 +15,7 @@ class CouponController
     public function index(Request $request, CouponIndexReporter $reporter)
     {
         $coupons = $reporter
-            ->execute()
+            ->execute($request)
             ->paginate($request->get('limit', 15));
 
         return CouponResource::collection($coupons);

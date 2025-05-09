@@ -10,7 +10,7 @@ final readonly class CouponIndexReporter
 {
     public function execute(?Request $request = null): QueryBuilder
     {
-        return QueryBuilder::for(Coupon::class)
+        return QueryBuilder::for(Coupon::class, $request)
             ->allowedFilters([
 
             ]);

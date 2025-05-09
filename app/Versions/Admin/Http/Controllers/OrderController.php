@@ -14,7 +14,7 @@ class OrderController
         Request            $request,
         OrderIndexReporter $reporter,
     ) {
-        $orders = $reporter->execute()
+        $orders = $reporter->execute($request)
             ->paginate($request->get('limit', 15));
 
         return OrderResource::collection($orders);

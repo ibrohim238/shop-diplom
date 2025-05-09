@@ -15,7 +15,7 @@ final readonly class CategoryController
     public function index(Request $request, CategoryIndexReporter $reporter)
     {
         $categories = $reporter
-            ->execute()
+            ->execute($request)
             ->with('media')
             ->paginate($request->get('limit', 15));
 

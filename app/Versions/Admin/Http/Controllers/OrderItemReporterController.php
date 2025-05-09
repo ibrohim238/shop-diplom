@@ -16,7 +16,7 @@ class OrderItemReporterController
 {
     public function charts(Request $request)
     {
-        $data = QueryBuilder::for(OrderItemReporter::query())
+        $data = QueryBuilder::for(OrderItemReporter::query(), $request)
             ->select([
                 DB::raw('sum(quantity) as quantity'),
                 DB::raw('sum(total_amount) as total_amount')

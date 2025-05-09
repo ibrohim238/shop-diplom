@@ -15,7 +15,7 @@ final readonly class ProductController
     public function index(Request $request, ProductIndexReporter $reporter)
     {
         $products = $reporter
-            ->execute()
+            ->execute($request)
             ->paginate($request->get('limit', 15));
 
         return ProductResource::collection($products);

@@ -10,7 +10,7 @@ final readonly class CategoryIndexReporter
 {
     public function execute(?Request $request = null): QueryBuilder
     {
-        return QueryBuilder::for(Category::class)
+        return QueryBuilder::for(Category::class, $request)
             ->allowedFilters([
                 'parent_id',
             ]);
