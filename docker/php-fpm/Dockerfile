@@ -5,11 +5,12 @@ ENV COMPOSER_MEMORY_LIMIT='-1'
 WORKDIR /var/www
 COPY . /var/www
 
-ARG WWWUSER
 ARG WWWGROUP
+ARG WWWUSER
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
+    passwd \
     git \
     curl \
     libpng-dev \
@@ -73,12 +74,9 @@ RUN curl -s http://getcomposer.org/installer | php && \
     # Source the bash
 RUN . ~/.bashrc
 
-# Копируем скрипт и даём ему право на исполнение
-COPY docker/php-fpm/adjust_ids.sh /usr/local/bin/adjust_ids.sh
-RUN chmod +x /usr/local/bin/adjust_ids.sh
-
-# Запускаем его во время билда
-RUN /usr/local/bin/adjust_ids.sh
+RUN userdel www-data \
+    && groupadd -f -g $WWWGROUP www-data \
+    && useradd -u $WWWUSER -g $WWWGROUP -m www-data
 
 EXPOSE 9000
 
