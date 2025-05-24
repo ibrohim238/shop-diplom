@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('quantity_allowed')->nullable();
             $table->unsignedBigInteger('quantity_used');
             $table->string('code');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->date('expires_date')->nullable();
             $table->timestamps();
             $table->softDeletes();

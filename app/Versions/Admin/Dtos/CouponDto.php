@@ -10,7 +10,7 @@ class CouponDto
 {
     public function __construct(
         private string         $code,
-        private string         $description,
+        private ?string         $description,
         private int            $amount,
         private int            $minPrice,
         private CouponTypeEnum $type,
