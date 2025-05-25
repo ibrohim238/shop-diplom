@@ -36,7 +36,7 @@ final class Category extends Model implements HasMedia
 
     public function childrenRecursive()
     {
-        return $this->children()->with('childrenRecursive');
+        return $this->children()->with(['media', 'childrenRecursive']);
     }
 
     public function getRouteKeyName(): string
