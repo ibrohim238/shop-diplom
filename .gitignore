@@ -25,3 +25,4 @@ yarn-error.log
 /supervisord.pid
 /.bash_history
 /.config
+/.composer
