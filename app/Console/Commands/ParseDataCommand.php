@@ -39,7 +39,7 @@ class ParseDataCommand extends Command
         ];
 
         $dayDates = CarbonPeriod::create('2025-05-01', '1 day', 'now');
-        $monthDates = CarbonPeriod::create('2024-01-01', '1 month', '2025-05-01');
+        $monthDates = CarbonPeriod::create('2024-01-01', '1 month', '2025-04-01');
         $yearDates = CarbonPeriod::create('2018-01-01', '1 year', '2025-01-01');
 
         foreach ($data as $key => $item) {
