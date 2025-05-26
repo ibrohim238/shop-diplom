@@ -68,7 +68,7 @@ class OrderItemReporterController
             ])
             ->allowedFilters([
                 AllowedFilter::callback('date', function (Builder $query, mixed $value) {
-                    [$min, $max] = explode('-', $value, 2);
+                    [$min, $max] = $value;
 
                     $query->whereBetween('date', [
                         Carbon::make($min)->startOfDay(),
@@ -99,7 +99,7 @@ class OrderItemReporterController
             ])
             ->allowedFilters([
                 AllowedFilter::callback('date', function (Builder $query, mixed $value) {
-                    [$min, $max] = explode('-', $value, 2);
+                    [$min, $max] = $value;
 
                     $query->whereBetween('date', [
                         Carbon::make($min)->startOfDay(),
@@ -130,7 +130,7 @@ class OrderItemReporterController
             ])
             ->allowedFilters([
                 AllowedFilter::callback('date', function (Builder $query, mixed $value) {
-                    [$min, $max] = explode('-', $value, 2);
+                    [$min, $max] = $value;
 
                     $query->whereBetween('date', [
                         Carbon::make($min)->startOfDay(),
@@ -161,7 +161,7 @@ class OrderItemReporterController
             ])
             ->allowedFilters([
                 AllowedFilter::callback('date', function (Builder $query, mixed $value) {
-                    [$min, $max] = explode('-', $value, 2);
+                    [$min, $max] = $value;
 
                     $query->whereBetween('date', [
                         Carbon::make($min)->startOfDay(),
