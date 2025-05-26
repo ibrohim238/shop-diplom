@@ -5,15 +5,13 @@ namespace App\Console\Commands;
 use App\Enums\OrderItemReporterTypeEnum;
 use App\Jobs\OrderItemGatherStatJob;
 use App\Models\Category;
-use App\Models\Order;
-use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\User;
-use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use PHPHtmlParser\Dom;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\UnreachableUrl;
 
 class ParseDataCommand extends Command
 {
@@ -23,6 +21,7 @@ class ParseDataCommand extends Command
 
     public function handle(): int
     {
+        $user = User::factory()->create();
         $data = [
             'materinskie-platy' => 'материнские платы',
             'operativnaya-pamyat-dimm' => 'оперативная память DIMM',
@@ -59,14 +58,16 @@ class ParseDataCommand extends Command
                 ]);
                 $product->categories()->attach($category);
                 if ($imgUrl !== null) {
-                    $product->addMediaFromUrl($imgUrl)->toMediaCollection();
+                    try {
+                        $product->addMediaFromUrl($imgUrl)->toMediaCollection();
+                    } catch (UnreachableUrl) {
+                        $this->info('Unreachable url');;
+                    }
                 }
-                $quantity = rand(2, 30);
-                $totalAmount = $price * $quantity;
 
-                $this->createOrder($dayDates, $totalAmount, $product, rand(2, 30));
-                $this->createOrder($monthDates, $totalAmount, $product, rand(100, 400));
-                $this->createOrder($yearDates, $totalAmount, $product, rand(1000, 5000));
+                $this->createOrder($dayDates, $product->price, $product, 'day', $user);
+                $this->createOrder($monthDates, $product->price, $product, 'month', $user);
+                $this->createOrder($yearDates, $product->price, $product, 'week', $user);
             }
         }
 
@@ -79,17 +80,24 @@ class ParseDataCommand extends Command
 
     /**
      * @param CarbonPeriod $dates
-     * @param float|int $totalAmount
+     * @param float|int $price
      * @param Product $product
-     * @param int $quantity
+     * @param string $type
+     * @param User $user
      * @return void
      */
-    private function createOrder(CarbonPeriod $dates, float|int $totalAmount, Product $product, int $quantity): void
+    private function createOrder(CarbonPeriod $dates, float|int $price, Product $product, string $type, User $user): void
     {
         foreach ($dates as $date) {
+            $quantity = match ($type) {
+                'day' => rand(2, 30),
+                'month' => rand(100, 400),
+                'week' => rand(800, 2000),
+            };
+            $totalAmount = $quantity * $price;
             $orderId = DB::table('orders')->insertGetId([
                 'total_amount' => $totalAmount,
-                'user_id' => User::inRandomOrder()->value('id'),
+                'user_id' => $user->id,
                 'status' => 0,
                 'created_at' => $date->toDateString(),
                 'updated_at' => $date->toDateString(),
